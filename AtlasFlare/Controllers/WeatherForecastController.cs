@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AtlasFlare.Api;
+using AtlasFlare.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AtlasFlare.Controllers
 {
