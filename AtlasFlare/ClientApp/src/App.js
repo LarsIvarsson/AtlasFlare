@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
+import Names from './components/Names'
 import './custom.css';
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
             const { element, ...rest } = route;
             return <Route key={index} {...rest} element={element} />;
           })}
+                <Route path="/names" element={ <Names/>} />
         </Routes>
       </Layout>
     );
