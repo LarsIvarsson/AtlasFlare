@@ -1,4 +1,8 @@
 /* Provide sufficient contrast against white background */
+body {
+    background-color: antiquewhite;
+}
+
 a {
   color: #0366d6;
 }
