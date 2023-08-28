@@ -1,25 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Home extends Component {
-  static displayName = Home.name;
-
-  render() {
+function Home() {
     return (
         <div>
             <h1>Hello, world!</h1>
-            <p>Welcome to your new single-page application</p>                       
+            <p>Welcome to your new single-page application</p>                        
         </div>
     );
-  }
 }
 
-//function Home() {
-//    return (
-//        <div>
-//            <h1>Hello, world!</h1>
-//            <p>Welcome to your new single-page application</p>                        
-//        </div>
-//    );
-//}
-
-//export default Home;
+export default Home;
