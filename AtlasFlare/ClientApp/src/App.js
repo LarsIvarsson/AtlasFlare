@@ -1,8 +1,13 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./components/Routes/Home";
-import Names from "./components/Routes/Names";
-import "./custom.css";
+
+import React, { Component } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components/Layout';
+import Home from './components/Home'
+import Names from './components/Names'
+import './custom.css';
+import './styles/Home.css';
+
+
 
 function App() {
     return (
