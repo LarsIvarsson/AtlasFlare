@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
+import Home from './components/Home'
 import Names from './components/Names'
 import './custom.css';
 
@@ -12,11 +12,8 @@ export default class App extends Component {
     return (
       <Layout>
         <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-              return <Route key={index} {...rest} element={element} />;
-          })}
-                <Route path="/names" element={ <Names/>} />
+          <Route path="/" element={ <Home/>} />    
+          <Route path="/names" element={ <Names/>} />
         </Routes>
       </Layout>
     );
