@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import Home from './components/Home'
 import Names from './components/Names'
 import './custom.css';
+import './styles/Home.css';
 
 export default class App extends Component {
   static displayName = App.name;
