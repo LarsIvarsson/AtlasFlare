@@ -12,7 +12,7 @@ const Names = () => {
 
         return (
             <div>
-                <h1>Hej</h1>
+                <h1>Flaggor</h1>
                 {flags.map((f) => (
                     <div key = {f.flagId}>
                         <h3>{f.countryName}</h3>
