@@ -2,19 +2,22 @@
 
 const Names = () => {
     const [names, setNames] = useState([]);
+    const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        fetch("weatherforecast")
+        fetch("/test")
             .then((res) => res.json())
-            .then((data) => setNames(data));
+            .then((data) => setTodos(data));
     }, []);
 
         return (
             <div>
                 <h1>Hej</h1>
-                {names.map((n) => (
-                    <h2 key={n}>{n}</h2>
+                {todos.map((t) => (
+                    <h3 key={t.id}>{t.todo}</h3>
                 ))}
+                {/*<h2>{todo.id}</h2>*/}
+                {/*<p>{todo.todo}</p>*/}
             </div>
         );
     }
