@@ -4,6 +4,7 @@ using AtlasFlare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AtlasFlare.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230828115441_Seed-data-admin")]
+    partial class Seeddataadmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,14 +65,6 @@ namespace AtlasFlare.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Password = "password",
-                            Username = "user"
-                        });
                 });
 
             modelBuilder.Entity("AtlasFlare.Models.TeacherModel", b =>
