@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
@@ -6,17 +7,15 @@ import Names from './components/Names'
 import './custom.css';
 import './styles/Home.css';
 
-export default class App extends Component {
-  static displayName = App.name;
 
-  render() {
+
+function App() {
     return (
-      <Layout>
-        <Routes>
-          <Route path="/" element={ <Home/>} />    
-          <Route path="/names" element={ <Names/>} />
-        </Routes>
-      </Layout>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/names" element={<Names />} />
+            </Routes>
     );
-  }
 }
+
+export default App;
