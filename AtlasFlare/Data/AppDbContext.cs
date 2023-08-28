@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AtlasFlare.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AtlasFlare.Data
 {
@@ -8,6 +9,9 @@ namespace AtlasFlare.Data
         {
             
         }
+
+        public DbSet<StudentModel> Students { get; set; }
+        public DbSet<TeacherModel> Teachers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
