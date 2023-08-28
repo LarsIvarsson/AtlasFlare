@@ -1,43 +1,49 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AtlasFlare.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AtlasFlare.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FlagsController : ControllerBase
-    {
-        // GET: api/<FlagsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+	[Route("[controller]")]
+	[ApiController]
+	public class FlagsController : ControllerBase
+	{
+		//// GET: api/<FlagsController>
+		//[HttpGet]
+		//public FlagModel? Get()
+		//{
+		//	return null;
+		//}
 
-        // GET api/<FlagsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+		// GET api/<FlagsController>/europe
+		[HttpGet("{continent}")]
+		public async Task<List<FlagModel>?> Get(string continent)
+		{
+			HttpResponseMessage? response = await new HttpClient()
+				.GetAsync($"https://restcountries.com/v3.1/region/{continent}?fields=name,flags");
+			var message = await response.Content.ReadAsStringAsync();
+			List<ApiModel.Root>? result = JsonConvert.DeserializeObject<List<ApiModel.Root>>(message);
 
-        // POST api/<FlagsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+			if (result != null)
+			{
+				List<FlagModel>? flags = new();
+				int id = 1;
 
-        // PUT api/<FlagsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<FlagsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-    }
+				foreach (var country in result)
+				{
+					flags.Add(new FlagModel()
+					{
+						FlagId = id,
+						CountryName = country.Name.Common,
+						ImageUrl = country.Flags.Png
+					});
+					id++;
+				}
+				return flags;
+			}
+			return null;
+		}
+	}
 }
