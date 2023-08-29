@@ -6,7 +6,9 @@ function Home() {
         <div>
             <h1>Hello, world!</h1>
             <p>Welcome to your new single-page application</p> 
-            <Link to={"/names" }>flags</Link>
+            <Link to={"/names"}>flags</Link>
+            <br></br>
+            <Link to={ "/login" }>login</Link>
         </div>
     );
 }
