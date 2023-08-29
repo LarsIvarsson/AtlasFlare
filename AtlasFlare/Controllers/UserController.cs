@@ -11,19 +11,18 @@ namespace AtlasFlare.Controllers
 	public class UserController : ControllerBase
 	{
 		public AppDbContext context { get; }
+
 		public UserController(AppDbContext context)
 		{
 			this.context = context;
 		}
 
-
 		[HttpGet("{id}")]
 		public StudentModel Get(int id)
 		{
-			StudentModel student = context.Students.FirstOrDefault(s => s.UserId == id);
+			StudentModel? student = context.Students.FirstOrDefault(s => s.UserId == id);
 			return student;
 		}
-
 
 		// Sign in user
 		//[HttpGet("{username}")]
@@ -61,21 +60,24 @@ namespace AtlasFlare.Controllers
 		// Create new user
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] string jsonUser)
-
 		{
             StudentModel? newStudent = JsonConvert.DeserializeObject<StudentModel>(jsonUser);
-            var existingStudent = await context.Students.Where(s => s.Username == newStudent.Username).FirstOrDefaultAsync();
+
+			if (newStudent != null)
+			{
+                var existingStudent = await context.Students.Where(s => s.Username == newStudent.Username).FirstOrDefaultAsync();
 
                 if (existingStudent == null)
                 {
                     await context.Students.AddAsync(newStudent);
-					await context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
 
                     return Ok(newStudent);
                 }
             }
 
-			return BadRequest();
+            return BadRequest();
+        }
 
 //         try
 			//{
@@ -92,6 +94,5 @@ namespace AtlasFlare.Controllers
 			//{
 			//	return BadRequest();
 			//}
-		}
 	}
 }
