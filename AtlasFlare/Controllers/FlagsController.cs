@@ -2,22 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AtlasFlare.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
 	public class FlagsController : ControllerBase
 	{
-		//// GET: api/<FlagsController>
-		//[HttpGet]
-		//public FlagModel? Get()
-		//{
-		//	return null;
-		//}
-
-		// GET api/<FlagsController>/europe
 		[HttpGet("{continent}")]
 		public async Task<List<FlagModel>?> Get(string continent)
 		{
