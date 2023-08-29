@@ -3,6 +3,7 @@ using AtlasFlare.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace AtlasFlare.Controllers
 {
@@ -59,40 +60,22 @@ namespace AtlasFlare.Controllers
 
 		// Create new user
 		[HttpPost]
-		public async Task<IActionResult> Post([FromBody] string jsonUser)
+		public async Task<IActionResult> Post([FromBody] StudentModel newUser)
 		{
-            StudentModel? newStudent = JsonConvert.DeserializeObject<StudentModel>(jsonUser);
-
-			if (newStudent != null)
+            if (newUser != null)
 			{
-                var existingStudent = await context.Students.Where(s => s.Username == newStudent.Username).FirstOrDefaultAsync();
+                var existingStudent = await context.Students.Where(s => s.Username == newUser.Username).FirstOrDefaultAsync();
 
                 if (existingStudent == null)
                 {
-                    await context.Students.AddAsync(newStudent);
+                    await context.Students.AddAsync(newUser);
                     await context.SaveChangesAsync();
 
-                    return Ok(newStudent);
+                    return Ok();
                 }
             }
 
-            return BadRequest();
+            return BadRequest("Wrong data...");
         }
-
-//         try
-			//{
-			//	await context.Students.AddAsync(new StudentModel()
-			//	{
-			//		//Username = username,
-			//		//Password = password
-					
-			//	});
-			//	await context.SaveChangesAsync();
-			//	return Ok();
-			//}
-			//catch
-			//{
-			//	return BadRequest();
-			//}
 	}
 }
