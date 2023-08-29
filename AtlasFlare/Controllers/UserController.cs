@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AtlasFlare.Controllers
 {
-	[Route("User/[controller]")]
+	[Route("[controller]")]
 	[ApiController]
 	public class UserController : ControllerBase
 	{
@@ -13,18 +13,6 @@ namespace AtlasFlare.Controllers
 		public UserController(AppDbContext context)
 		{
 			this.context = context;
-		}
-
-
-		[HttpGet("{id}")]
-		public StudentModel? Get(int id)
-		{
-			StudentModel? studentToReturn = context.Students.FirstOrDefault(s => s.UserId == id);
-			if (studentToReturn != null)
-			{
-				return studentToReturn;
-			}
-			return null;
 		}
 
 		// Sign in user
@@ -64,6 +52,8 @@ namespace AtlasFlare.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] string username, string password)
 		{
+
+			// TODO: add duplicate check in DbContext
 			try
 			{
 				await context.Students.AddAsync(new StudentModel()
