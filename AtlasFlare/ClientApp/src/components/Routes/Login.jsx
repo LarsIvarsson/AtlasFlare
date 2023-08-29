@@ -10,11 +10,6 @@ function Login() {
     });
 
     function handleFormIpnut(e) {
-        const { name, value } = e.target;
-        SetUser(prevUser => ({
-            ...prevUser,
-            [name]: value
-        }));
     }
 
     function handleLogin() {
