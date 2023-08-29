@@ -4,18 +4,24 @@ import { Link } from 'react-router-dom';
 
 function Login() {
 
-    const [user, SetUser] = useState({
+    const [user, setUser] = useState({
         username: "",
         password: ""
     });
 
-    function handleFormIpnut(e) {
+    function handleFormInput(e) {
+        const { name, value } = e.target;
+        setUser(prevUser => ({
+            ...prevUser,
+            [name]: value
+        }));
     }
 
     function handleLogin() {
         const response = fetch("user/{id}?password={password}");
         if (response.ok) {
             //Ok login
+            //ta användaren till quiz sidan
         }
         else {
             //Error login
@@ -33,8 +39,8 @@ function Login() {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input placeholder='Username' onChange={handleFormIpnut} type="text" value={user.username}></input>
-                <input placeholder='Password' onChange={handleFormIpnut} type="password" value={user.password}></input>
+                <input placeholder='Username' onChange={handleFormInput} type="text" value={user.username}></input>
+                <input placeholder='Password' onChange={handleFormInput} type="password" value={user.password}></input>
 
                 <button type="submit">Login</button>
             </form>
