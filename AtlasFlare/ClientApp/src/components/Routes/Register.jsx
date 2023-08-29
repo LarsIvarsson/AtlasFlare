@@ -1,30 +1,41 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState } from 'react';
 
 function Register() {
-    const [user, setUser] = useState({
-        UserId: 0,
-        Username: "",
-        Password: "",
-        HighScores: "",
+    const [student, setStudent] = useState({
+        Username: '',
+        Password: '',
     });
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        user.UserId = Math.floor(Math.random() * 1000);
 
-        fetch("user", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user),
-        });
+        try {
+            const response = await fetch("user", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(student),
+            });
+
+            if (response.ok) {
+                //Show success message
+            }
+
+            else {
+                //Show error message
+            }
+
+        } catch (error) {
+            //Show error message
+        }
+ 
     }
 
     function handleUsername(e) {
-        setUser({ ...user, Username: e.target.value });
+        setStudent({ ...student, Username: e.target.value });
     }
 
     function handlePassword(e) {
-        setUser({ ...user, Password: e.target.value });
+        setStudent({ ...student, Password: e.target.value });
     }
 
     return <div>
@@ -32,14 +43,14 @@ function Register() {
         <div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name-input">Username</label>
-                <input id="name-input" type="text" onChange={handleUsername} value={user.Username}></input>
+                <input id="name-input" type="text" onChange={handleUsername} value={student.Username}></input>
                 <label htmlFor="password-input"></label>
-                <input id="password-input" type="password" onChange={handlePassword} value={user.Password}></input>
+                <input id="password-input" type="password" onChange={handlePassword} value={student.Password}></input>
                 <button type="submit">Enter</button>
             </form>
         </div>
         <hr />
-        <h3>Current input: {user.Username} {user.Password}</h3>
+        <h3>Current input: {student.Username} {student.Password}</h3>
     </div>
 }
 
