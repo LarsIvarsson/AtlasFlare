@@ -61,12 +61,10 @@ namespace AtlasFlare.Controllers
 		// Create new user
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] string jsonUser)
+
 		{
             StudentModel? newStudent = JsonConvert.DeserializeObject<StudentModel>(jsonUser);
-
-			if (newStudent != null)
-			{
-                var existingStudent = await context.Students.Where(s => s.Username == newStudent.Username).FirstOrDefaultAsync();
+            var existingStudent = await context.Students.Where(s => s.Username == newStudent.Username).FirstOrDefaultAsync();
 
                 if (existingStudent == null)
                 {

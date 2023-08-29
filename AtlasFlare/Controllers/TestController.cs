@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AtlasFlare.Controllers
 {
 	[Route("[controller]")]
@@ -39,12 +37,6 @@ namespace AtlasFlare.Controllers
 			public int id { get; set; }
 			public string todo { get; set; } = null!;
 		}
-
-
-
-
-
-
 
 
 		//public async Task<Todo?> Get()
