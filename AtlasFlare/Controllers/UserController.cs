@@ -15,6 +15,18 @@ namespace AtlasFlare.Controllers
 			this.context = context;
 		}
 
+
+		[HttpGet("{id}")]
+		public StudentModel? Get(int id)
+		{
+			StudentModel? studentToReturn = context.Students.FirstOrDefault(s => s.UserId == id);
+			if (studentToReturn != null)
+			{
+				return studentToReturn;
+			}
+			return null;
+		}
+
 		// Sign in user
 		[HttpGet("{username}")]
 		public async Task<bool> Get(string username, [FromQuery] string password, [FromQuery] string userType)
