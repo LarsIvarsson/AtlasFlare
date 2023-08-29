@@ -5,8 +5,6 @@ namespace AtlasFlare.Models
 	public class ApiModel
 	{
 		// Root myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(myJsonResponse);
-
-
 		public class Flags
 		{
 			[JsonProperty("png")]
@@ -19,16 +17,11 @@ namespace AtlasFlare.Models
 			public string Alt { get; set; }
 		}
 
-
-
 		public class Name
 		{
 			[JsonProperty("common")]
 			public string Common { get; set; }
 		}
-
-
-
 
 		public class Root
 		{
@@ -41,7 +34,5 @@ namespace AtlasFlare.Models
 			[JsonProperty("continents")]
 			public List<string> Continents { get; set; }
 		}
-
-
 	}
 }
