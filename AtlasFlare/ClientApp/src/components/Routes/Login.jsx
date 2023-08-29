@@ -18,14 +18,14 @@ function Login() {
     }
 
     function handleLogin() {
-        const response = fetch("user/{id}?password={password}");
-        if (response.ok) {
-            //Ok login
-            //ta användaren till quiz sidan
-        }
-        else {
-            //Error login
-        }
+        //const response = fetch("user/{id}?password={password}");
+        //if (response.ok) {
+        //    //Ok login
+        //    //ta användaren till quiz sidan
+        //}
+        //else {
+        //    //Error login
+        //}
 
     }
 
@@ -39,8 +39,8 @@ function Login() {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input placeholder='Username' onChange={handleFormInput} type="text" value={user.username}></input>
-                <input placeholder='Password' onChange={handleFormInput} type="password" value={user.password}></input>
+                <input placeholder='Username' onChange={handleFormInput} type="text" name="username"></input>
+                <input placeholder='Password' onChange={handleFormInput} type="password" name="password"></input>
 
                 <button type="submit">Login</button>
             </form>
