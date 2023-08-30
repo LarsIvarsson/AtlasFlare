@@ -2,6 +2,8 @@
 using AtlasFlare.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace AtlasFlare.Controllers
 {
@@ -10,64 +12,37 @@ namespace AtlasFlare.Controllers
 	public class UserController : ControllerBase
 	{
 		public AppDbContext context { get; }
+
 		public UserController(AppDbContext context)
 		{
 			this.context = context;
 		}
 
-		// Sign in user
-		[HttpGet("{username}")]
-		public async Task<bool> Get(string username, [FromQuery] string password, [FromQuery] string userType)
+		[HttpGet("{id}")]
+		public StudentModel Get(int id)
 		{
-			UserModel? userToLogin = new();
-			if (userType == "teacher")
-			{
-				userToLogin = await context.Teachers.FirstOrDefaultAsync(s => s.Username == username);
-
-				if (userToLogin != null)
-				{
-					if (userToLogin.Password == password)
-					{
-						return true;
-					}
-				}
-				return false;
-			}
-			else
-			{
-				userToLogin = await context.Students.FirstOrDefaultAsync(s => s.Username == username);
-
-				if (userToLogin != null)
-				{
-					if (userToLogin.Password == password)
-					{
-						return true;
-					}
-				}
-				return false;
-			}
+			StudentModel? student = context.Students.FirstOrDefault(s => s.UserId == id);
+			return student;
 		}
 
 		// Create new user
 		[HttpPost]
-		public async Task<IActionResult> Post([FromBody] string username, string password)
+		public async Task<IActionResult> Post([FromBody] StudentModel newUser)
 		{
+            if (newUser != null)
+			{
+                var existingStudent = await context.Students.Where(s => s.Username == newUser.Username).FirstOrDefaultAsync();
 
-			// TODO: add duplicate check in DbContext
-			try
-			{
-				await context.Students.AddAsync(new StudentModel()
-				{
-					Username = username,
-					Password = password
-				});
-				await context.SaveChangesAsync();
-				return Ok();
-			}
-			catch
-			{
-				return BadRequest();
-			}
-		}
+                if (existingStudent == null)
+                {
+                    await context.Students.AddAsync(newUser);
+                    await context.SaveChangesAsync();
+
+                    return Ok();
+                }
+            }
+
+            return BadRequest("Wrong data...");
+        }
 	}
 }

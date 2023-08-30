@@ -7,6 +7,7 @@ import Register from './components/Routes/Register';
 import './custom.css';
 import './styles/Home.css';
 
+
 function App() {
     return (
             <Routes>
