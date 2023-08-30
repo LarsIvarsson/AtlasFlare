@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { redirect } from '../../../../../../../../node_modules/react-router/dist/index';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -9,6 +8,7 @@ function Login() {
         Username: '',
         Password: '',
     });
+    const navigate = useNavigate();
 
     function handleUsername(e) {
         setStudent({ ...student, Username: e.target.value });
@@ -24,7 +24,7 @@ function Login() {
         const username = student.Username;
         const password = student.Password;
 
-        const url = `user?username=${username}&password=${password}`;
+        const url = `user/${username}?password=${password}`;
 
         try {
             fetch(url).then(response => {
@@ -32,6 +32,10 @@ function Login() {
                     //Ok login
                     //ta användaren till quiz sidan
                     console.log("Successful login");
+
+                    // Save user login status to LocalStorage
+
+                    navigate("/menu");
                 }
                 else {
                     //Error login
