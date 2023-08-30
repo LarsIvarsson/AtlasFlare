@@ -6,34 +6,54 @@ function Register() {
         Username: '',
         Password: '',
     });
+    const [message, setMessage] = useState();
     const navigate = useNavigate();
+
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         try {
-            const response = await fetch("user", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(student),
-            });
+            const usernameContainsNumbers = /\d/.test(student.Username);
 
-            if (response.ok) {
-                //Show success message
-                console.log(response);
-                navigate("/login");
+            if (!usernameContainsNumbers) {
+                if (student.Username.trim().length > 0 && student.Password.trim().length > 0) {
+                    const response = await fetch("user", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(student),
+                    });
+
+                    if (response.ok) {
+                        //Show success message
+                        console.log(response.statusText);
+                        setMessage("Congrats, you are now a fullworthy member of Atlas Flare!\n You will now be redirected...");
+                        delay(2000).then(() => navigate("/login"));
+                    }
+
+                    else {
+                        //Show error message
+                        console.log(response.statusText);
+                    }
+                }
+
+                else {
+                    //Please fill in all fields
+                    setMessage("Please fill in all the fields...");
+                }
             }
 
             else {
-                //Show error message
-                console.log(response);
+                setMessage("Username can't contain numbers...");
             }
 
         } catch (error) {
             //Show error message
             console.log(error);
         }
- 
     }
 
     function handleUsername(e) {
@@ -55,6 +75,7 @@ function Register() {
                 <button type="submit">Enter</button>
             </form>
         </div>
+        <p>{message}</p>
         <hr />
         <h3>Current input: {student.Username} {student.Password}</h3>
     </div>
