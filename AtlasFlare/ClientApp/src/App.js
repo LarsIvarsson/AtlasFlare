@@ -2,8 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Routes/Home'
 import Names from './components/Routes/Names'
-import './custom.css';
-import './styles/Home.css';
+import "../src/styles/Home.css";
 
 
 

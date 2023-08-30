@@ -1,5 +1,68 @@
-﻿.body{
-    background-color:blue;
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
 }
 
+.navbar {
+    
+    
+    padding: 10px;
+}
 
+.content {
+    display:flex;
+    
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.card {
+    width: 800px;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F4EB;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 200px;
+    width: 280px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:40px;
+}
+
+#btn1 {
+    background-color: #AACB73;
+    color: #F6F4EB;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#btn2 {
+    background-color: #F0DE36;
+    color: #F6F4EB;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#btn2:hover
+{
+    background-color: #d6c62f;
+}
+
+#btn1:hover {
+    background-color: #8da85e;
+
+}
