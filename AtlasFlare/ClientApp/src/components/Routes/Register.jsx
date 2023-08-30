@@ -12,21 +12,27 @@ function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("user", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(student),
-            });
+            if (student.Username.trim().length > 0 && student.Password.trim().length > 0) {
+                const response = await fetch("user", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(student),
+                });
 
-            if (response.ok) {
-                //Show success message
-                console.log(response);
-                navigate("/login");
+                if (response.ok) {
+                    //Show success message
+                    console.log(response.statusText);
+                    navigate("/login");
+                }
+
+                else {
+                    //Show error message
+                    console.log(response.statusText);
+                }
             }
 
             else {
-                //Show error message
-                console.log(response);
+                //Please fill in all fields
             }
 
         } catch (error) {
