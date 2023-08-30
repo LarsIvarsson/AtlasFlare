@@ -1,10 +1,12 @@
 ﻿import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [student, setStudent] = useState({
         Username: '',
         Password: '',
     });
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -18,14 +20,18 @@ function Register() {
 
             if (response.ok) {
                 //Show success message
+                console.log(response);
+                navigate("/login");
             }
 
             else {
                 //Show error message
+                console.log(response);
             }
 
         } catch (error) {
             //Show error message
+            console.log(error);
         }
  
     }
