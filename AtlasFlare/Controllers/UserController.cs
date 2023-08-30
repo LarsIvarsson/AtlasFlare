@@ -2,8 +2,6 @@
 using AtlasFlare.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace AtlasFlare.Controllers
 {
@@ -18,31 +16,52 @@ namespace AtlasFlare.Controllers
 			this.context = context;
 		}
 
-		[HttpGet("{id}")]
-		public StudentModel Get(int id)
+		[HttpGet("{username}")]
+		public async Task<IActionResult> Get(string username, [FromQuery] string password)
 		{
-			StudentModel? student = context.Students.FirstOrDefault(s => s.UserId == id);
-			return student;
+			if (username == "admin")
+			{
+				TeacherModel? teacher = await context.Teachers
+					.FirstOrDefaultAsync(t => t.Username == username);
+				if (teacher != null)
+				{
+					if (password == teacher.Password)
+					{
+						return Ok();
+					}
+				}
+				return BadRequest();
+			}
+			StudentModel? student = context.Students
+				.FirstOrDefault(s => s.Username == username);
+			if (student != null)
+			{
+				if (password == student.Password)
+				{
+					return Ok();
+				}
+			}
+			return BadRequest();
 		}
 
 		// Create new user
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] StudentModel newUser)
 		{
-            if (newUser != null)
+			if (newUser != null)
 			{
-                var existingStudent = await context.Students.Where(s => s.Username == newUser.Username).FirstOrDefaultAsync();
+				var existingStudent = await context.Students.Where(s => s.Username == newUser.Username).FirstOrDefaultAsync();
 
-                if (existingStudent == null)
-                {
-                    await context.Students.AddAsync(newUser);
-                    await context.SaveChangesAsync();
+				if (existingStudent == null)
+				{
+					await context.Students.AddAsync(newUser);
+					await context.SaveChangesAsync();
 
-                    return Ok();
-                }
-            }
+					return Ok();
+				}
+			}
 
-            return BadRequest("Wrong data...");
-        }
+			return BadRequest("Wrong data...");
+		}
 	}
 }
