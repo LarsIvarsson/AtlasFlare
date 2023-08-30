@@ -9,6 +9,10 @@ function Register() {
     const [message, setMessage] = useState();
     const navigate = useNavigate();
 
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -26,8 +30,8 @@ function Register() {
                     if (response.ok) {
                         //Show success message
                         console.log(response.statusText);
-                        setMessage("Congrats, you are now a fullworthy member of Atlas Flare!");
-                        navigate("/login");
+                        setMessage("Congrats, you are now a fullworthy member of Atlas Flare!\n You will now be redirected...");
+                        delay(2000).then(() => navigate("/login"));
                     }
 
                     else {
@@ -71,7 +75,7 @@ function Register() {
                 <button type="submit">Enter</button>
             </form>
         </div>
-        <h4>{message}</h4>
+        <p>{message}</p>
         <hr />
         <h3>Current input: {student.Username} {student.Password}</h3>
     </div>
