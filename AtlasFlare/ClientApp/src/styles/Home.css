@@ -62,7 +62,14 @@ button {
     background-color: #d6c62f;
 }
 
+
 #btn1:hover {
     background-color: #8da85e;
+}
+.text-center{
+    text-align: center;
+}
+
+
 
 }
