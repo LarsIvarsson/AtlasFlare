@@ -44,7 +44,7 @@ function Register() {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name-input">Username</label>
                 <input id="name-input" type="text" onChange={handleUsername} value={student.Username}></input>
-                <label htmlFor="password-input"></label>
+                <label htmlFor="password-input">Password</label>
                 <input id="password-input" type="password" onChange={handlePassword} value={student.Password}></input>
                 <button type="submit">Enter</button>
             </form>
