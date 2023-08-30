@@ -20,12 +20,13 @@ body {
     padding: 20px;
     align-items: center;
     justify-content: center;
-    height:100vh;
+    
+  /*  height:100vh;*/
 }
 
 .card {
-    width: 800px;
-    height: 350px;
+    max-width: 800px;
+    max-height: 350px;
     align-items: center;
     justify-content: center;
     background-color: #F6F4EB;
@@ -34,15 +35,21 @@ body {
 }
 
 button {
+    margin-top:50px;
+    margin-bottom:50px;
     margin-left: 20px;
     margin-right: 20px;
-    height: 200px;
-    width: 280px;
+    max-height: 200px;
+    max-width: 280px;
     border: none;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size:40px;
+}
+
+.button-container{
+    max-height:1000px;
 }
 
 #btn1 {

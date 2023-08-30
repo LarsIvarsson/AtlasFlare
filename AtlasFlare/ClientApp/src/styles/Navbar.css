@@ -1,0 +1,23 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.atlasflarelogo{
+    height:105px;
+    width:125px;
+}
+
+.hamburgermenu{
+    margin-top:10px;
+    margin-right: 10px;
+   
+}
+
+a {
+    text-decoration: none !important;
+    color: #4682A9;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.item-style{
+    font-size: 10px;
+}

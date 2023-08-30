@@ -6,10 +6,6 @@ import "../../styles/Home.css";
 function Home() {
     return (
         <div>
-
-            <div className="navbar">
-                <h1>Navigation Bar</h1>
-            </div>
             <div className="content">
                 <div className="card">
                     <div className="button-container">
