@@ -38,12 +38,13 @@ function Login() {
                     navigate("/menu");
                 }
                 else {
-                    //Error login
+                    //Error login, ingen användare med det namnet // fel lösenord.
+                    alert("fel användarnamn/lösen");
                 }
             })
         }
         catch (error) {
-
+            alert("Fel, försök gärna igen");
         }
     }
 
