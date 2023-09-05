@@ -3,9 +3,9 @@
 
 .card-container {
     display:flex;
-    align-items:center;
-    height:70vh;
-    
+
+   
+    margin-bottom:10px;
 }
 
 .menu-card {
@@ -34,11 +34,11 @@
         color: #4682A9;
     }
 
-ul {
+.menu-ul {
     padding: 0;
 }
 
-li {
+.menu-li {
     list-style: none;
     padding: 10px;
     margin-bottom: 10px;

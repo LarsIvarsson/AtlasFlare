@@ -26,6 +26,8 @@ function Navbar() {
 
     return (
         <div>
+           
+            
             <Link to={"/"}>
                 <img className="atlasflarelogo" src={logo} alt="" />
             </Link>
@@ -93,7 +95,8 @@ function Navbar() {
                     padding-right: 10px;
                     }  `}
                 </style>
-            </div>
+                </div>
+            
         </div>
     );
 };

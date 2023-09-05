@@ -13,10 +13,10 @@ function Menu()
                 <div className="menu-card">
                     <h2>SOUTH AMERICA</h2>
                     <div className="menu-links">
-                        <ul>
-                            <li calssName="difficulty"><Link className="quiz-link" to={"/quiz"}>EASY</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
-                            <li><Link className="quiz-link" to={"/quiz"}>MEDIUM</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
-                            <li><Link className="quiz-link" to={"/quiz"}>HARD</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                        <ul className="menu-ul">
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>EASY</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>MEDIUM</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>HARD</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
                         </ul>
                         
                         
@@ -27,10 +27,10 @@ function Menu()
                 <div className="menu-card">
                     <h2>EUROPE</h2>
                     <div className="menu-links">
-                        <ul>
-                            <li><Link className="quiz-link" to={"/quiz"}>EASY</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
-                            <li><Link className="quiz-link" to={"/quiz"}>MEDIUM</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
-                            <li><Link className="quiz-link" to={"/quiz"}>HARD</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                        <ul className="menu-ul">
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>EASY</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>MEDIUM</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz"}>HARD</Link><FontAwesomeIcon icon={faChevronRight} className="arrow" /></li>
                         </ul>
                     </div>
                 </div>
