@@ -45,7 +45,7 @@ function Register() {
 
                 else {
                     //Please fill in all fields
-                    setMessage("Please fill in all the fields...");
+                    setMessage("Please enter all the fields...");
                 }
             }
 
@@ -79,7 +79,7 @@ function Register() {
                             <label>PASSWORD
                             </label>
                             <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>
-                            <button id="enter-btn" type="submit">Enter</button>
+                            <button id="enter-btn" type="submit">Log up</button>
                         </form>
                         <div className="link-container">
                             <Link id="reg-link" to={"/login"}>
