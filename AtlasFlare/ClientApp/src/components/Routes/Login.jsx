@@ -2,13 +2,14 @@ import { useState } from 'react';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login(props) {
 
     const [student, setStudent] = useState({
         Username: '',
         Password: '',
     });
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
 
     function handleUsername(e) {
         setStudent({ ...student, Username: e.target.value });
@@ -29,21 +30,19 @@ function Login() {
         try {
             fetch(url).then(response => {
                 if (response.ok) {
-                    //Ok login
-                    //ta användaren till quiz sidan
-                    console.log("Successful login");
-
-                    // Save user login status to LocalStorage
-
+                    // set local storage
+                    localStorage.setItem("signedInUser", username);
+                    props.changeSignedIn();
                     navigate("/menu");
                 }
                 else {
-                    //Error login
+                    // Error login
+                    setErrorMessage("Something went wrong!")
                 }
             })
         }
         catch (error) {
-
+            // Error
         }
     }
 
@@ -60,6 +59,7 @@ function Login() {
                 <input id="password-input" placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
 
                 <button type="submit">Login</button>
+                <p>{ errorMessage }</p>
             </form>
             <Link to={"/Register"}>Don't have an account? Register!</Link>
         </div>
