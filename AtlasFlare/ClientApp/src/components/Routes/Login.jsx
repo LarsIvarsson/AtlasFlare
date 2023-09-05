@@ -10,7 +10,6 @@ function Login(props) {
         Password: '',
     });
     const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState("");
 
     function handleUsername(e) {
         setStudent({ ...student, Username: e.target.value });
@@ -21,8 +20,6 @@ function Login(props) {
     }
 
     function handleLogin() {
-        console.log("Username:", student.Username);
-        console.log("Password:", student.Password);
         const username = student.Username;
         const password = student.Password;
 
@@ -38,7 +35,6 @@ function Login(props) {
                 }
                 else {
                     // Error login
-                    setErrorMessage("Something went wrong!")
                 }
             })
         }
@@ -54,17 +50,14 @@ function Login(props) {
 
     return (
         <div>
-            <div className="content">
-            
+            <div className="content">            
                 <div className="card-login">
-
                     <div className="form-container">
                         <form onSubmit={handleSubmit}>
                             <label>USERNAME</label>
                             <input id="name-input"  placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
                             <label>PASSWORD</label>
                             <input id="password-input"  placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
-
                             <button id="login-btn" type="submit">Login</button>
                         </form>
                         <div className="link-container">
