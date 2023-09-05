@@ -41,9 +41,9 @@ function Navbar(props) {
                         <Link to="/menu">
                             <li className="item-style">QUIZ</li>
                         </Link>
-                        <Link to="/register">
+                        {isSignedIn ? null : <Link to="/register">
                             <li className="item-style">REGISTER</li>
-                        </Link>                        
+                        </Link>}                                                
                         <Link to="/login" >
                             <li onClick={logOut} className="item-style">{isSignedIn ? ("LOG OUT") : ("LOG IN")}</li>
                         </Link>
