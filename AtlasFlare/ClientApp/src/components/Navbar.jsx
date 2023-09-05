@@ -30,8 +30,6 @@ function Navbar(props) {
 
     return (
         <div>
-           
-            
             <Link to={"/"}>
                 <img className="atlasflarelogo" src={logo} alt="" />
             </Link>

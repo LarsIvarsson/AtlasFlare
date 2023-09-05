@@ -11,6 +11,7 @@ import './custom.css';
 import './styles/Home.css';
 import "../src/styles/Home.css";
 import "../src/styles/Register.css"
+import "../src/styles/Navbar.css";
 
 
 
