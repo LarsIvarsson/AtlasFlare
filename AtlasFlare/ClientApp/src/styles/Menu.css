@@ -3,9 +3,9 @@
 
 .card-container {
     display:flex;
-
-   
     margin-bottom:10px;
+    height:80vh;
+    align-items:center;
 }
 
 .menu-card {
