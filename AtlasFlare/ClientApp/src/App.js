@@ -17,6 +17,7 @@ import "../src/styles/Register.css"
 
 function App() {
     const [signedIn, setSignedIn] = useState(false);
+    
 
     useEffect(() => {
         if (localStorage.getItem("signedInUser")) {
@@ -36,7 +37,7 @@ function App() {
                 <Route path="/menu" element={<Menu />} />          
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
-                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/quiz/:continent" element={<Quiz /> } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>
