@@ -78,7 +78,8 @@ function Navbar(props) {
                     flex-wrap: wrap;
                     float: right;
                     margin: 20 0px;
-                    padding: 0 25px; 
+                    padding: 0 25px 0 0; 
+                    
                     }
 
                     .navigation ul li {
