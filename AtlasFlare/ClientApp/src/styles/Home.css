@@ -9,8 +9,6 @@ body {
 }
 
 .navbar {
-    
-    
     padding: 10px;
 }
 
@@ -34,7 +32,8 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-button {
+#btn1,
+#btn2{
     margin-top:50px;
     margin-bottom:50px;
     margin-left: 20px;
