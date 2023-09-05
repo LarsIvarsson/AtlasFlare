@@ -17,10 +17,12 @@ function Register() {
         e.preventDefault();
 
         try {
+            //Testing for numbers in the username
+            //Add check for special characters!
             const usernameContainsNumbers = /\d/.test(student.Username);
 
             if (!usernameContainsNumbers) {
-                if (student.Username.trim().length > 0 && student.Password.trim().length > 0) {
+                if (student.Username.trim().length >= 3 && student.Password.trim().length >= 5) {
                     const response = await fetch("user", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
