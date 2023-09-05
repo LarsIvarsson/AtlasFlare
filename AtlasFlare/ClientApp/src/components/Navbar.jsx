@@ -20,8 +20,10 @@ function Navbar(props) {
     };
 
     function logOut() {
+        if (isSignedIn) {
         localStorage.removeItem("signedInUser");
         props.changeSignedIn();        
+        }
     }
 
 
