@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import "../../styles/LogIn.css";
 
-function Login() {
+function Login(props) {
 
     const [student, setStudent] = useState({
         Username: '',
@@ -19,8 +20,6 @@ function Login() {
     }
 
     function handleLogin() {
-        console.log("Username:", student.Username);
-        console.log("Password:", student.Password);
         const username = student.Username;
         const password = student.Password;
 
@@ -29,22 +28,18 @@ function Login() {
         try {
             fetch(url).then(response => {
                 if (response.ok) {
-                    //Ok login
-                    //ta användaren till quiz sidan
-                    console.log("Successful login");
-
-                    // Save user login status to LocalStorage
-
+                    // set local storage
+                    localStorage.setItem("signedInUser", username);
+                    props.changeSignedIn();
                     navigate("/menu");
                 }
                 else {
-                    //Error login, ingen användare med det namnet // fel lösenord.
-                    alert("fel användarnamn/lösen");
+                    // Error login
                 }
             })
         }
         catch (error) {
-            alert("Fel, försök gärna igen");
+
         }
     }
 
@@ -55,14 +50,24 @@ function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <input id="name-input" placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
-                <input id="password-input" placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
-
-                <button type="submit">Login</button>
-            </form>
-            <Link to={"/Register"}>Don't have an account? Register!</Link>
+            <div className="content">            
+                <div className="card-login">
+                    <div className="form-container">
+                        <form onSubmit={handleSubmit}>
+                            <label>USERNAME</label>
+                            <input id="name-input"  placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
+                            <label>PASSWORD</label>
+                            <input id="password-input"  placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
+                            <button id="login-btn" type="submit">Login</button>
+                        </form>
+                        <div className="link-container">
+                            <Link id="reg-link" to={"/Register"}>
+                                Don't have an account? Register!
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -6,31 +6,46 @@ import Hamburger from "./Hamburger";
 import { useEffect, useState } from "react";
 
 
-function Navbar() {
+function Navbar(props) {
 
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(props.signedIn);
+
+    useEffect(() => {
+        setIsSignedIn(props.signedIn);
+    }, [props.signedIn]);
 
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
     };
 
+    function logOut() {
+        if (isSignedIn) {
+        localStorage.removeItem("signedInUser");
+        props.changeSignedIn();        
+        }
+    }
+
+
+
     return (
         <div>
-            <img className="atlasflarelogo" src={logo} alt="" />
-            <div
-                className="hamburgermenu navigation"
-                style={{ position: "relative" }}
-            >
+           
+            
+            <Link to={"/"}>
+                <img className="atlasflarelogo" src={logo} alt="" />
+            </Link>
+            <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
-                        <Link to="/name">
+                        <Link to="/menu">
                             <li className="item-style">QUIZ</li>
                         </Link>
                         <Link to="/register">
                             <li className="item-style">REGISTER</li>
-                        </Link>
-                        <Link to="/login">
-                            <li className="item-style">LOG IN</li>
+                        </Link>                        
+                        <Link to="/login" >
+                            <li onClick={logOut} className="item-style">{isSignedIn ? ("LOG OUT") : ("LOG IN")}</li>
                         </Link>
                     </ul>
                 ) : (
@@ -42,7 +57,7 @@ function Navbar() {
                     </div>
                 </div>
          
-                <style jsx>
+                <style jsx="true">
                     {`     
         
                     .navigation {
@@ -72,7 +87,8 @@ function Navbar() {
                     padding-right: 10px;
                     }  `}
                 </style>
-            </div>
+                </div>
+            
         </div>
     );
 };

@@ -1,27 +1,26 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 body {
-    background-image: url(../images/background.png);
-    background-repeat: no-repeat;
+    background: url(../images/background.png) no-repeat center center fixed;
+    background-size:cover;
+/*    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    height: 100vh;
+    background-position: center center;*/
+    /*height: 100%;*/
+    
 }
 
 .navbar {
-    
-    
     padding: 10px;
 }
 
 .content {
     display:flex;
-    
     padding: 20px;
     align-items: center;
     justify-content: center;
     
-  /*  height:100vh;*/
+    /*height:100vh;*/
 }
 
 .card {
@@ -34,9 +33,12 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-button {
+
+#btn1,
+#btn2{
     margin-top:50px;
     margin-bottom:50px;
+
     margin-left: 20px;
     margin-right: 20px;
     max-height: 200px;
@@ -45,11 +47,15 @@ button {
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size:40px;
+    font-size: 40px;
 }
+
 
 .button-container{
     max-height:1000px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
 }
 
 #btn1 {
