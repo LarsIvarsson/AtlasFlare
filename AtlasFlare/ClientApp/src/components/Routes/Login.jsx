@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../../styles/LogIn.css";
 
-function Login() {
+function Login(props) {
 
     const [student, setStudent] = useState({
         Username: '',
@@ -20,8 +20,6 @@ function Login() {
     }
 
     function handleLogin() {
-        console.log("Username:", student.Username);
-        console.log("Password:", student.Password);
         const username = student.Username;
         const password = student.Password;
 
@@ -30,21 +28,18 @@ function Login() {
         try {
             fetch(url).then(response => {
                 if (response.ok) {
-                    //Ok login
-                    //ta användaren till quiz sidan
-                    console.log("Successful login");
-
-                    // Save user login status to LocalStorage
-
+                    // set local storage
+                    localStorage.setItem("signedInUser", username);
+                    props.changeSignedIn();
                     navigate("/menu");
                 }
                 else {
-                    //Error login
+                    // Error login
                 }
             })
         }
         catch (error) {
-
+            // Error
         }
     }
 
@@ -55,17 +50,14 @@ function Login() {
 
     return (
         <div>
-            <div className="content">
-            
+            <div className="content">            
                 <div className="card-login">
-
                     <div className="form-container">
                         <form onSubmit={handleSubmit}>
                             <label>USERNAME</label>
                             <input id="name-input"  placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
                             <label>PASSWORD</label>
                             <input id="password-input"  placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
-
                             <button id="login-btn" type="submit">Login</button>
                         </form>
                         <div className="link-container">

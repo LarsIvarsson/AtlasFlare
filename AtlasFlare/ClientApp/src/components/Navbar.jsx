@@ -6,23 +6,25 @@ import Hamburger from "./Hamburger";
 import { useEffect, useState } from "react";
 
 
-function Navbar() {
+function Navbar(props) {
 
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(props.signedIn);
+
+    useEffect(() => {
+        setIsSignedIn(props.signedIn);
+    }, [props.signedIn]);
 
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
     };
 
-    const handleAuthentication = () => {
-        setIsLoggedIn(!isLoggedIn); // Toggle the isLoggedIn state
-    };
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    function logOut() {
+        localStorage.removeItem("signedInUser");
+        props.changeSignedIn();        
+    }
 
-    //const handleAuthentication = () => {
-    //    console.log("inloggad")
-    //    setIsLoggedIn(!isLoggedIn); 
-    //};
+
 
     return (
         <div>
@@ -31,10 +33,7 @@ function Navbar() {
             <Link to={"/"}>
                 <img className="atlasflarelogo" src={logo} alt="" />
             </Link>
-            <div
-                className="hamburgermenu navigation"
-                style={{ position: "relative" }}
-            >
+            <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
                         <Link to="/quiz">
@@ -42,19 +41,10 @@ function Navbar() {
                         </Link>
                         <Link to="/register">
                             <li className="item-style">REGISTER</li>
+                        </Link>                        
+                        <Link to="/login" >
+                            <li onClick={logOut} className="item-style">{isSignedIn ? ("LOG OUT") : ("LOG IN")}</li>
                         </Link>
-                        {isLoggedIn ? (
-                            
-                            <li className="item-style" onClick={handleAuthentication}>LOG OUT</li>
-                        ) : (
-                           
-                            <Link to="/login">
-                                <li className="item-style">LOG IN</li>
-                            </Link>
-                        )}
-                        {/*<Link to="/login">*/}
-                        {/*    <li className="item-style">LOG IN</li>*/}
-                        {/*</Link>*/}
                     </ul>
                 ) : (
                     ""
@@ -65,7 +55,7 @@ function Navbar() {
                     </div>
                 </div>
          
-                <style jsx>
+                <style jsx="true">
                     {`     
         
                     .navigation {
