@@ -38,12 +38,16 @@ function Navbar(props) {
             <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
-                        <Link to="/menu">
+
+                        {isSignedIn ? <Link to="/menu">
                             <li className="item-style">QUIZ</li>
-                        </Link>
-                        <Link to="/register">
+                        </Link> : <Link to="/login">
+                            <li className="item-style">QUIZ</li>
+                        </Link> }
+                        
+                        {isSignedIn ? null : <Link to="/register">
                             <li className="item-style">REGISTER</li>
-                        </Link>                        
+                        </Link>}                                                
                         <Link to="/login" >
                             <li onClick={logOut} className="item-style">{isSignedIn ? ("LOG OUT") : ("LOG IN")}</li>
                         </Link>
@@ -78,7 +82,8 @@ function Navbar(props) {
                     flex-wrap: wrap;
                     float: right;
                     margin: 20 0px;
-                    padding: 0 25px; 
+                    padding: 0 25px 0 0; 
+                    
                     }
 
                     .navigation ul li {

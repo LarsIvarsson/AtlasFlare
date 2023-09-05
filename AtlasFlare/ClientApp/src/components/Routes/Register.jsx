@@ -1,5 +1,6 @@
 ﻿import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function Register() {
     const [student, setStudent] = useState({
@@ -44,7 +45,7 @@ function Register() {
 
                 else {
                     //Please fill in all fields
-                    setMessage("Please fill in all the fields...");
+                    setMessage("Please enter all the fields...");
                 }
             }
 
@@ -78,12 +79,17 @@ function Register() {
                             <label>PASSWORD
                             </label>
                             <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>
-                            <button id="enter-btn" type="submit">Enter</button>
+                            <button id="enter-btn" type="submit">Log up</button>
                         </form>
+                        <div className="link-container">
+                            <Link id="reg-link" to={"/login"}>
+                                Already have a account? Log in!
+                            </Link>
+                        </div>
                         <div className="message-container">
-                            <p className="warning-message">{message}</p>
-                            </div>
-                        </div>                    
+                            <em className="warning-message">{message}</em>
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div >

@@ -1,23 +1,27 @@
-﻿import React from 'react';
+﻿import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function Quiz() {
+    const { continent } = useParams();
+    const [flags, setFlags] = useState([]);
 
-    let wrongAnswer;
-    let correctAnswer;
-    let totalQuestions;
-
-
-    //Dessa kan sedan fyllas med info från fetch, exempelvis med hur många frågor som kommer ställas.
-    //wrong/correct svar sparas här och kan sedan tas vidare och se resultatet av hela quizzen????
-    //
-
-
+    useEffect(() => {
+        fetch(`flags/${continent}`)
+            .then(res => res.json())
+            .then(data => setFlags(data));
+    }, [continent])
 
     return (
         <div>
             <div className="content">
                 <div className="card">
                     <h1>Quiz template</h1>
+                    {flags.map((f) => (
+                        <div key={f.flagId}>
+                            <img src={f.imageUrl} alt={f.countryName}/>
+                            <p>{f.countryName}</p>
+                        </div>
+                    )) }
                 </div>
             </div>
         </div>

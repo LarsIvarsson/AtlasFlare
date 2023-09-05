@@ -49,9 +49,13 @@ label {
     border-radius: 10px;
     height: 80px;
     margin-top: 40px;
-    font-size:40px;
-    font-weight:bold;
+    font-size: 40px;
+    font-weight: bold;
 }
+
+    #login-btn:hover {
+        background-color: #8da85e;
+    }
 
 .link-container{
     display:flex;

@@ -11,6 +11,8 @@ function Login(props) {
     });
     const navigate = useNavigate();
 
+    const [message, setMessage] = useState();
+    
     function handleUsername(e) {
         setStudent({ ...student, Username: e.target.value });
     }
@@ -19,9 +21,12 @@ function Login(props) {
         setStudent({ ...student, Password: e.target.value });
     }
 
+
+
     function handleLogin() {
         const username = student.Username;
         const password = student.Password;
+        
 
         const url = `user/${username}?password=${password}`;
 
@@ -35,6 +40,7 @@ function Login(props) {
                 }
                 else {
                     // Error login
+                    setMessage("Please enter all the fields...");
                 }
             })
         }
@@ -57,13 +63,17 @@ function Login(props) {
                             <label>USERNAME</label>
                             <input id="name-input"  placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
                             <label>PASSWORD</label>
-                            <input id="password-input"  placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
-                            <button id="login-btn" type="submit">Login</button>
-                        </form>
-                        <div className="link-container">
+                            <input id="password-input" placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
+                            
+                            <button id="login-btn" type="submit">Log in</button>
+                        </form>                       
+                        <div className="link-container">                          
                             <Link id="reg-link" to={"/Register"}>
                                 Don't have an account? Register!
                             </Link>
+                        </div>
+                        <div className="message-container">
+                            <em className="warning-message">{message}</em>
                         </div>
                     </div>
                 </div>
