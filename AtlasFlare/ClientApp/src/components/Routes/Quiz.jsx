@@ -1,5 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import QuizCard from '../QuizCard';
+import '../../styles/Quiz.css';
 
 function Quiz() {
     const { continent } = useParams();
@@ -17,10 +19,7 @@ function Quiz() {
                 <div className="card">
                     <h1>Quiz template</h1>
                     {flags.map((f) => (
-                        <div key={f.flagId}>
-                            <img src={f.imageUrl} alt={f.countryName}/>
-                            <p>{f.countryName}</p>
-                        </div>
+                        <QuizCard key={f.flagId} flag={f}></QuizCard>
                     )) }
                 </div>
             </div>
