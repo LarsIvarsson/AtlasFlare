@@ -40,7 +40,7 @@ function Login(props) {
                 }
                 else {
                     // Error login
-                    setMessage("Please fill in all the fields...");
+                    setMessage("Please enter all the fields...");
                 }
             })
         }
@@ -65,7 +65,7 @@ function Login(props) {
                             <label>PASSWORD</label>
                             <input id="password-input" placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
                             
-                            <button id="login-btn" type="submit">Login</button>
+                            <button id="login-btn" type="submit">Log in</button>
                         </form>                       
                         <div className="link-container">                          
                             <Link id="reg-link" to={"/Register"}>
