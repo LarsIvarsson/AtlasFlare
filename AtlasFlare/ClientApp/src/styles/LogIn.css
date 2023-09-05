@@ -1,0 +1,64 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-login {
+    height: 400px;
+    width: 500px;
+    background-color: #F6F4EB;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+
+.form-container {
+    max-width: 300px;
+    margin: 0 auto;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    color: #4682A9;
+    font-weight:700;
+}
+
+#name-input,
+#password-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #D9D9D9;
+}
+
+#login-btn {
+    background-color: #AACB73;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    height: 80px;
+    margin-top: 40px;
+    font-size:40px;
+    font-weight:bold;
+}
+
+.link-container{
+    display:flex;
+    justify-content:center;
+}
+
+
+
+
+
