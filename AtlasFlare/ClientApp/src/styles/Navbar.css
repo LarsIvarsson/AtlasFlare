@@ -18,7 +18,8 @@ a {
     font-weight: 600;
 }
 
-.item-style{
+.item-style {
     font-size: 15px;
+    width: 5rem;
 }
 

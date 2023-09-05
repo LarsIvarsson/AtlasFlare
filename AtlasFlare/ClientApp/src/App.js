@@ -6,6 +6,7 @@ import Login from './components/Routes/Login';
 import Register from './components/Routes/Register';
 import Quiz from './components/Routes/Quiz';
 import Navbar from './components/Navbar';
+import NotFound from "./components/Routes/NotFound";
 import './custom.css';
 import './styles/Home.css';
 import "../src/styles/Home.css";
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
                 <Route path="/quiz/:continent" element={<Quiz /> } />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </div>
     );
