@@ -38,7 +38,7 @@ function Navbar(props) {
             <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
-                        <Link to="/quiz">
+                        <Link to="/menu">
                             <li className="item-style">QUIZ</li>
                         </Link>
                         <Link to="/register">
