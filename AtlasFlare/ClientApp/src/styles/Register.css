@@ -1,6 +1,68 @@
-﻿namespace AtlasFlare.ClientApp.src.styles
-{
-    public class Register
-    {
-    }
+﻿.register-container {
+    height: 400px;
+    width: 500px;
+    background-color: #F6F4EB;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.input-display {
+    max-width:300px;
+    margin: 0 auto;
+}
+
+.warning-message{
+    color:red;
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    color: #4682A9;
+    font-weight: 700;
+}
+
+
+#enter-btn {
+    background-color: #AACB73;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    height: 80px;
+    margin-top: 40px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+    #enter-btn:hover {
+        background-color: #8da85e;
+        transition-timing-function: linear;
+    }
+
+.content {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#name-input, #password-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #D9D9D9;
+}
+
+.message-container{
+    display:flex;
+    justify-content:center;
+    cursor:pointer;
+}
+
+

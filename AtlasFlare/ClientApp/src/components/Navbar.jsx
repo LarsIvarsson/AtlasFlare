@@ -14,24 +14,45 @@ function Navbar() {
         setHamburgerOpen(!hamburgerOpen);
     };
 
+    const handleAuthentication = () => {
+        setIsLoggedIn(!isLoggedIn); // Toggle the isLoggedIn state
+    };
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    //const handleAuthentication = () => {
+    //    console.log("inloggad")
+    //    setIsLoggedIn(!isLoggedIn); 
+    //};
+
     return (
         <div>
-            <img className="atlasflarelogo" src={logo} alt="" />
+            <Link to={"/"}>
+                <img className="atlasflarelogo" src={logo} alt="" />
+            </Link>
             <div
                 className="hamburgermenu navigation"
                 style={{ position: "relative" }}
             >
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
-                        <Link to="/name">
+                        <Link to="/quiz">
                             <li className="item-style">QUIZ</li>
                         </Link>
                         <Link to="/register">
                             <li className="item-style">REGISTER</li>
                         </Link>
-                        <Link to="/login">
-                            <li className="item-style">LOG IN</li>
-                        </Link>
+                        {isLoggedIn ? (
+                            
+                            <li className="item-style" onClick={handleAuthentication}>LOG OUT</li>
+                        ) : (
+                           
+                            <Link to="/login">
+                                <li className="item-style">LOG IN</li>
+                            </Link>
+                        )}
+                        {/*<Link to="/login">*/}
+                        {/*    <li className="item-style">LOG IN</li>*/}
+                        {/*</Link>*/}
                     </ul>
                 ) : (
                     ""

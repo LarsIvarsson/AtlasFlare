@@ -66,21 +66,28 @@ function Register() {
         setStudent({ ...student, Password: e.target.value });
     }
 
-    return <div>
-        <h1>Register here please...</h1>
+    return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name-input">Username</label>
-                <input id="name-input" type="text" onChange={handleUsername} value={student.Username}></input>
-                <label htmlFor="password-input">Password</label>
-                <input id="password-input" type="password" onChange={handlePassword} value={student.Password}></input>
-                <button type="submit">Enter</button>
-            </form>
-        </div>
-        <p>{message}</p>
-        <hr />
-        <h3>Current input: {student.Username} {student.Password}</h3>
-    </div>
+            <div className="content">
+                <div className="register-container">                    
+                    <div className="input-display">
+                        <form onSubmit={handleSubmit}>
+                            <label>USERNAME
+                            </label>
+                            <input id="name-input" type="text" placeholder="Username" onChange={handleUsername} value={student.Username}></input>                      
+                            <label>PASSWORD
+                            </label>
+                            <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>
+                            <button id="enter-btn" type="submit">Enter</button>
+                        </form>
+                        <div className="message-container">
+                            <p className="warning-message">{message}</p>
+                            </div>
+                        </div>                    
+                </div>
+            </div>
+        </div >
+    );
 }
 
 export default Register;

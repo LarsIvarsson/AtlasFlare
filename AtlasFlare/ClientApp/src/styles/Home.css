@@ -14,11 +14,9 @@ body {
 
 .content {
     display:flex;
-    
     padding: 20px;
     align-items: center;
     justify-content: center;
-    
   /*  height:100vh;*/
 }
 
@@ -32,10 +30,12 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
 #btn1,
 #btn2{
     margin-top:50px;
     margin-bottom:50px;
+
     margin-left: 20px;
     margin-right: 20px;
     max-height: 200px;
@@ -44,11 +44,15 @@ body {
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size:40px;
+    font-size: 40px;
 }
+
 
 .button-container{
     max-height:1000px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
 }
 
 #btn1 {
