@@ -12,8 +12,9 @@
     margin: 0 auto;
 }
 
-.warning-message{
+.warning-register{
     color:red;
+    font-size: 14px;
 }
 
 label {
