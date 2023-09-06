@@ -62,10 +62,11 @@ function QuizCard({ flags, continent }) {
                         </div>
                     </div>
                     <div className="answer-container">
-                        <h3>{currentFlag.countryName}</h3>
-                        <h3>{altFlag1.countryName}</h3>
-                        <h3>{altFlag2.countryName}</h3>
-                        <h3>{altFlag3.countryName}</h3>
+                        <button className="btn-answer">{currentFlag.countryName}</button>
+                        <button className="btn-answer">{altFlag1.countryName}</button>
+                        <button className="btn-answer">{altFlag2.countryName}</button>
+                        <button className="btn-answer">{altFlag3.countryName}</button>
+                        
                     </div>
                 </div>
             </div>
