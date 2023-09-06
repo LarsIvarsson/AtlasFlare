@@ -14,9 +14,7 @@ function Quiz() {
 
     return (
         <div>
-            {flags.map((f) => (
-                <QuizCard key={f.flagId} flag={f} />
-            ))}                
+            <QuizCard flags={flags} />                            
         </div>
     )
 }
