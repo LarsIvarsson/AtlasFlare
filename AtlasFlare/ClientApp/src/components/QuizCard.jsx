@@ -28,8 +28,8 @@ function QuizCard({ flags }) {
 
     return (
         <div>
-            <div className="content">
-                <div className="card">
+            <div className="quiz-content">
+                <div className="quiz-card">
                     <img className="quiz-flag" src={flags[currentIndex].imageUrl} alt={currentFlag.countryName} />
                     <h3>{currentFlag.countryName}</h3>
                     <button onClick={handlePrevClick} disabled={currentIndex === 0}>
