@@ -6,8 +6,7 @@ body {
 /*    background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;*/
-    /*height: 100%;*/
-    
+    /*height: 100%;*/    
 }
 
 .navbar {
@@ -19,7 +18,6 @@ body {
     padding: 20px;
     align-items: center;
     justify-content: center;
-    
     /*height:100vh;*/
 }
 
@@ -91,16 +89,27 @@ body {
 }
 
     .video-responsive iframe {
-        left: 0;
-        top: 0;
+        /*left: 0;
+        top: 0;*/
 /*        height: 100%;
         width: 100%;*/
-        position: absolute;
+        /*position: absolute;*/
     }
+.youtube {
+/*    height: 650px;
+    width: 853px;*/
+   
+    background-color: #F6F4EB;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
-.youtube{
-    
-    
+.youtube-box {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 
