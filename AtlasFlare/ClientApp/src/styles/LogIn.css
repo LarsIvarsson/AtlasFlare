@@ -6,13 +6,12 @@ body {
 }
 
 .card-login {
-    height: 400px;
+    height: 425px;
     width: 500px;
     background-color: #F6F4EB;
     padding: 30px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    
 }
 
 .form-container {
@@ -32,7 +31,7 @@ label {
 #password-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border-radius: 10px;
     border: none;
     background-color: #D9D9D9;
@@ -45,10 +44,10 @@ label {
     cursor: pointer;
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 10px;
     height: 80px;
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 40px;
     font-weight: bold;
 }
