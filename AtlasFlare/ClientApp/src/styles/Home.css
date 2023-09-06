@@ -1,11 +1,13 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 body {
-    background-image: url(../images/background.png);
-    background-repeat: no-repeat;
+    background: url(../images/background.png) no-repeat center center fixed;
+    background-size:cover;
+/*    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    height: 100vh;
+    background-position: center center;*/
+    /*height: 100%;*/
+    
 }
 
 .navbar {
@@ -17,7 +19,8 @@ body {
     padding: 20px;
     align-items: center;
     justify-content: center;
-  /*  height:100vh;*/
+    
+    /*height:100vh;*/
 }
 
 .card {
@@ -80,5 +83,24 @@ body {
     text-align: center;
 }
 
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+    .video-responsive iframe {
+        left: 0;
+        top: 0;
+/*        height: 100%;
+        width: 100%;*/
+        position: absolute;
+    }
+
+.youtube{
+    
+    
+}
 
 

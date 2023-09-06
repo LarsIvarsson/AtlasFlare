@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
     const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm({

@@ -1,13 +1,14 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 .atlasflarelogo{
-    height:105px;
-    width:125px;
+    height:155px;
+    width:195px;
 }
 
 .hamburgermenu{
     margin-top:10px;
     margin-right: 10px;
+  
 }
 
 a {
@@ -17,6 +18,8 @@ a {
     font-weight: 600;
 }
 
-.item-style{
+.item-style {
     font-size: 15px;
+    width: 5rem;
 }
+
