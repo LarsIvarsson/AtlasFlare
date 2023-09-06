@@ -10,7 +10,7 @@ function QuizCard({ flags, continent }) {
     const altFlag1 = flags[random1];
     const altFlag2 = flags[random2];
     const altFlag3 = flags[random3];
-    const currentContinent = continent.toUpperCase();;
+    const currentContinent = continent.toUpperCase();
 
     useEffect(() => {
         setRandom1(getRandom(flags.length - 1));
@@ -36,7 +36,7 @@ function QuizCard({ flags, continent }) {
         }
     }
 
-    if (!currentFlag || !altFlag1 || !altFlag2) {
+    if (!currentFlag || !altFlag1 || !altFlag2 || !altFlag3) {
         return <div>Loading...</div>;
     }
 

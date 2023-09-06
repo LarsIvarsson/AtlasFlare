@@ -4,8 +4,7 @@ import "../../styles/Menu.css";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Menu()
-{
+function Menu() {
     return (
         <div>            
             <div className="card-container">
@@ -13,9 +12,9 @@ function Menu()
                     <h2>SOUTH AMERICA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"}>EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"}>MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"}>HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"} state={{ number: "1" }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"} state={{ number: "2" }} >MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"} state={{ number: "3" }} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                         </ul>
                     </div>                    
                 </div>
@@ -23,9 +22,9 @@ function Menu()
                     <h2>EUROPE</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"}>EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"}>MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"}>HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"} state={{ number: "1" }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"} state={{ number: "2" }} >MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"} state={{ number: "3" }} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                         </ul>
                     </div>
                 </div>
