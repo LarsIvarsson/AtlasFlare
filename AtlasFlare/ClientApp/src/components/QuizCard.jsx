@@ -62,10 +62,10 @@ function QuizCard({ flags, continent }) {
                         </div>
                     </div>
                     <div className="answer-container">
-                        <button className="btn-answer">{currentFlag.countryName}</button>
-                        <button className="btn-answer">{altFlag1.countryName}</button>
-                        <button className="btn-answer">{altFlag2.countryName}</button>
-                        <button className="btn-answer">{altFlag3.countryName}</button>
+                        <button className="btn-answer">{currentFlag.countryName.toUpperCase()}</button>
+                        <button className="btn-answer">{altFlag1.countryName.toUpperCase()}</button>
+                        <button className="btn-answer">{altFlag2.countryName.toUpperCase()}</button>
+                        <button className="btn-answer">{altFlag3.countryName.toUpperCase()}</button>
                         
                     </div>
                 </div>
