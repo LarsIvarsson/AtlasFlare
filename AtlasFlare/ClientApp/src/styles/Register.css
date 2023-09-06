@@ -1,5 +1,5 @@
 ﻿.register-container {
-    height: 400px;
+    height: 425px;
     width: 500px;
     background-color: #F6F4EB;
     padding: 30px;
@@ -7,14 +7,34 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.message-div {
+    width: 300px;
+    height: 20px;
+}
+
+.successmessage-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 30px;
+    font-size: 16px !important;
+    margin-bottom: 10px;
+}
+
 .input-display {
     max-width:300px;
     margin: 0 auto;
 }
 
-.warning-register{
-    color:red;
+.success-register{
+    color: forestgreen;
     font-size: 14px;
+}
+
+.warning-register{
+    color: crimson;
+    font-size: 12px;
 }
 
 label {
@@ -31,10 +51,10 @@ label {
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 10px;
     height: 80px;
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 40px;
     font-weight: bold;
 }
@@ -54,7 +74,7 @@ label {
 #name-input, #password-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border-radius: 10px;
     border: none;
     background-color: #D9D9D9;
