@@ -3,10 +3,20 @@ import '../styles/QuizCard.css';
 
 function QuizCard({ flags }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [random1, setRandom1] = useState(0);
+    const [random2, setRandom2] = useState(0);
+    const currentFlag = flags[currentIndex];
+    const altFlag1 = flags[random1];
+    const altFlag2 = flags[random2];
 
     useEffect(() => {
-        console.log(flags);
-    }, [flags])
+        setRandom1(getRandom(flags.length - 1));
+        setRandom2(getRandom(flags.length - 1));
+    }, [flags, currentIndex])
+
+    function getRandom(max) {
+        return Math.floor(Math.random() * max);
+    }
 
     function handleNextClick() {
         // lägg till kontroll av svar
@@ -22,9 +32,7 @@ function QuizCard({ flags }) {
         }
     }
 
-    const currentFlag = flags[currentIndex];
-
-    if (!currentFlag) {
+    if (!currentFlag || !altFlag1 || !altFlag2) {
         return <div>Loading...</div>;
     }
 
@@ -32,8 +40,12 @@ function QuizCard({ flags }) {
         <div>
             <div className="quiz-content">
                 <div className="quiz-card">
+
                     <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
                     <h3>{currentIndex + 1} / {flags.length }: {currentFlag.countryName}</h3>
+                    <h3>{currentFlag.countryName}</h3>
+                    <h3>{altFlag1.countryName}</h3>
+                    <h3>{altFlag2.countryName}</h3>
                     <button onClick={handlePrevClick} disabled={currentIndex === 0}>
                         Previous
                     </button>
