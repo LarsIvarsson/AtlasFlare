@@ -1,17 +1,21 @@
 ﻿import React, { useEffect, useState } from 'react';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags }) {
+function QuizCard({ flags, continent }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [random1, setRandom1] = useState(0);
     const [random2, setRandom2] = useState(0);
+    const [random3, setRandom3] = useState(0);
     const currentFlag = flags[currentIndex];
     const altFlag1 = flags[random1];
     const altFlag2 = flags[random2];
+    const altFlag3 = flags[random3];
+    const currentContinent = continent.toUpperCase();;
 
     useEffect(() => {
         setRandom1(getRandom(flags.length - 1));
         setRandom2(getRandom(flags.length - 1));
+        setRandom3(getRandom(flags.length - 1));
     }, [flags, currentIndex])
 
     function getRandom(max) {
@@ -39,19 +43,30 @@ function QuizCard({ flags }) {
     return (
         <div>
             <div className="quiz-content">
+                <div className="info-card">
+                    <p id="continet-name">{currentContinent}</p>
+                    <p id="progress">{currentIndex + 1} / {flags.length}</p>
+                </div>
                 <div className="quiz-card">
-
-                    <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
-                    <h3>{currentIndex + 1} / {flags.length }: {currentFlag.countryName}</h3>
-                    <h3>{currentFlag.countryName}</h3>
-                    <h3>{altFlag1.countryName}</h3>
-                    <h3>{altFlag2.countryName}</h3>
-                    <button onClick={handlePrevClick} disabled={currentIndex === 0}>
-                        Previous
-                    </button>
-                    <button onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
-                        Next
-                    </button>
+                    <div className="country-container">
+                        <div className="flag-container">
+                            <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
+                        </div>
+                        <div className="btn-container">
+                            <button id="btn-prev" onClick={handlePrevClick} disabled={currentIndex === 0}>
+                                PREVIOUS
+                            </button>
+                            <button id="btn-next" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                    <div className="answer-container">
+                        <h3>{currentFlag.countryName}</h3>
+                        <h3>{altFlag1.countryName}</h3>
+                        <h3>{altFlag2.countryName}</h3>
+                        <h3>{altFlag3.countryName}</h3>
+                    </div>
                 </div>
             </div>
         </div>
