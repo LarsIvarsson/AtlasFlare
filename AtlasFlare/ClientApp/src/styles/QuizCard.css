@@ -9,3 +9,20 @@ h1 {
     max-width: 120px;
 }
 
+.quiz-content {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    /*height:100vh;*/
+}
+
+.quiz-card {
+    width: 800px;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F4EB;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

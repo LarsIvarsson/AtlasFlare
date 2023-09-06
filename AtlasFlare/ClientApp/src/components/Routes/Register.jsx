@@ -1,99 +1,102 @@
 ﻿import React, { useState } from 'react';
+import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom';
 
-
 function Register() {
-    const [student, setStudent] = useState({
-        Username: '',
-        Password: '',
+    const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm({
+        defaultValues: {
+            userName: "",
+            password: "",
+/*            passwordConfirm: ""*/
+        },
+        mode: "onBlur"
     });
-    const [message, setMessage] = useState();
+    const [successMessage, setSuccessMessage] = useState();
     const navigate = useNavigate();
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+    async function onSubmit() {
+        //const response = await fetch("user", {
+        //    method: "POST",
+        //    headers: { "Content-Type": "application/json" },
+        //    body: JSON.stringify(userName, password),
+        //});
 
-        try {
-            //Testing for numbers in the username
-            //Add check for special characters!
-            const usernameContainsNumbers = /\d/.test(student.Username);
+        //if (response.ok) {
+        //    //Show success message
+        //    console.log(response.statusText);
+        //    setSuccessMessage("Congrats, you are now a fullworthy member of Atlas Flare!\n You will now be redirected...");
+        //    delay(2000).then(() => navigate("/login"));
+        //}
 
-            if (!usernameContainsNumbers) {
-                if (student.Username.trim().length >= 3 && student.Password.trim().length >= 5) {
-                    const response = await fetch("user", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(student),
-                    });
-
-                    if (response.ok) {
-                        //Show success message
-                        console.log(response.statusText);
-                        setMessage("Congrats, you are now a fullworthy member of Atlas Flare!\n You will now be redirected...");
-                        delay(2000).then(() => navigate("/login"));
-                    }
-
-                    else {
-                        //Show error message
-                        console.log(response.statusText);
-                    }
-                }
-
-                else {
-                    //Please fill in all fields
-                    setMessage("Please enter all the fields...");
-                }
-            }
-
-            else {
-                setMessage("Username can't contain numbers...");
-            }
-
-        } catch (error) {
-            //Show error message
-            console.log(error);
-        }
+        //else {
+        //    //Show error message
+        //    console.log(response.statusText);
+        //}
     }
 
-    function handleUsername(e) {
-        setStudent({ ...student, Username: e.target.value });
-    }
+    function onError() {
 
-    function handlePassword(e) {
-        setStudent({ ...student, Password: e.target.value });
     }
 
     return (
-        <div>
-            <div className="content">
-                <div className="register-container">                    
-                    <div className="input-display">
-                        <form onSubmit={handleSubmit}>
-                            <label>USERNAME
-                            </label>
-                            <input id="name-input" type="text" placeholder="Username" onChange={handleUsername} value={student.Username}></input>                      
-                            <label>PASSWORD
-                            </label>
-                            <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>
-                            <button id="enter-btn" type="submit">Log up</button>
-                        </form>
-                        <div className="link-container">
-                            <Link id="reg-link" to={"/login"}>
-                                Already have a account? Log in!
-                            </Link>
-                        </div>
-                        <div className="message-container">
-                            <em className="warning-message">{message}</em>
-                        </div>
-                    </div>                    
+        <div className="content">
+            <div className="register-container">
+                <div className="input-display">
+                    <form onSubmit={handleSubmit(onSubmit, onError)}>
+                        <label htmlFor="name-input">USERNAME</label>
+                        <input id="name-input" type="text" name="userName" placeholder="Username"
+                            {...register("userName", {required: "You must specify a username.",
+                                minLength: { value: 3, message: "Username needs to be minimum 3 characters." }, pattern: {
+                                    value: /[A-Za-z]/,
+                                    message: "Username can only contain letters."
+                                }
+                            })}>
+                        </input>
+                        <p className="warning-register">{errors.userName?.message}</p>
+                        <label htmlFor="password-input">PASSWORD</label>
+                        <input id="password-input" type="password" name="password" placeholder="Password"
+                            {...register("password", {required: "You must specify a password.",
+                                minLength: { value: 5, message: "Password needs to be minimum 5 characters." }
+                            })}>
+                        </input>
+                        <p className="warning-register">{errors.password?.message}</p>
+                        {/*<input type="password" name="passwordConfirm" placeholder="Confirm password"*/}
+                        {/*    {...register("passwordConfirm", {required: true})}*/}
+                        {/*>*/}
+                        {/*    {watch("passwordConfirm") !== watch("password") &&*/}
+                        {/*        getValues("password_repeat") ? (*/}
+                        {/*        <p>Password do not match!</p>*/}
+                        {/*    ) : <p>OK!</p>}*/}
+                        {/*</input>*/}
+                        <button id="enter-btn" type="submit">Enter</button>
+                    </form>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
 export default Register;
+
+{/*<div className="content">*/ }
+{/*    <div className="register-container">                    */ }
+{/*        <div className="input-display">*/ }
+{/*            <form onSubmit={handleSubmit}>*/ }
+{/*                <label>USERNAME*/ }
+{/*                </label>*/ }
+{/*                <input id="name-input" type="text" placeholder="Username" onChange={handleUsername} value={student.Username}></input>                      */ }
+{/*                <label>PASSWORD*/ }
+{/*                </label>*/ }
+{/*                <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>*/ }
+{/*                <button id="enter-btn" type="submit">Enter</button>*/ }
+{/*            </form>*/ }
+{/*            <div className="message-container">*/ }
+{/*                <p className="warning-message">{message}</p>*/ }
+{/*                </div>*/ }
+{/*            </div>                    */ }
+{/*    </div>*/ }
+{/*</div>*/ }
