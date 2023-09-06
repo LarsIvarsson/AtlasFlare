@@ -14,7 +14,7 @@ function Quiz() {
 
     return (
         <div>
-            <QuizCard flags={flags} />                            
+            <QuizCard flags={flags} continent={continent} />                            
         </div>
     )
 }

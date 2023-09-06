@@ -45,7 +45,7 @@ function Login(props) {
             })
         }
         catch (error) {
-            // Error
+
         }
     }
 

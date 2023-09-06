@@ -15,7 +15,6 @@ import "../src/styles/Navbar.css";
 
 
 
-
 function App() {
     const [signedIn, setSignedIn] = useState(false);
     
