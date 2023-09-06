@@ -20,6 +20,8 @@
     padding-top:20px;
 }
 
+
+
 .menu-links {
     padding-top:40px;
 }
@@ -51,9 +53,29 @@ h2 {
     color: #4682A9
 }
 
+@keyframes beat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .arrow {
     color: #91C8E4;
     font-size: 25px;
     margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.quiz-link:hover .arrow {
+    color: #4682A9;
+    animation: beat 0.5s infinite;
 }
 
