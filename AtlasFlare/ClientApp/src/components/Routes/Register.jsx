@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -7,11 +7,11 @@ function Register() {
         defaultValues: {
             userName: "",
             password: "",
-/*            passwordConfirm: ""*/
         },
         mode: "onBlur"
     });
     const [successMessage, setSuccessMessage] = useState();
+    const [errorMessage, setErrorMessage] = useState();
     const navigate = useNavigate();
 
     function delay(time) {
@@ -19,23 +19,25 @@ function Register() {
     }
 
     async function onSubmit() {
-        //const response = await fetch("user", {
-        //    method: "POST",
-        //    headers: { "Content-Type": "application/json" },
-        //    body: JSON.stringify(userName, password),
-        //});
+        setErrorMessage("");
+        const student = { Username: getValues("userName"), Password: getValues("password") };
 
-        //if (response.ok) {
-        //    //Show success message
-        //    console.log(response.statusText);
-        //    setSuccessMessage("Congrats, you are now a fullworthy member of Atlas Flare!\n You will now be redirected...");
-        //    delay(2000).then(() => navigate("/login"));
-        //}
+        const response = await fetch("user", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(student),
+        });
 
-        //else {
-        //    //Show error message
-        //    console.log(response.statusText);
-        //}
+        if (response.ok) {
+            //Show success message
+            setSuccessMessage("Congrats, you are a fullworthy member of Atlas Flare!\n You will now be redirected...");
+            delay(3000).then(() => navigate("/login"));
+        }
+
+        else {
+            //Show error message
+            setErrorMessage("Username is already in use...");
+        }
     }
 
     function onError() {
@@ -45,6 +47,7 @@ function Register() {
     return (
         <div className="content">
             <div className="register-container">
+                <p>{successMessage}</p>
                 <div className="input-display">
                     <form onSubmit={handleSubmit(onSubmit, onError)}>
                         <label htmlFor="name-input">USERNAME</label>
@@ -64,14 +67,7 @@ function Register() {
                             })}>
                         </input>
                         <p className="warning-register">{errors.password?.message}</p>
-                        {/*<input type="password" name="passwordConfirm" placeholder="Confirm password"*/}
-                        {/*    {...register("passwordConfirm", {required: true})}*/}
-                        {/*>*/}
-                        {/*    {watch("passwordConfirm") !== watch("password") &&*/}
-                        {/*        getValues("password_repeat") ? (*/}
-                        {/*        <p>Password do not match!</p>*/}
-                        {/*    ) : <p>OK!</p>}*/}
-                        {/*</input>*/}
+                        <p>{errorMessage}</p>
                         <button id="enter-btn" type="submit">Enter</button>
                     </form>
                 </div>
@@ -81,22 +77,3 @@ function Register() {
 }
 
 export default Register;
-
-{/*<div className="content">*/ }
-{/*    <div className="register-container">                    */ }
-{/*        <div className="input-display">*/ }
-{/*            <form onSubmit={handleSubmit}>*/ }
-{/*                <label>USERNAME*/ }
-{/*                </label>*/ }
-{/*                <input id="name-input" type="text" placeholder="Username" onChange={handleUsername} value={student.Username}></input>                      */ }
-{/*                <label>PASSWORD*/ }
-{/*                </label>*/ }
-{/*                <input id="password-input" type="password" placeholder="Password" onChange={handlePassword} value={student.Password}></input>*/ }
-{/*                <button id="enter-btn" type="submit">Enter</button>*/ }
-{/*            </form>*/ }
-{/*            <div className="message-container">*/ }
-{/*                <p className="warning-message">{message}</p>*/ }
-{/*                </div>*/ }
-{/*            </div>                    */ }
-{/*    </div>*/ }
-{/*</div>*/ }

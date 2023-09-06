@@ -69,7 +69,7 @@ namespace AtlasFlare.Controllers
 				}
 			}
 
-			return BadRequest("Wrong data...");
+			return BadRequest();
 		}
 	}
 }

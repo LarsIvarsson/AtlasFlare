@@ -19,12 +19,14 @@ function QuizCard({ flags }) {
     }
 
     function handleNextClick() {
+        // lägg till kontroll av svar
         if (currentIndex < flags.length - 1) {
             setCurrentIndex(currentIndex + 1);
         }
     }
 
     function handlePrevClick() {
+        // kanske inte ska vara med?
         if (currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
         }
@@ -38,7 +40,9 @@ function QuizCard({ flags }) {
         <div>
             <div className="quiz-content">
                 <div className="quiz-card">
-                    <img className="quiz-flag" src={flags[currentIndex].imageUrl} alt={currentFlag.countryName} />
+
+                    <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
+                    <h3>{currentIndex + 1} / {flags.length }: {currentFlag.countryName}</h3>
                     <h3>{currentFlag.countryName}</h3>
                     <h3>{altFlag1.countryName}</h3>
                     <h3>{altFlag2.countryName}</h3>
@@ -48,7 +52,6 @@ function QuizCard({ flags }) {
                     <button onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
                         Next
                     </button>
-
                 </div>
             </div>
         </div>
