@@ -71,5 +71,23 @@ namespace AtlasFlare.Controllers
 
 			return BadRequest();
 		}
-	}
+
+
+        [HttpGet("{userId}/HighScores")]
+        public async Task<ActionResult<IEnumerable<QuizModel>>> GetUserHighScores(int userId)
+        {
+            // Fetch the user by userId
+            StudentModel? user = await context.Students
+                .Include(u => u.HighScores)
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+            {
+                return NotFound(); // User not found
+            }
+
+            // Return the user's high scores
+            return Ok(user.HighScores);
+        }
+    }
 }
