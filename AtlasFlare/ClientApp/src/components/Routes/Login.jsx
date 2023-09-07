@@ -59,12 +59,19 @@ function Login(props) {
             <div className="content">            
                 <div className="card-login">
                     <div className="form-container">
+                        <div className="successmessage-div success-register"></div>
                         <form onSubmit={handleSubmit}>
                             <label>USERNAME</label>
-                            <input id="name-input"  placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
+                            <input id="name-input" placeholder='Username' onChange={handleUsername} type="text" value={student.Username}></input>
+                            <div className="message-div warning-register">
+
+                            </div>
                             <label>PASSWORD</label>
                             <input id="password-input" placeholder='Password' onChange={handlePassword} type="password" value={student.Password}></input>
-                            
+                            <div className="message-div warning-register">
+                            </div>
+                            <div className="message-div warning-register">
+                            </div>
                             <button id="login-btn" type="submit">Log in</button>
                         </form>                       
                         <div className="link-container">                          
