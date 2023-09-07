@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import "../../styles/Register.css";
 
 function Register() {
-    const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm({
         defaultValues: {
             userName: "",
             password: "",

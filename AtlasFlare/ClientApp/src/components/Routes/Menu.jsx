@@ -17,7 +17,7 @@ function Menu()
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"}>MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"}>HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                         </ul>
-                    </div>                    
+                    </div>
                 </div>
                 <div className="menu-card">
                     <h2>EUROPE</h2>
