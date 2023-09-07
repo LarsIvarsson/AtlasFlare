@@ -13,7 +13,11 @@ function QuizCard({ flags, continent }) {
     const currentContinent = continent.toUpperCase();
     const [isAltFlags, setIsAltFlags] = useState(false);
     const [altArray, setAltArray] = useState();
-    const [altOneSet, setAltOneSet] = useState(false);
+    const [allFlagsSet, setAllFlagsSet] = useState(false);
+    const [flagOne, setFlagOne] = useState();
+    const [flagTwo, setFlagTwo] = useState();
+    const [flagThree, setFlagThree] = useState();
+    const [flagFour, setFlagFour] = useState();
 
     useEffect(() => {
         setRandom1(getRandom(flags.length - 1));
@@ -28,6 +32,13 @@ function QuizCard({ flags, continent }) {
         }
     }, [altFlag1, altFlag2, altFlag3, currentFlag])
 
+    useEffect(() => {
+        if (isAltFlags) {
+            getAlts();
+        }
+        console.log(altArray);
+    })
+
     function randomNumber(mn, mx) {
         return Math.random() * (mx - mn) + mn;
     }
@@ -36,19 +47,28 @@ function QuizCard({ flags, continent }) {
 /*        let altArray = [altFlag1.countryName, altFlag2.countryName, altFlag3.countryName, currentFlag.countryName];*/
 /*        const flagIndex = (Math.floor(randomNumber(0, 4)));*/
         /*        const flagName = altArray[flagIndex];*/
-        const flagName = altArray[Math.floor(Math.random() * altArray.length)];
+        //const flagName = altArray[Math.floor(Math.random() * altArray.length)];
 
-        return flagName;
+        //return flagName;
     }
 
-    function getAltOne() {
+    function getAlts() {
+        let updatedArray;
         //Kan fixa getAltOne, getAltTwo osv och uppdatera arrayen efter varje hämtning samt "setAltOneSet" = true osv.
         //Kan displaya olika beroende på altOneSet, altTwoSet osv.
-        const flagName = altArray[Math.floor(Math.random() * altArray.length)];
-        let updatedArray = altArray.filter(f => f !== flagName);
-        console.log(updatedArray)
+        const flagOne = altArray[Math.floor(Math.random() * altArray.length)];
+        updatedArray = altArray.filter(f => f !== flagOne);
+        const flagTwo = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+        updatedArray = updatedArray.filter(f => f !== flagTwo);
+        const flagThree = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+        updatedArray = updatedArray.filter(f => f !== flagThree);
+        const flagFour = updatedArray[Math.floor(Math.random() * updatedArray.length)];
 
-        return flagName;
+        setFlagOne(flagOne);
+        setFlagTwo(flagTwo);
+        setFlagThree(flagThree);
+        setFlagFour(flagFour);
+        setAllFlagsSet(true);
     }
 
     function getRandom(max) {
@@ -95,12 +115,12 @@ function QuizCard({ flags, continent }) {
                             </button>
                         </div>
                     </div>
-                    {isAltFlags ?
+                    {allFlagsSet ?
                         (<div className="answer-container">
-                            <button className="btn-answer">{getRandomFlag()}</button>
-                            <button className="btn-answer">{getRandomFlag()}</button>
-                            <button className="btn-answer">{getRandomFlag()}</button>
-                            <button className="btn-answer">{getRandomFlag()}</button>
+                            <button className="btn-answer">{flagOne}</button>
+                            <button className="btn-answer">{flagTwo}</button>
+                            <button className="btn-answer">{flagThree}</button>
+                            <button className="btn-answer">{flagFour}</button>
                         </div>) :
 
                         (<div className="answer-container">
