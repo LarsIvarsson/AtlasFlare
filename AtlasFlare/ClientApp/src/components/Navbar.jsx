@@ -10,10 +10,15 @@ function Navbar(props) {
 
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const [isSignedIn, setIsSignedIn] = useState(props.signedIn);
+    const [username, setUsername] = useState("");
 
     useEffect(() => {
         setIsSignedIn(props.signedIn);
     }, [props.signedIn]);
+
+    useEffect(() => {
+        setUsername(localStorage.getItem("signedInUser"));
+    }, [])
 
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
@@ -39,16 +44,25 @@ function Navbar(props) {
             <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
-
-                        {isSignedIn ? <Link to="/menu">
-                            <li className="item-style">QUIZ</li>
-                        </Link> : <Link to="/login">
-                            <li className="item-style">QUIZ</li>
-                        </Link> }
-                        
-                        {isSignedIn ? null : <Link to="/register">
-                            <li className="item-style">REGISTER</li>
-                        </Link>}                                                
+                        {/*quiz link*/}
+                        {isSignedIn ? (
+                            <Link to="/menu">
+                                <li className="item-style">QUIZ</li>
+                            </Link>
+                        ) : (
+                            <Link to="/login">
+                                <li className="item-style">QUIZ</li>
+                            </Link> )}
+                        {/*user page/register page*/}
+                        {isSignedIn ? (
+                            <Link to={`user/${username}`}>
+                                <li className="item-style">USER PAGE</li>
+                            </Link>
+                        ) : (
+                            <Link to="/register">
+                                <li className="item-style">REGISTER</li>
+                            </Link> )}                                                
+                        {/*log in/log out*/}
                         <Link to="/login" >
                             <li onClick={logOut} className="item-style">{isSignedIn ? ("LOG OUT") : ("LOG IN")}</li>
                         </Link>
