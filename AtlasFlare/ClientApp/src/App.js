@@ -6,13 +6,14 @@ import Login from './components/Routes/Login';
 import Register from './components/Routes/Register';
 import Quiz from './components/Routes/Quiz';
 import Navbar from './components/Navbar';
+import UserPage from './components/Routes/UserPage';
 import NotFound from "./components/Routes/NotFound";
 import './custom.css';
 import './styles/Home.css';
 import "../src/styles/Home.css";
 import "../src/styles/Register.css"
 import "../src/styles/Navbar.css";
-
+ 
 
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
                 <Route path="/menu" element={<Menu />} />          
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
-                <Route path="/quiz/:continent" element={<Quiz /> } />
+                <Route path="/quiz/:continent" element={<Quiz />} />
+                <Route path="/user/:name" element={<UserPage/> } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>
