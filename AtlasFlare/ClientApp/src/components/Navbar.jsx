@@ -30,9 +30,12 @@ function Navbar(props) {
 
     return (
         <div>
-            <Link to={"/"}>
+            {isSignedIn ? <Link to={"/menu"}>
                 <img className="atlasflarelogo" src={logo} alt="" />
-            </Link>
+            </Link> : <Link to={"/"}>
+                <img className="atlasflarelogo" src={logo} alt="" />
+            </Link> }
+            
             <div className="hamburgermenu navigation" style={{ position: "relative" }}>
                 {hamburgerOpen ? (
                     <ul style={{ position: "absolute", right: "2rem", bottom: -33 }}>
