@@ -58,10 +58,13 @@ function QuizCard({ flags, continent }) {
         //Kan displaya olika beroende på altOneSet, altTwoSet osv.
         const flagOne = altArray[Math.floor(Math.random() * altArray.length)];
         updatedArray = altArray.filter(f => f !== flagOne);
+
         const flagTwo = updatedArray[Math.floor(Math.random() * updatedArray.length)];
         updatedArray = updatedArray.filter(f => f !== flagTwo);
+
         const flagThree = updatedArray[Math.floor(Math.random() * updatedArray.length)];
         updatedArray = updatedArray.filter(f => f !== flagThree);
+
         const flagFour = updatedArray[Math.floor(Math.random() * updatedArray.length)];
 
         setFlagOne(flagOne);
