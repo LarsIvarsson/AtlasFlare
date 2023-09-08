@@ -141,45 +141,34 @@ function QuizCard({ flags, continent }) {
     const allCountries = flags;
     const currentContinent = continent.toUpperCase();
     const [correctCountry, setCorrectCountry] = useState(null);
-    const [previousCountry, setPreviousCountry] = useState(null);
+    const [prevCountries, setPrevCountries] = useState([]);
 
-    //const getRandomCountry = (countries) => {
-    //    const randomIndex = Math.floor(Math.random() * countries.length);
-    //    return countries[randomIndex];
-    //};
-    const getRandomCountry = (countries, previousCountry) => {
-        let randomIndex;
-        let selectedCountry;
-
-        // Loopa tills ett unikt land har valts
-        do {
-            randomIndex = Math.floor(Math.random() * countries.length);
-            selectedCountry = countries[randomIndex];
-        } while (selectedCountry === previousCountry && previousCountry !== undefined);
-
-        return selectedCountry;
+    const getRandomCountry = (countries) => {
+        const randomIndex = Math.floor(Math.random() * countries.length);
+        return countries[randomIndex];
     };
 
     useEffect(() => {
         const randomSelectedCountry = getRandomCountry(allCountries);
-        setCorrectCountry((prevCorrectCountry) => {
-            setPreviousCountry(prevCorrectCountry);
-            return randomSelectedCountry;
-        });
+        setCorrectCountry(randomSelectedCountry);
     }, [allCountries]);
 
     useEffect(() => {
-        console.log("previousCountry:", previousCountry);
-    }, [previousCountry]);
+        if (prevCountries.length > 0) {
+            console.log("Senaste previous country:", prevCountries);
+        }
+    }, [prevCountries]);
 
     function handleNextClick() {
-        //reset correctCountry variable
-        //Get a new country from the allCountries variable
-        //Put the new country in the correctCountry variable
-        
+        // Lägg till det nuvarande korrekta landet i previousCountries
+        const updatedPrevCountries = [...prevCountries, correctCountry];
+
+        setPrevCountries(updatedPrevCountries);
+
+        // Hämta ett nytt slumpmässigt land från allCountries
         const randomSelectedCountry = getRandomCountry(allCountries);
-        setPreviousCountry(correctCountry);
-        /*console.log("previousCountry:", previousCountry);*/
+
+        // Sätt det nya landet som korrekt land
         setCorrectCountry(randomSelectedCountry);
     }
 
@@ -212,3 +201,4 @@ function QuizCard({ flags, continent }) {
 }
 
 export default QuizCard;
+
