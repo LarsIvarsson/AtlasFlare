@@ -123,3 +123,33 @@ h1 {
     background-color: #5FAFe3;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.btn-lock {
+    margin: 15px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: #F6F4EB;
+    font-weight: 700;
+}
+
+.btn-unlock {
+    margin: 15px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4682A9;
+    color: #F6F4EB;
+    font-weight: 700;
+}
+
+.greenColor{
+    background-color: green;
+}
+
+.redColor{
+    background-color: red;
+}

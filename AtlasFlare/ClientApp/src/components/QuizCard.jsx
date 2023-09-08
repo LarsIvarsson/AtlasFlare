@@ -18,11 +18,56 @@ function QuizCard({ flags, continent }) {
     const [flagTwo, setFlagTwo] = useState();
     const [flagThree, setFlagThree] = useState();
     const [flagFour, setFlagFour] = useState();
+    const [flagChoosen, setFlagChoosen] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+
+    //function handleClick(flag){
+
+    //    if (flag === currentFlag.countryName) {
+            
+    //        document.getElementsByClassName(flag).style.backgroundColor = "green";
+
+    //        // Spara resultat och visa grön färg
+    //        console.log(flag);
+    //    }
+    //    else {
+    //        // Övriga knappar ska bli röda
+    //        document.getElementById("buttonOne").style.backgroundColor = "red";
+            
+    //    }
+
+    //    setIsClicked(!isClicked);
+    //    setDisabled(true);
+        
+    //    /*console.log(e);*/
+    //};
+
+    function handleClick(e) {
+        if (e.target.id === currentFlag.countryName) {
+            document.getElementById(`${e.target.id}`).classList.add("greenColor");
+
+            
+           
+
+        }
+        else {
+            document.getElementById(`${e.target.id}`).style.backgroundColor = "crimson";
+            
+        }
+        setIsClicked(!isClicked);
+        setDisabled(true);
+        
+    }
 
     useEffect(() => {
-        setRandom1(getRandom(flags.length - 1));
-        setRandom2(getRandom(flags.length - 1));
-        setRandom3(getRandom(flags.length - 1));
+
+        if (!isClicked) {
+            setRandom1(getRandom(flags.length - 1));
+            setRandom2(getRandom(flags.length - 1));
+            setRandom3(getRandom(flags.length - 1));
+        }
+ 
     }, [flags, currentIndex])
 
     useEffect(() => {
@@ -53,25 +98,31 @@ function QuizCard({ flags, continent }) {
     }
 
     function getAlts() {
-        let updatedArray;
-        //Kan fixa getAltOne, getAltTwo osv och uppdatera arrayen efter varje hämtning samt "setAltOneSet" = true osv.
-        //Kan displaya olika beroende på altOneSet, altTwoSet osv.
-        const flagOne = altArray[Math.floor(Math.random() * altArray.length)];
-        updatedArray = altArray.filter(f => f !== flagOne);
 
-        const flagTwo = updatedArray[Math.floor(Math.random() * updatedArray.length)];
-        updatedArray = updatedArray.filter(f => f !== flagTwo);
+        if (!isClicked) {
+            let updatedArray;
+            //Kan fixa getAltOne, getAltTwo osv och uppdatera arrayen efter varje hämtning samt "setAltOneSet" = true osv.
+            //Kan displaya olika beroende på altOneSet, altTwoSet osv.
+            const flagOne = altArray[Math.floor(Math.random() * altArray.length)];
+            updatedArray = altArray.filter(f => f !== flagOne);
 
-        const flagThree = updatedArray[Math.floor(Math.random() * updatedArray.length)];
-        updatedArray = updatedArray.filter(f => f !== flagThree);
+            const flagTwo = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+            updatedArray = updatedArray.filter(f => f !== flagTwo);
 
-        const flagFour = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+            const flagThree = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+            updatedArray = updatedArray.filter(f => f !== flagThree);
 
-        setFlagOne(flagOne);
-        setFlagTwo(flagTwo);
-        setFlagThree(flagThree);
-        setFlagFour(flagFour);
-        setAllFlagsSet(true);
+            const flagFour = updatedArray[Math.floor(Math.random() * updatedArray.length)];
+
+            setFlagOne(flagOne);
+            setFlagTwo(flagTwo);
+            setFlagThree(flagThree);
+            setFlagFour(flagFour);
+            setAllFlagsSet(true);
+        }
+
+
+
     }
 
     function getRandom(max) {
@@ -81,8 +132,11 @@ function QuizCard({ flags, continent }) {
 
     function handleNextClick() {
         // lägg till kontroll av svar
-        if (currentIndex < flags.length - 1) {
+        if (currentIndex < flags.length - 1 && isClicked === true && disabled === true) {
             setCurrentIndex(currentIndex + 1);
+            setIsClicked(!isClicked);
+            setDisabled(false);
+            document.getElementById(`${flagOne}`).classList.remove("greenColor", "redColor");
         }
     }
 
@@ -120,10 +174,10 @@ function QuizCard({ flags, continent }) {
                     </div>
                     {allFlagsSet ?
                         (<div className="answer-container">
-                            <button className="btn-answer">{flagOne}</button>
-                            <button className="btn-answer">{flagTwo}</button>
-                            <button className="btn-answer">{flagThree}</button>
-                            <button className="btn-answer">{flagFour}</button>
+                            <button id={flagOne} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagOne}</button>
+                            <button id={flagTwo} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagTwo}</button>
+                            <button id={flagThree} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagThree}</button>
+                            <button className={isClicked ? 'btn-lock' : 'btn-unlock'} onClick={() => handleClick(flagFour)} disabled={disabled}>{flagFour}</button>
                         </div>) :
 
                         (<div className="answer-container">
