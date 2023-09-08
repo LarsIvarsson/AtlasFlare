@@ -151,6 +151,7 @@ function QuizCard({ flags, continent }) {
     useEffect(() => {
         const randomSelectedCountry = getRandomCountry(allCountries);
         setCorrectCountry(randomSelectedCountry);
+        console.log(allCountries);
     }, [allCountries]);
 
     useEffect(() => {
@@ -166,7 +167,8 @@ function QuizCard({ flags, continent }) {
         setPrevCountries(updatedPrevCountries);
 
         // Hämta ett nytt slumpmässigt land från allCountries
-        const randomSelectedCountry = getRandomCountry(allCountries);
+        const randomSelectedCountry = getRandomCountry(allCountries, prevCountries);
+
 
         // Sätt det nya landet som korrekt land
         setCorrectCountry(randomSelectedCountry);
@@ -201,4 +203,3 @@ function QuizCard({ flags, continent }) {
 }
 
 export default QuizCard;
-
