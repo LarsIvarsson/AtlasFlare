@@ -54,11 +54,6 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
                         <div className="flag-container">
                             <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
                         </div>
-                        <div className="btn-container">
-                            <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
-                                NEXT
-                            </button>
-                        </div>
                     </div>                    
                     <div className="answer-container">
                         {altArray.map((f) => (
@@ -70,6 +65,11 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
                                 disabled={disabled}>{f.countryName}
                             </button>)
                         )}
+                    </div>
+                    <div className="btn-container">
+                        <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
+                            NEXT
+                        </button>
                     </div>
                 </div>                
             </div>
