@@ -50,7 +50,7 @@ function Quiz() {
         }
     }, [currentIndex, flags]);
 
-    if (!continent || !flags || !altArray) {
+    if (!continent || !flags || !altArray || !number) {
         return <div>Loading...</div>
     }
 
@@ -60,6 +60,7 @@ function Quiz() {
                 flags={flags}
                 continent={continent}
                 currentIndex={currentIndex}
+                lastIndex={number}
                 altArray={altArray}
                 setCurrentIndex={setCurrentIndex} />
         </div>
