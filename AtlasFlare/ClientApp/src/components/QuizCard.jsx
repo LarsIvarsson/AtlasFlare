@@ -22,41 +22,6 @@ function QuizCard({ flags, continent }) {
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
-    //function handleClick(flag){
-
-    //    if (flag === currentFlag.countryName) {
-            
-    //        document.getElementsByClassName(flag).style.backgroundColor = "green";
-
-    //        // Spara resultat och visa grön färg
-    //        console.log(flag);
-    //    }
-    //    else {
-    //        // Övriga knappar ska bli röda
-    //        document.getElementById("buttonOne").style.backgroundColor = "red";
-            
-    //    }
-
-    //    setIsClicked(!isClicked);
-    //    setDisabled(true);
-        
-    //    /*console.log(e);*/
-    //};
-
-    function handleClick(e) {
-        if (e.target.id === currentFlag.countryName) {
-            document.getElementById(`${e.target.id}`).classList.add("greenColor");
-        }
-
-        else {
-            document.getElementById(`${e.target.id}`).classList.add("redColor");
-        }
-
-        setChosenFlag(`${e.target.id}`);
-        setIsClicked(!isClicked);
-        setDisabled(true);
-    }
-
     useEffect(() => {
         if (!isClicked) {
             setRandom1(getRandom(flags.length - 1));
@@ -108,20 +73,30 @@ function QuizCard({ flags, continent }) {
         return Math.floor(Math.random() * max);
     }
 
+    function handleClick(e) {
+        document.getElementById("btn-next").classList.remove("grayed-out-btn");
+
+        if (e.target.id === currentFlag.countryName) {
+            document.getElementById(`${e.target.id}`).classList.add("greenColor");
+        }
+
+        else {
+            document.getElementById(`${e.target.id}`).classList.add("redColor");
+        }
+
+        setChosenFlag(`${e.target.id}`);
+        setIsClicked(!isClicked);
+        setDisabled(true);
+    }
+
     function handleNextClick() {
+        document.getElementById("btn-next").classList.add("grayed-out-btn");
         // lägg till kontroll av svar
         if (currentIndex < flags.length - 1 && isClicked === true && disabled === true) {
             setCurrentIndex(currentIndex + 1);
             setIsClicked(!isClicked);
             setDisabled(false);
             document.getElementById(`${chosenFlag}`).classList.remove("greenColor", "redColor");
-        }
-    }
-
-    function handlePrevClick() {
-        // kanske inte ska vara med?
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
         }
     }
 
@@ -142,10 +117,7 @@ function QuizCard({ flags, continent }) {
                             <img className="quiz-flag" src={currentFlag.imageUrl} alt={currentFlag.countryName} />
                         </div>
                         <div className="btn-container">
-                            <button id="btn-prev" onClick={handlePrevClick} disabled={currentIndex === 0}>
-                                PREVIOUS
-                            </button>
-                            <button id="btn-next" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
+                            <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
                                 NEXT
                             </button>
                         </div>

@@ -78,17 +78,6 @@ h1 {
     padding-bottom: 20px;
 }
 
-#btn-prev {
-    margin-right: 20px;
-    width: 100px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    background-color: #F0DE36;
-    color: #F6F4EB;
-    font-weight:600;
-}
-
 #btn-next {
     margin-right: 20px;
     width: 100px;
@@ -149,6 +138,19 @@ h1 {
     background-color: green;
 }
 
+.greenColor:hover{
+    background-color: green;
+}
+
 .redColor{
     background-color: crimson;
+}
+
+.redColor:hover{
+    background-color: crimson;
+}
+
+.grayed-out-btn{
+    background-color: lightgray !important;
+    cursor: default !important;
 }
