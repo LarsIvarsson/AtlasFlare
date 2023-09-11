@@ -75,5 +75,31 @@ namespace AtlasFlare.Controllers
 
 			return BadRequest();
 		}
-	}
+
+        [HttpGet("{username}/getId")]
+        public async Task<StudentModel?> Get(string username)
+        {
+            StudentModel? studentModel = await context.Students.FirstOrDefaultAsync(s => s.Username == username);
+            if (studentModel != null)
+            {
+                return studentModel;
+            }
+            return null;
+        }
+
+        [HttpGet("AllUsers")]
+        public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
+        {
+            // Retrieve all users from the database
+            List<StudentModel> users = await context.Students.Include(s=>s.HighScores).ToListAsync();
+
+            if (users.Count == 0)
+            {
+                return NotFound(); // No users found
+            }
+
+            // Return the array of users
+            return Ok(users);
+        }
+    }
 }
