@@ -76,17 +76,6 @@ namespace AtlasFlare.Controllers
 			return BadRequest();
 		}
 
-        [HttpGet("{username}/getId")]
-        public async Task<StudentModel?> Get(string username)
-        {
-            StudentModel? studentModel = await context.Students.FirstOrDefaultAsync(s => s.Username == username);
-            if (studentModel != null)
-            {
-                return studentModel;
-            }
-            return null;
-        }
-
         [HttpGet("AllUsers")]
         public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
         {
