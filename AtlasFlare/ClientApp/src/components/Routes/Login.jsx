@@ -5,6 +5,8 @@ import "../../styles/LogIn.css";
 
 function Login(props) {
 
+
+
     const [student, setStudent] = useState({
         Username: '',
         Password: '',
@@ -12,7 +14,7 @@ function Login(props) {
     const navigate = useNavigate();
 
     const [message, setMessage] = useState();
-    
+
     function handleUsername(e) {
         setStudent({ ...student, Username: e.target.value });
     }
@@ -26,7 +28,7 @@ function Login(props) {
     function handleLogin() {
         const username = student.Username;
         const password = student.Password;
-        
+
 
         const url = `user/${username}?password=${password}`;
 
@@ -49,14 +51,21 @@ function Login(props) {
         }
     }
 
+
+
+
+
     function handleSubmit(e) {
         e.preventDefault();
         handleLogin();
     }
 
+
+
+
     return (
         <div>
-            <div className="content">            
+            <div className="content">
                 <div className="card-login">
                     <div className="form-container">
                         <div className="successmessage-div success-register"></div>
@@ -73,8 +82,8 @@ function Login(props) {
                             <div className="message-div warning-register">
                             </div>
                             <button id="login-btn" type="submit">Log in</button>
-                        </form>                       
-                        <div className="link-container">                          
+                        </form>
+                        <div className="link-container">
                             <Link id="reg-link" to={"/Register"}>
                                 Don't have an account? Register!
                             </Link>

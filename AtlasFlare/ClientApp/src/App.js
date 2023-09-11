@@ -20,6 +20,7 @@ import "../src/styles/UserPage.css";
 function App() {
     const [signedIn, setSignedIn] = useState(false);
     
+    
 
     useEffect(() => {
         if (localStorage.getItem("signedInUser")) {

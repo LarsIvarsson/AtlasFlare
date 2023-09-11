@@ -72,22 +72,30 @@ namespace AtlasFlare.Controllers
 			return BadRequest();
 		}
 
-
-        [HttpGet("{userId}/HighScores")]
-        public async Task<ActionResult<IEnumerable<QuizModel>>> GetUserHighScores(int userId)
+        [HttpGet("{username}/getId")]
+        public async Task<StudentModel?> Get(string username)
         {
-            // Fetch the user by userId
-            StudentModel? user = await context.Students
-                .Include(u => u.HighScores)
-                .FirstOrDefaultAsync(u => u.UserId == userId);
-
-            if (user == null)
+            StudentModel? studentModel = await context.Students.FirstOrDefaultAsync(s => s.Username == username);
+            if (studentModel != null)
             {
-                return NotFound(); // User not found
+                return studentModel;
+            }
+            return null;
+        }
+
+        [HttpGet("AllUsers")]
+        public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
+        {
+            // Retrieve all users from the database
+            List<StudentModel> users = await context.Students.Include(s=>s.HighScores).ToListAsync();
+
+            if (users.Count == 0)
+            {
+                return NotFound(); // No users found
             }
 
-            // Return the user's high scores
-            return Ok(user.HighScores);
+            // Return the array of users
+            return Ok(users);
         }
     }
 }
