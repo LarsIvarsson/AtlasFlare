@@ -43,8 +43,7 @@ h1 {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-
-#continet-name {
+#continent-name {
     margin: 0px;
     font-size: 30px;
     font-weight: 700;
@@ -119,7 +118,7 @@ h1 {
     font-weight: 700;
 }
 
-.btn-answer:hover{
+.btn-answer:hover {
     background-color: #5FAFe3;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -151,5 +150,5 @@ h1 {
 }
 
 .redColor{
-    background-color: red;
+    background-color: crimson;
 }

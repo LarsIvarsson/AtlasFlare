@@ -18,7 +18,7 @@ function QuizCard({ flags, continent }) {
     const [flagTwo, setFlagTwo] = useState();
     const [flagThree, setFlagThree] = useState();
     const [flagFour, setFlagFour] = useState();
-    const [flagChoosen, setFlagChoosen] = useState(false);
+    const [chosenFlag, setChosenFlag] = useState();
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
@@ -46,28 +46,23 @@ function QuizCard({ flags, continent }) {
     function handleClick(e) {
         if (e.target.id === currentFlag.countryName) {
             document.getElementById(`${e.target.id}`).classList.add("greenColor");
-
-            
-           
-
         }
+
         else {
-            document.getElementById(`${e.target.id}`).style.backgroundColor = "crimson";
-            
+            document.getElementById(`${e.target.id}`).classList.add("redColor");
         }
+
+        setChosenFlag(`${e.target.id}`);
         setIsClicked(!isClicked);
         setDisabled(true);
-        
     }
 
     useEffect(() => {
-
         if (!isClicked) {
             setRandom1(getRandom(flags.length - 1));
             setRandom2(getRandom(flags.length - 1));
             setRandom3(getRandom(flags.length - 1));
         }
- 
     }, [flags, currentIndex])
 
     useEffect(() => {
@@ -81,21 +76,7 @@ function QuizCard({ flags, continent }) {
         if (isAltFlags) {
             getAlts();
         }
-        console.log(altArray);
     })
-
-    function randomNumber(mn, mx) {
-        return Math.random() * (mx - mn) + mn;
-    }
-
-    function getRandomFlag() {
-/*        let altArray = [altFlag1.countryName, altFlag2.countryName, altFlag3.countryName, currentFlag.countryName];*/
-/*        const flagIndex = (Math.floor(randomNumber(0, 4)));*/
-        /*        const flagName = altArray[flagIndex];*/
-        //const flagName = altArray[Math.floor(Math.random() * altArray.length)];
-
-        //return flagName;
-    }
 
     function getAlts() {
 
@@ -120,9 +101,6 @@ function QuizCard({ flags, continent }) {
             setFlagFour(flagFour);
             setAllFlagsSet(true);
         }
-
-
-
     }
 
     function getRandom(max) {
@@ -136,7 +114,7 @@ function QuizCard({ flags, continent }) {
             setCurrentIndex(currentIndex + 1);
             setIsClicked(!isClicked);
             setDisabled(false);
-            document.getElementById(`${flagOne}`).classList.remove("greenColor", "redColor");
+            document.getElementById(`${chosenFlag}`).classList.remove("greenColor", "redColor");
         }
     }
 
@@ -155,7 +133,7 @@ function QuizCard({ flags, continent }) {
         <div>
             <div className="quiz-content">
                 <div className="info-card">
-                    <p id="continet-name">{currentContinent}</p>
+                    <p id="continent-name">{currentContinent}</p>
                     <p id="progress">{currentIndex + 1} / {flags.length}</p>
                 </div>
                 <div className="quiz-card">
@@ -177,16 +155,14 @@ function QuizCard({ flags, continent }) {
                             <button id={flagOne} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagOne}</button>
                             <button id={flagTwo} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagTwo}</button>
                             <button id={flagThree} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagThree}</button>
-                            <button className={isClicked ? 'btn-lock' : 'btn-unlock'} onClick={() => handleClick(flagFour)} disabled={disabled}>{flagFour}</button>
+                            <button id={flagFour} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagFour}</button>
                         </div>) :
-
                         (<div className="answer-container">
                         <button className="btn-answer">""</button>
                         <button className="btn-answer">""</button>
                         <button className="btn-answer">""</button>
                         <button className="btn-answer">""</button>
                     </div>)}
-
                 </div>
             </div>
         </div>
