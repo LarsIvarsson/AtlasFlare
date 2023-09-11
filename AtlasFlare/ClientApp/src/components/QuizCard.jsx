@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
+function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex })
 {
     const currentFlag = flags[currentIndex];
     const currentContinent = continent.toUpperCase();
@@ -9,10 +10,15 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);    
     const [answersArray, setAnswersArray] = useState([]);
+    const [finishedQuiz, setFinishedQuiz] = useState(false);
+    const navigate = useNavigate();
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
 
+        if (currentIndex === lastIndex - 1) {
+            setFinishedQuiz(true);
+        }
         if (e.target.id === currentFlag.countryName) {
             document.getElementById(`${e.target.id}`).classList.add("greenColor");
         }
@@ -26,11 +32,19 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
         setIsClicked(!isClicked);
         setDisabled(true);
     }
+
+    function seeResult() {
+        let answerString = JSON.stringify(answersArray);
+        localStorage.setItem("result", answerString);
+        navigate("/notfound")
+    }
   
     function handleNextClick() {
+        
         document.getElementById("btn-next").classList.add("grayed-out-btn");
         // lägg till kontroll av svar
-        if (currentIndex < flags.length - 1 && isClicked === true && disabled === true) {
+
+        if (currentIndex < lastIndex && isClicked === true && disabled === true) {
             setCurrentIndex(currentIndex + 1);
             setIsClicked(!isClicked);
             setDisabled(false);
@@ -38,7 +52,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
         }
     }
 
-    if (!flags || !currentFlag || !altArray) {
+    if (!flags || !currentFlag || !altArray || !lastIndex) {
         return <div>Loadering...</div>
     }   
 
@@ -47,7 +61,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
             <div className="quiz-content">
                 <div className="info-card">
                     <p id="continent-name">{currentContinent}</p>
-                    <p id="progress">{currentIndex + 1} / {flags.length}</p>
+                    <p id="progress">{currentIndex + 1} / {lastIndex}</p>
                 </div>
                 <div className="quiz-card">
                     <div className="country-container">
@@ -67,9 +81,11 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
                         )}
                     </div>
                     <div className="btn-container">
-                        <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === flags.length - 1}>
+                        {finishedQuiz ? (<button className="show-result-btn" onClick={seeResult}>Result</button>) : (<button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === lastIndex}>
                             NEXT
-                        </button>
+                        </button>) }
+                        
+            
                     </div>
                 </div>                
             </div>
