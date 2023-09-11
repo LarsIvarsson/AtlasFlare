@@ -73,20 +73,20 @@ h1 {
 
 .btn-container {
     display: flex;
-    align-items: center;
-    margin-left: 60px;
-    padding-bottom: 20px;
+    align-items: end;
+    padding-bottom: 10px;
 }
 
 #btn-next {
-    margin-right: 20px;
-    width: 100px;
-    height: 40px;
+    margin-right: 10px;
+    width: 75px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     background-color: #AACB73;
     color: #F6F4EB;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .answer-container{
@@ -96,6 +96,7 @@ h1 {
     justify-content:center;
     width: 400px;
 }
+
 .btn-answer {
     margin: 15px;
     width: 200px;
