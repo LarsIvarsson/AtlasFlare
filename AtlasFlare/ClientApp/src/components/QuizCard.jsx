@@ -1,22 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/QuizCard.css';
 
 function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
 {
     const currentFlag = flags[currentIndex];
-    const currentContinent = continent.toUpperCase();
-    const [isAltFlags, setIsAltFlags] = useState(false);
-    const [altArray, setAltArray] = useState();
-    const [allFlagsSet, setAllFlagsSet] = useState(false);
-    const [flagOne, setFlagOne] = useState();
-    const [flagTwo, setFlagTwo] = useState();
-    const [flagThree, setFlagThree] = useState();
-    const [flagFour, setFlagFour] = useState();
+    const currentContinent = continent.toUpperCase();    
     const [chosenFlag, setChosenFlag] = useState();
     const [isClicked, setIsClicked] = useState(false);
-    const [disabled, setDisabled] = useState(false);
-
-    
+    const [disabled, setDisabled] = useState(false);    
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
@@ -34,7 +25,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
         setDisabled(true);
     }
   
-      function handleNextClick() {
+    function handleNextClick() {
         document.getElementById("btn-next").classList.add("grayed-out-btn");
         // lägg till kontroll av svar
         if (currentIndex < flags.length - 1 && isClicked === true && disabled === true) {
@@ -47,9 +38,9 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
 
 
   
-   if (!flags || !currentFlag || !altArray) {
-    return <div>Loadering...</div>
-}   
+    if (!flags || !currentFlag || !altArray) {
+        return <div>Loadering...</div>
+    }   
 
     return (
         <div>
@@ -68,29 +59,22 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
                                 NEXT
                             </button>
                         </div>
-                    </div>
-                    {/*
-                    {allFlagsSet ?
-                        (<div className="answer-container">
-                            <button id={flagOne} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagOne}</button>
-                            <button id={flagTwo} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagTwo}</button>
-                            <button id={flagThree} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagThree}</button>
-                            <button id={flagFour} className="btn-answer" onClick={handleClick} disabled={disabled}>{flagFour}</button>
-                        </div>) :
-                        (<div className="answer-container">
-                        <button className="btn-answer">""</button>
-                        <button className="btn-answer">""</button>
-                        <button className="btn-answer">""</button>
-                        <button className="btn-answer">""</button>
-                    </div>)}    */}
+                    </div>                    
                     <div className="answer-container">
-                      {altArray.map((f) => (
-                        <button key={f.flagId } id={f.countryName} className="btn-answer" onClick={handleClick} disabled={disabled}>{f.countryName}</button>
-                        ))}
+                        {altArray.map((f) => (
+                            <button
+                                key={f.flagId}
+                                id={f.countryName}
+                                className="btn-answer"
+                                onClick={handleClick}
+                                disabled={disabled}>{f.countryName}
+                            </button>)
+                        )}
                     </div>
                 </div>                
             </div>
         </div>
-    </div>
+    )
 }
+
 export default QuizCard;
