@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
@@ -11,7 +11,13 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     const [disabled, setDisabled] = useState(false);    
     const [answersArray, setAnswersArray] = useState([]);
     const [finishedQuiz, setFinishedQuiz] = useState(false);
+    const [difficultyArray, setDifficultyArray] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let slicedArray = flags.slice(0, lastIndex);
+        setDifficultyArray(slicedArray);
+    }, [flags, lastIndex])
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
@@ -36,11 +42,10 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     function seeResult() {
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
-        navigate("/notfound")
+        navigate("/result", { state: { difficultyArray } });
     }
   
     function handleNextClick() {
-        
         document.getElementById("btn-next").classList.add("grayed-out-btn");
         // lägg till kontroll av svar
 
