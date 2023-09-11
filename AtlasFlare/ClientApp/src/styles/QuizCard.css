@@ -155,3 +155,16 @@ h1 {
     background-color: lightgray !important;
     cursor: default !important;
 }
+
+.show-result-btn {
+    margin-right: 10px;
+    width: 75px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFC100;
+    color: #F6F4EB;
+    font-weight: 500;
+    font-size: 14px;
+}
+
