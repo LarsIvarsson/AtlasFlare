@@ -18,7 +18,7 @@ function Navbar(props) {
 
     useEffect(() => {
         setUsername(localStorage.getItem("signedInUser"));
-    }, [])
+    }, [username])
 
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);

@@ -16,12 +16,16 @@ namespace AtlasFlare.Controllers
 			this.context = context;
 		}
 
-		//[HttpGet("{id}")]
-		//public async Task<StudentModel?> Get(int id)
-		//{
-		//	StudentModel? studentModel = await context.Students.FirstOrDefaultAsync(s => s.UserId == id);
-		//	return studentModel;
-		//}
+		[HttpGet("{username}/getId")]
+		public async Task<StudentModel?> Get(string username)
+		{
+			StudentModel? studentModel = await context.Students.FirstOrDefaultAsync(s => s.Username == username);
+			if (studentModel != null)
+			{
+				return studentModel;
+			}
+			return null;
+		}
 
 
 		[HttpGet("{username}")]
