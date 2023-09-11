@@ -8,6 +8,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
     const [chosenFlag, setChosenFlag] = useState();
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);    
+    const [answersArray, setAnswersArray] = useState([]);
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
@@ -20,6 +21,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
             document.getElementById(`${e.target.id}`).classList.add("redColor");
         }
 
+        setAnswersArray(answersArray => [...answersArray, e.target.id]);
         setChosenFlag(`${e.target.id}`);
         setIsClicked(!isClicked);
         setDisabled(true);
@@ -36,8 +38,6 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
         }
     }
 
-
-  
     if (!flags || !currentFlag || !altArray) {
         return <div>Loadering...</div>
     }   
