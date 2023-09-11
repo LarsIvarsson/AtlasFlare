@@ -43,8 +43,7 @@ h1 {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-
-#continet-name {
+#continent-name {
     margin: 0px;
     font-size: 30px;
     font-weight: 700;
@@ -79,17 +78,6 @@ h1 {
     padding-bottom: 20px;
 }
 
-#btn-prev {
-    margin-right: 20px;
-    width: 100px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    background-color: #F0DE36;
-    color: #F6F4EB;
-    font-weight:600;
-}
-
 #btn-next {
     margin-right: 20px;
     width: 100px;
@@ -119,7 +107,50 @@ h1 {
     font-weight: 700;
 }
 
-.btn-answer:hover{
+.btn-answer:hover {
     background-color: #5FAFe3;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-lock {
+    margin: 15px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: #F6F4EB;
+    font-weight: 700;
+}
+
+.btn-unlock {
+    margin: 15px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4682A9;
+    color: #F6F4EB;
+    font-weight: 700;
+}
+
+.greenColor{
+    background-color: green;
+}
+
+.greenColor:hover{
+    background-color: green;
+}
+
+.redColor{
+    background-color: crimson;
+}
+
+.redColor:hover{
+    background-color: crimson;
+}
+
+.grayed-out-btn{
+    background-color: lightgray !important;
+    cursor: default !important;
 }
