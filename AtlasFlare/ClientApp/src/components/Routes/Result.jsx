@@ -1,6 +1,21 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Result() {
+    const [resultsArray, setResultsArray] = useState([]);
+    const { difficultyArray } = useLocation().state;
+
+    useEffect(() => {
+        getResultsArray();
+        console.log(difficultyArray);
+    }, [])
+
+    function getResultsArray() {
+        let resArray = localStorage.getItem("result");
+        let parsedArray = JSON.parse(resArray);
+        setResultsArray(parsedArray);
+        console.log(parsedArray);
+    }
 
     return (
         <div>
