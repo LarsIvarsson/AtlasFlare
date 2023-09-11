@@ -68,3 +68,28 @@ body {
     color: #4682A9;
     margin:0px;
 }
+
+.gold-medal {
+    color: gold; /* High percentage, gold color */
+}
+
+.silver-medal {
+    color: silver; /* Medium percentage, silver color */
+}
+
+.bronze-medal {
+    color: #cd7f32; /* Low percentage, bronze color */
+    
+
+}
+
+.nomedal{
+    color: transparent;
+}
+
+.menu-li{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+     
+}
