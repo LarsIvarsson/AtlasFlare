@@ -4,7 +4,7 @@ import '../styles/QuizCard.css';
 function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex })
 {
     const currentFlag = flags[currentIndex];
-    const currentContinent = continent.toUpperCase();    
+    const currentContinent = continent.toUpperCase();
     const [chosenFlag, setChosenFlag] = useState();
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);    
