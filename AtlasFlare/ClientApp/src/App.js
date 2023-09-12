@@ -15,7 +15,7 @@ import "../src/styles/Home.css";
 import "../src/styles/Register.css"
 import "../src/styles/Navbar.css";
 import "../src/styles/UserPage.css";
- 
+import "../src/styles/Result.css";
 
 
 function App() {

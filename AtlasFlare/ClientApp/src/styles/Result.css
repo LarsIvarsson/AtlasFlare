@@ -1,0 +1,20 @@
+﻿body {
+}
+
+.result-flag {
+    max-height: 50px;
+    border-radius: 10px;
+}
+
+.result-card {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#statement{
+    margin: 0px;
+}
