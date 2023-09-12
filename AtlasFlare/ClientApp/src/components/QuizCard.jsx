@@ -86,11 +86,15 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
                         )}
                     </div>
                     <div className="btn-container">
-                        {finishedQuiz ? (<button className="show-result-btn" onClick={seeResult}>Result</button>) : (<button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === lastIndex}>
-                            NEXT
-                        </button>) }
-                        
-            
+                        {finishedQuiz ? (
+                            <button className="show-result-btn" onClick={seeResult}>
+                                Result
+                            </button>
+                        ) : (
+                            <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === lastIndex}>
+                                NEXT
+                            </button>
+                        )}                                    
                     </div>
                 </div>                
             </div>

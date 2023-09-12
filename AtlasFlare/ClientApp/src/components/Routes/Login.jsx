@@ -29,8 +29,8 @@ function Login(props) {
             try {
                 fetch(url).then(response => {
                     if (response.ok) {
-                        // set local storage
-                        localStorage.setItem("signedInUser", username);
+                        // set session storage
+                        sessionStorage.setItem("signedInUser", username);
                         props.changeSignedIn();
                         navigate("/menu");
                     }
