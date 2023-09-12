@@ -134,6 +134,137 @@
 
 //export default QuizCard;
 
+//import React, { useEffect, useState } from 'react';
+//import '../styles/QuizCard.css';
+
+//function QuizCard({ flags, continent }) {
+//    const allCountries = flags;
+//    const currentContinent = continent.toUpperCase();
+//    const [correctCountry, setCorrectCountry] = useState(null);
+//    const [prevCountries, setPrevCountries] = useState([]);
+
+//    String.prototype.hashCode = function () {
+//        let hash = 0;
+//        if (this.length == 0) return hash;
+//        for (let i = 0; i < this.length; i++) {
+//            const char = this.charCodeAt(i);
+//            hash = (hash << 5) - hash + char;
+//            hash = hash & hash;
+//        }
+//        return hash;
+//    };
+
+//    //const getRandomCountry = (countries) => {
+//    //    const randomIndex = Math.floor(Math.random() * countries.length);
+//    //    return countries[randomIndex];
+//    //};
+
+//    //function getRandomCountry(countries, usedCountries) {
+//    //    let randomIndex;
+//    //    console.log("log från metoden med usedCountries:", JSON.stringify(usedCountries));
+
+//    //    if (usedCountries === undefined || usedCountries.length === 0) {
+//    //        randomIndex = Math.floor(Math.random() * countries.length);
+//    //        return countries[randomIndex];
+//    //    }
+//    //    else {
+//    //        let commonId = countries.filter(country => usedCountries.some(usedCountry => usedCountry.id === country.id));
+
+//    //        if (commonId.length > 0) {
+//    //            commonId.forEach(commonId => {
+//    //                countries = countries.filter(country => country.id !== commonId);
+//    //            });
+//    //        }
+//    //        randomIndex = Math.floor(Math.random() * countries.length);
+//    //        return countries[randomIndex];
+//    //    }
+//    //}
+//    function getRandomCountry(countries, usedCountries = []) {
+//        let randomIndex;
+
+//        // Skapa en kopia av countries-arrayen
+//        let availableCountries = [...countries];
+
+//        // Ta bort de länder som redan valts från availableCountries
+//        usedCountries.forEach(usedCountry => {
+//            availableCountries = availableCountries.filter(country => country.id !== usedCountry.id);
+//        });
+
+//        if (availableCountries.length === 0) {
+//            // Om inga länder återstår, returnera null eller gör något annat beroende på ditt behov
+//            return null;
+//        }
+
+//        // Slumpmässig index baserat på antalet tillgängliga länder
+//        randomIndex = Math.floor(Math.random() * availableCountries.length);
+
+//        return availableCountries[randomIndex];
+//    }
+
+
+
+
+//    useEffect(() => {
+//        const randomSelectedCountry = getRandomCountry(allCountries);
+//        setCorrectCountry(randomSelectedCountry);
+
+//    }, [allCountries]);
+
+//    useEffect(() => {
+//        if (prevCountries.length > 0) {
+//            console.log("Senaste previous country:", prevCountries);
+//        }
+//    }, [prevCountries]);
+
+//    function handleNextClick() {
+//        // Lägg till det nuvarande korrekta landet i previousCountries
+//        const updatedPrevCountries = [...prevCountries, correctCountry];
+//        setPrevCountries(updatedPrevCountries);
+
+//        // Hämta ett nytt slumpmässigt land från allCountries
+//        const randomSelectedCountry = getRandomCountry(allCountries, prevCountries);
+
+//        //// Sätt det nya landet som korrekt land
+//        //setCorrectCountry(randomSelectedCountry);
+
+//        if (randomSelectedCountry === null) {
+//            //Yer dön
+//        } else {
+//            // Sätt det nya landet som korrekt land
+//            setCorrectCountry(randomSelectedCountry);
+//        }
+//    }
+
+//    if (!correctCountry) {
+//        console.log("correctCountry är inte laddad");
+//        return <div>Loading...</div>;
+//    }
+
+//    return (
+//        <div>
+//            <div className="quiz-content">
+//                <div className="info-card">
+//                    <p id="continet-name">{currentContinent}</p>
+//                </div>
+//                <div className="quiz-card">
+//                    <div className="country-container">
+//                        <div className="flag-container">
+//                            <img className="quiz-flag" src={correctCountry.imageUrl} alt={correctCountry.countryName} />
+//                        </div>
+//                        <div className="btn-container">
+//                            <button id="btn-next" onClick={handleNextClick}>
+//                                NEXT
+//                            </button>
+//                        </div>
+//                    </div>
+//                </div>
+//            </div>
+//        </div>
+//    )
+//}
+
+//export default QuizCard;
+
 import React, { useEffect, useState } from 'react';
 import '../styles/QuizCard.css';
 
@@ -143,39 +274,46 @@ function QuizCard({ flags, continent }) {
     const [correctCountry, setCorrectCountry] = useState(null);
     const [prevCountries, setPrevCountries] = useState([]);
 
-    const getRandomCountry = (countries) => {
-        const randomIndex = Math.floor(Math.random() * countries.length);
-        return countries[randomIndex];
-    };
+    function getRandomCountry(countries, usedCountries = []) {
+        let randomIndex;
 
-    useEffect(() => {
-        const randomSelectedCountry = getRandomCountry(allCountries);
-        setCorrectCountry(randomSelectedCountry);
-        console.log(allCountries);
-    }, [allCountries]);
+        // Skapa en kopia av countries-arrayen
+        let availableCountries = [...countries];
 
-    useEffect(() => {
-        if (prevCountries.length > 0) {
-            console.log("Senaste previous country:", prevCountries);
+        // Ta bort de länder som redan valts från availableCountries
+        usedCountries.forEach(usedCountry => {
+            availableCountries = availableCountries.filter(country => country.flagId !== usedCountry.flagId);
+        });
+
+        if (availableCountries.length === 0) {
+            return null;
         }
-    }, [prevCountries]);
+
+        // Slumpmässig index baserat på antalet tillgängliga länder
+        randomIndex = Math.floor(Math.random() * availableCountries.length);
+
+        return availableCountries[randomIndex];
+    }
+
+    useEffect(() => {
+        const randomSelectedCountry = getRandomCountry(allCountries, prevCountries);
+
+        if (randomSelectedCountry === null) {
+            console.log('Inga länder kvar att visa');
+        } else {
+            setCorrectCountry(randomSelectedCountry);
+        }
+
+    }, [allCountries, prevCountries]);
 
     function handleNextClick() {
         // Lägg till det nuvarande korrekta landet i previousCountries
         const updatedPrevCountries = [...prevCountries, correctCountry];
-
+        console.log(prevCountries);
         setPrevCountries(updatedPrevCountries);
-
-        // Hämta ett nytt slumpmässigt land från allCountries
-        const randomSelectedCountry = getRandomCountry(allCountries, prevCountries);
-
-
-        // Sätt det nya landet som korrekt land
-        setCorrectCountry(randomSelectedCountry);
     }
 
     if (!correctCountry) {
-        console.log("correctCountry är inte laddad");
         return <div>Loading...</div>;
     }
 
