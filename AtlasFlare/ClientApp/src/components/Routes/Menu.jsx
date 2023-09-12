@@ -1,10 +1,13 @@
-﻿import React from 'react';
+﻿import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/Menu.css";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Menu() {
+
+
+
     return (
         <div>            
             <div className="card-container">
