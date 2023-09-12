@@ -5,7 +5,6 @@ function Result() {
     const [resultsArray, setResultsArray] = useState([]);
     const [arrays, setArrays] = useState(false);
     const { difficultyArray } = useLocation().state;
-    let i = 0;
 
     useEffect(() => {
         getResultsArray();
@@ -31,21 +30,17 @@ function Result() {
                             {difficultyArray.map((f, index) => {
                                 if (difficultyArray[index].countryName.toString() === resultsArray[index]) {
                                     return <div key={index} className="result-card">
-                                        <img className="result-flag" src={f.imageUrl} alt="Hehe" /> <div>{f.countryName}</div> <h3 id="statement">CORRECT</h3> 
-                                        
+                                        <img className="result-flag" src={f.imageUrl} alt="Hehe" /> <div>{f.countryName}</div> <h3 id="statement">CORRECT</h3>       
                                     </div>
                                 }
                                 else {
                                     return <div key={index} className="result-card">
-                                        <img className="result-flag" src={f.imageUrl} alt="Hehe" />  <div>{f.countryName}</div> <h3 id="statement">WRONG</h3> 
-                                        
+                                        <img className="result-flag" src={f.imageUrl} alt="Hehe" />  <div>{f.countryName}</div> <h3 id="statement">WRONG</h3>    
                                     </div>
                                 }
                             })}
                         </div>) : (<div></div>) }
-
                     </div>
-                    
                 </div>
             </div>
         </div>
