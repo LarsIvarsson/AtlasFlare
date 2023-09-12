@@ -23,7 +23,7 @@ function App() {
     
 
     useEffect(() => {
-        if (localStorage.getItem("signedInUser")) {
+        if (sessionStorage.getItem("signedInUser")) {
             setSignedIn(true);
         }
     }, []);
