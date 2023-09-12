@@ -17,7 +17,7 @@ function Navbar(props) {
     }, [props.signedIn]);
 
     useEffect(() => {
-        setUsername(localStorage.getItem("signedInUser"));
+        setUsername(sessionStorage.getItem("signedInUser"));
     }, [username])
 
     const toggleHamburger = () => {
@@ -26,7 +26,7 @@ function Navbar(props) {
 
     function logOut() {
         if (isSignedIn) {
-        localStorage.removeItem("signedInUser");
+        sessionStorage.removeItem("signedInUser");
         props.changeSignedIn();        
         }
     }
