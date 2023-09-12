@@ -6,24 +6,30 @@ import Login from './components/Routes/Login';
 import Register from './components/Routes/Register';
 import Quiz from './components/Routes/Quiz';
 import Navbar from './components/Navbar';
+import UserPage from './components/Routes/UserPage';
 import NotFound from "./components/Routes/NotFound";
+import Result from "./components/Routes/Result";
 import './custom.css';
 import './styles/Home.css';
 import "../src/styles/Home.css";
 import "../src/styles/Register.css"
 import "../src/styles/Navbar.css";
-
+import "../src/styles/UserPage.css";
+ 
 
 
 function App() {
     const [signedIn, setSignedIn] = useState(false);
-    
+    const [username, setUsername] = useState("");
 
+        
     useEffect(() => {
-        if (localStorage.getItem("signedInUser")) {
+        if (sessionStorage.getItem("signedInUser")) {
             setSignedIn(true);
+            setUsername(sessionStorage.getItem("signedInUser"));
         }
-    }, []);
+    }, [signedIn]);
+
 
     function changeSignedIn() {
         setSignedIn(!signedIn);
@@ -31,13 +37,15 @@ function App() {
 
     return (
         <div>
-            <Navbar changeSignedIn={changeSignedIn} signedIn={signedIn} />
+            <Navbar changeSignedIn={changeSignedIn} signedIn={signedIn} username={username} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/menu" element={<Menu />} />          
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
-                <Route path="/quiz/:continent" element={<Quiz /> } />
+                <Route path="/quiz/:continent" element={<Quiz />} />
+                <Route path="/user/:name" element={<UserPage />} />
+                <Route path="/result" element={<Result /> } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>
