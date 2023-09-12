@@ -53,8 +53,8 @@ body {
     justify-content:center;
     display: inline-flex;
     flex-direction: column;
-    border: 1px solid #ccc; /* Add borders or other styling as needed */
-    padding: 10px; /* Add padding as needed */
+    border: 1px solid #ccc; 
+    padding: 10px; 
     max-width: 100%;
     margin-left: 40px;
     height: 80px;
@@ -70,15 +70,15 @@ body {
 }
 
 .gold-medal {
-    color: gold; /* High percentage, gold color */
+    color: gold; 
 }
 
 .silver-medal {
-    color: silver; /* Medium percentage, silver color */
+    color: silver; 
 }
 
 .bronze-medal {
-    color: #cd7f32; /* Low percentage, bronze color */
+    color: #cd7f32; 
     
 
 }
