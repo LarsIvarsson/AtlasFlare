@@ -14,13 +14,10 @@ function UserPage() {
     const [currentUser, setCurrentUser] = useState([]);
 
 
-
     useEffect(() => {
-
         fetch(`user/${name}/getId`)
             .then((res) => res.json())
             .then(data => setUsers(data))
-
     }, [name]);
 
 

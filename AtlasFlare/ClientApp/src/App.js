@@ -20,14 +20,16 @@ import "../src/styles/UserPage.css";
 
 function App() {
     const [signedIn, setSignedIn] = useState(false);
-    
-    
+    const [username, setUsername] = useState("");
 
+        
     useEffect(() => {
         if (sessionStorage.getItem("signedInUser")) {
             setSignedIn(true);
+            setUsername(sessionStorage.getItem("signedInUser"));
         }
-    }, []);
+    }, [signedIn]);
+
 
     function changeSignedIn() {
         setSignedIn(!signedIn);
@@ -35,7 +37,7 @@ function App() {
 
     return (
         <div>
-            <Navbar changeSignedIn={changeSignedIn} signedIn={signedIn} />
+            <Navbar changeSignedIn={changeSignedIn} signedIn={signedIn} username={username} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/menu" element={<Menu />} />          

@@ -10,15 +10,15 @@ function Navbar(props) {
 
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const [isSignedIn, setIsSignedIn] = useState(props.signedIn);
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(props.username);
 
     useEffect(() => {
         setIsSignedIn(props.signedIn);
     }, [props.signedIn]);
 
     useEffect(() => {
-        setUsername(sessionStorage.getItem("signedInUser"));
-    }, [username])
+        setUsername(props.username);
+    }, [props.username])
 
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
@@ -30,9 +30,6 @@ function Navbar(props) {
         props.changeSignedIn();        
         }
     }
-
-   
-
 
 
     return (
