@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, chosenQuiz, signedInUsername })
+function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter, increaseCounter, chosenQuiz, signedInUsername  })
 {
-    const currentFlag = flags[currentIndex];
     const currentContinent = continent.toUpperCase();
     const [chosenFlag, setChosenFlag] = useState();
     const [isClicked, setIsClicked] = useState(false);
     const [disabled, setDisabled] = useState(false);    
     const [answersArray, setAnswersArray] = useState([]);
     const [finishedQuiz, setFinishedQuiz] = useState(false);
-    const [difficultyArray, setDifficultyArray] = useState([]);
+    const [facitArray, setFacitArray] = useState([]);
     const [signedInUserId, setSignedInUserId] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        let slicedArray = flags.slice(0, lastIndex);
-        setDifficultyArray(slicedArray);
-    }, [flags, lastIndex])
+        let facitSlice = [...facitArray, currentFlag];
+        setFacitArray(facitSlice);
+    }, [currentFlag]);
 
     useEffect(() => {
         fetch(`user/${signedInUsername}/getId`)
@@ -29,7 +28,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
 
-        if (currentIndex === lastIndex - 1) {
+        if (counter == lastIndex) {
             setFinishedQuiz(true);
         }
 
@@ -52,15 +51,14 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
 
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
-        navigate("/result", { state: { difficultyArray } });
+        navigate("/result", { state: { facitArray } });
     }
   
     function handleNextClick() {
         document.getElementById("btn-next").classList.add("grayed-out-btn");
-        // lägg till kontroll av svar
 
-        if (currentIndex < lastIndex && isClicked === true && disabled === true) {
-            setCurrentIndex(currentIndex + 1);
+        if (counter < lastIndex && isClicked === true && disabled === true) {
+            increaseCounter();
             setIsClicked(!isClicked);
             setDisabled(false);
             document.getElementById(`${chosenFlag}`).classList.remove("greenColor", "redColor");
@@ -70,15 +68,15 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     function calculateHighScore() {
         let highScore = 0;
 
-        difficultyArray.map((f, index) => {
-            if (difficultyArray[index].countryName === answersArray[index]) {
+        facitArray.map((f, index) => {
+            if (facitArray[index].countryName === answersArray[index]) {
+                console.log(highScore);
                 return highScore++;
             }
             else {
                 return highScore;
             }
         });
-
         saveHighScore(highScore);
     }
 
@@ -91,7 +89,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
         })
     }
 
-    if (!flags || !currentFlag || !altArray || !lastIndex) {
+    if (!flags || !currentFlag || !altArray || !lastIndex || !counter) {
         return <div>Loadering...</div>
     }   
 
@@ -100,7 +98,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
             <div className="quiz-content">
                 <div className="info-card">
                     <p id="continent-name">{currentContinent}</p>
-                    <p id="progress">{currentIndex + 1} / {lastIndex}</p>
+                    <p id="progress">{counter} / {lastIndex}</p>
                 </div>
                 <div className="quiz-card">
                     <div className="country-container">
@@ -125,7 +123,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
                                 Result
                             </button>
                         ) : (
-                            <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick} disabled={currentIndex === lastIndex}>
+                            <button id="btn-next" className="grayed-out-btn" onClick={handleNextClick}>
                                 NEXT
                             </button>
                         )}                                    
