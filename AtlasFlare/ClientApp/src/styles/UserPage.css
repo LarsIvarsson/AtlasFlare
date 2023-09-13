@@ -67,6 +67,7 @@ body {
 #hs {
     color: #4682A9;
     margin:0px;
+    
 }
 
 .gold-medal {
@@ -88,8 +89,23 @@ body {
 }
 
 .menu-li{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
+    display:flex;   
+    justify-content:space-between;
+    /*align-items:center;*/
+
      
 }
+
+.menu-card-result {
+    width: 300px;
+    height: 380px;
+    background-color: #F6F4EB;
+    border: none;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+
