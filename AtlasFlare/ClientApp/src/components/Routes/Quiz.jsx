@@ -4,12 +4,14 @@ import QuizCard from '../QuizCard';
 
 function Quiz() {
     const { continent } = useParams();
-    const [flags, setFlags] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [altArray, setAltArray] = useState([]);
-    // Number is a state from the link-tag,
-    // not used atm but will implement later to set quiz difficulty
     const { number } = useLocation().state;
+    const [flags, setFlags] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(null);
+    const [altArray, setAltArray] = useState([]);
+    const [usedFlags, setUsedFlags] = useState([]);
+    const [currentFlag, setCurrentFlag] = useState(null);
+    const [counter, setCounter] = useState(1);
+
 
     useEffect(() => {
         fetch(`flags/${continent}`)
@@ -17,17 +19,32 @@ function Quiz() {
             .then(data => setFlags(data));
     }, [continent]);
 
-    // Generate random flags and alternatives whenever currentIndex changes
     useEffect(() => {
-        if (flags.length > 0) {
-            const currentFlag = flags[currentIndex];
+        let availableFlags = [...flags];
+
+        usedFlags.forEach(u => {
+            availableFlags = availableFlags.filter(c => c.flagId !== u.flagId);
+        });
+
+        //if (availableFlags.length === 0) {
+        //    // something to do
+        //}
+
+        let randomIndex = Math.floor(Math.random() * availableFlags.length);
+        const randomFlag = availableFlags[randomIndex];
+        setCurrentIndex(randomIndex);
+
+
+        if (randomFlag !== null && flags.length > 0) {
+            setCurrentFlag(randomFlag);
+
             let tempArray1 = [];
             let tempArray2 = [];
             let altArray1Copy = [];
             let altArray2Copy = [];
 
-            altArray1Copy.push(currentFlag);
-            tempArray1.push(currentIndex);
+            altArray1Copy.push(randomFlag);
+            tempArray1.push(randomIndex);
 
             while (altArray1Copy.length < 4) {
                 const randomIndex = Math.floor(Math.random() * flags.length);
@@ -48,21 +65,52 @@ function Quiz() {
             }
             setAltArray(altArray2Copy);
         }
-    }, [currentIndex, flags]);
+    }, [flags, counter]);
 
-    if (!continent || !flags || !altArray || !number) {
+    function getRandomFlag(previousFlags = []) {
+        let availableFlags = [...flags];
+
+        previousFlags.forEach(u => {
+            availableFlags = availableFlags.filter(c => c.flagId !== u.flagId);
+        });
+
+        if (availableFlags.length === 0) {
+            return null;
+        }
+
+        let randomIndex = Math.floor(Math.random() * availableFlags.length);
+        setCurrentIndex(randomIndex);
+
+        return availableFlags[randomIndex];
+    }
+
+    function removeUsedFlag() {
+        const updatedUsedFlags = [...usedFlags, currentFlag];
+        setUsedFlags(updatedUsedFlags);
+    }
+
+    function increaseCounter() {
+        setCounter(counter + 1);
+    }
+
+    if (!continent || !flags || !altArray || !number || !currentFlag) {
         return <div>Loading...</div>
     }
+
+
+
 
     return (
         <div>
             <QuizCard
                 flags={flags}
                 continent={continent}
-                currentIndex={currentIndex}
                 lastIndex={number}
                 altArray={altArray}
-                setCurrentIndex={setCurrentIndex} />
+                removeUsedFlag={removeUsedFlag}
+                currentFlag={currentFlag}
+                counter={counter}
+                increaseCounter={increaseCounter} />
         </div>
     )
 }
