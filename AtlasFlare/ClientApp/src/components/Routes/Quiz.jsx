@@ -9,7 +9,7 @@ function Quiz() {
     const [altArray, setAltArray] = useState([]);
     // Number is a state from the link-tag,
     // not used atm but will implement later to set quiz difficulty
-    const { number } = useLocation().state;
+    const { number, chosenQuiz } = useLocation().state;
 
     useEffect(() => {
         fetch(`flags/${continent}`)
@@ -62,7 +62,9 @@ function Quiz() {
                 currentIndex={currentIndex}
                 lastIndex={number}
                 altArray={altArray}
-                setCurrentIndex={setCurrentIndex} />
+                setCurrentIndex={setCurrentIndex}
+                chosenQuiz={chosenQuiz}
+            />
         </div>
     )
 }

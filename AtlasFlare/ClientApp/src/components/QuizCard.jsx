@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex })
+function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, chosenQuiz })
 {
     const currentFlag = flags[currentIndex];
     const currentContinent = continent.toUpperCase();
@@ -25,6 +25,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
         if (currentIndex === lastIndex - 1) {
             setFinishedQuiz(true);
         }
+
         if (e.target.id === currentFlag.countryName) {
             document.getElementById(`${e.target.id}`).classList.add("greenColor");
         }
@@ -40,6 +41,8 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     }
 
     function seeResult() {
+        calculateHighScore();
+
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
         navigate("/result", { state: { difficultyArray } });
@@ -55,6 +58,31 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
             setDisabled(false);
             document.getElementById(`${chosenFlag}`).classList.remove("greenColor", "redColor");
         }
+    }
+
+    function calculateHighScore() {
+        let highScore = 0;
+
+        difficultyArray.map((f, index) => {
+            if (difficultyArray[index].countryName === answersArray[index]) {
+                console.log(highScore);
+                return highScore++;
+            }
+            else {
+                return highScore;
+            }
+        });
+
+        saveHighScore(highScore);
+    }
+
+    function saveHighScore(highScore) {
+        const quiz = { Difficulty: chosenQuiz, HighScore: highScore }
+        fetch("user/1", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(quiz)
+        })
     }
 
     if (!flags || !currentFlag || !altArray || !lastIndex) {

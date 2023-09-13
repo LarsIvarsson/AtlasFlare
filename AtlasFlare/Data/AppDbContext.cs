@@ -12,6 +12,7 @@ namespace AtlasFlare.Data
 
         public DbSet<StudentModel> Students { get; set; }
         public DbSet<TeacherModel> Teachers { get; set; }
+        public DbSet<QuizModel> Quizzes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -33,7 +33,7 @@ function Result() {
             <div className="quiz-content">
                 <div className="info-card">
                     <p id="continent-name"> RESULT: /{difficultyArray.length} </p>
-                    
+
                 </div>
                 <div className="quiz-card">
                     <div className="result-container" style={{
@@ -45,7 +45,7 @@ function Result() {
                         {arrays ? (<div>
                             {difficultyArray.map((f, index) => {
                                 if (difficultyArray[index].countryName.toString() === resultsArray[index]) {
-                                   
+
                                     return <div key={index} className="result-card">
                                         <div className="img-name">
                                             <img className="result-flag" src={f.imageUrl} alt="Hehe" />
@@ -61,7 +61,7 @@ function Result() {
                                             <img className="result-flag" src={f.imageUrl} alt="Hehe" />
                                             <div>{f.countryName}</div>
                                         </div>
-                                        
+
                                         <FontAwesomeIcon icon={faXmark} id="x-mark" />
 
                                     </div>

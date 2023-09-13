@@ -46,7 +46,8 @@ function UserPage() {
             setCurrentUser(foundUser);
 
         }
-    }, [allUsers, name]);
+        console.log(foundUser, currentUser);
+    }, [allUsers, name, currentUser]);
 
 
 
@@ -54,12 +55,12 @@ function UserPage() {
         return <div>Loading...</div>
     }
 
-    const highScoreForQuiz1 = currentUser.highScores.find(score => score.quizId === 1);
-    const highScoreForQuiz2 = currentUser.highScores.find(score => score.quizId === 2);
-    const highScoreForQuiz3 = currentUser.highScores.find(score => score.quizId === 3);
-    const highScoreForQuiz4 = currentUser.highScores.find(score => score.quizId === 4);
-    const highScoreForQuiz5 = currentUser.highScores.find(score => score.quizId === 5);
-    const highScoreForQuiz6 = currentUser.highScores.find(score => score.quizId === 6);
+    const highScoreForQuiz1 = currentUser.highScores.find(score => score.difficulty === 1);
+    const highScoreForQuiz2 = currentUser.highScores.find(score => score.difficulty === 2);
+    const highScoreForQuiz3 = currentUser.highScores.find(score => score.difficulty === 3);
+    const highScoreForQuiz4 = currentUser.highScores.find(score => score.difficulty === 4);
+    const highScoreForQuiz5 = currentUser.highScores.find(score => score.difficulty === 5);
+    const highScoreForQuiz6 = currentUser.highScores.find(score => score.difficulty === 6);
 
     const maxScoreForQuiz1 = 6;
     const maxScoreForQuiz2 = 10;
