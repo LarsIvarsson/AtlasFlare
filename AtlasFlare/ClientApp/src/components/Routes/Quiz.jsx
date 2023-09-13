@@ -4,15 +4,12 @@ import QuizCard from '../QuizCard';
 
 function Quiz() {
     const { continent } = useParams();
-    const { number } = useLocation().state;
     const [flags, setFlags] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [altArray, setAltArray] = useState([]);
-
-    const [usedFlags, setUsedFlags] = useState([]);
-    const [currentFlag, setCurrentFlag] = useState(null);
-    const [counter, setCounter] = useState(1);
-
+    // Number is a state from the link-tag,
+    // not used atm but will implement later to set quiz difficulty
+    const { number } = useLocation().state;
 
     useEffect(() => {
         fetch(`flags/${continent}`)
@@ -20,43 +17,26 @@ function Quiz() {
             .then(data => setFlags(data));
     }, [continent]);
 
+    // Generate random flags and alternatives whenever currentIndex changes
     useEffect(() => {
-        let availableFlags = [...flags];
-
-        usedFlags.forEach(u => {
-            availableFlags = availableFlags.filter(c => c.flagId !== u.flagId);
-        });
-        //if (availableFlags.length === 0) {
-        //    // something to do
-        //}
-
-        let randomIndex = Math.floor(Math.random() * availableFlags.length);
-        const randomFlag = availableFlags[randomIndex];
-        setCurrentIndex(randomIndex);
-
-
-        if (randomFlag !== null && flags.length > 0) {
-            setCurrentFlag(randomFlag);
-
+        if (flags.length > 0) {
+            const currentFlag = flags[currentIndex];
             let tempArray1 = [];
-            
+            let tempArray2 = [];
             let altArray1Copy = [];
+            let altArray2Copy = [];
 
-
-            altArray1Copy.push(randomFlag);
-            tempArray1.push(randomIndex);
+            altArray1Copy.push(currentFlag);
+            tempArray1.push(currentIndex);
 
             while (altArray1Copy.length < 4) {
-                const randomIndex = Math.floor(Math.random() * availableFlags.length);
+                const randomIndex = Math.floor(Math.random() * flags.length);
 
-                if (!tempArray1.includes(randomIndex)) {
+                if (randomIndex !== currentIndex && !tempArray1.includes(randomIndex)) {
                     tempArray1.push(randomIndex);
-                    altArray1Copy.push(availableFlags[randomIndex]);
+                    altArray1Copy.push(flags[randomIndex]);
                 }
             }
-
-            let tempArray2 = [];
-            let altArray2Copy = [];
 
             while (altArray2Copy.length < 4) {
                 const randomIndex = Math.floor(Math.random() * 4);
@@ -68,52 +48,21 @@ function Quiz() {
             }
             setAltArray(altArray2Copy);
         }
-    }, [flags, counter]);
+    }, [currentIndex, flags]);
 
-    //function getRandomFlag(previousFlags = []) {
-    //    let availableFlags = [...flags];
-
-    //    previousFlags.forEach(u => {
-    //        availableFlags = availableFlags.filter(c => c.flagId !== u.flagId);
-    //    });
-
-    //    if (availableFlags.length === 0) {
-    //        return null;
-    //    }
-
-    //    let randomIndex = Math.floor(Math.random() * availableFlags.length);
-    //    setCurrentIndex(randomIndex);
-
-    //    return availableFlags[randomIndex];
-    //}
-
-    function removeUsedFlag() {
-        const updatedUsedFlags = [...usedFlags, currentFlag];
-        setUsedFlags(updatedUsedFlags);
-    }
-
-    function increaseCounter() {
-        setCounter(counter + 1);
-    }
-
-    if (!continent || !flags || !altArray || !number || !currentFlag) {
+    if (!continent || !flags || !altArray || !number) {
         return <div>Loading...</div>
     }
-
-
-
 
     return (
         <div>
             <QuizCard
                 flags={flags}
                 continent={continent}
+                currentIndex={currentIndex}
                 lastIndex={number}
                 altArray={altArray}
-                removeUsedFlag={removeUsedFlag}
-                currentFlag={currentFlag}
-                counter={counter}
-                increaseCounter={increaseCounter} />
+                setCurrentIndex={setCurrentIndex} />
         </div>
     )
 }
