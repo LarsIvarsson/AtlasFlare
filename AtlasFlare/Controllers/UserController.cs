@@ -91,8 +91,20 @@ namespace AtlasFlare.Controllers
 						studentToUpdate.HighScores = new List<QuizModel>();
 					}
 
-					studentToUpdate.HighScores.Add(quiz);
-					await context.SaveChangesAsync();
+					var highScoreToUpdate = studentToUpdate.HighScores.Find(h => h.Difficulty == quiz.Difficulty);
+
+					if (highScoreToUpdate == null)
+					{
+                        studentToUpdate.HighScores.Add(quiz);
+                        await context.SaveChangesAsync();
+                    }
+
+					else if (highScoreToUpdate.HighScore < quiz.HighScore)
+					{
+						highScoreToUpdate.HighScore = quiz.HighScore;
+						await context.SaveChangesAsync();
+					}
+
 					return Ok();
 				}
 			}

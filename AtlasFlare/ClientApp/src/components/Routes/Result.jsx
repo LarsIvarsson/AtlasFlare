@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Result() {
     const [resultsArray, setResultsArray] = useState([]);
     const [arrays, setArrays] = useState(false);
-    const { difficultyArray } = useLocation().state;
+    const { difficultyArray, highScore } = useLocation().state;
     let i = 0;
     const [correctAnswers, setCorrectAnswers] = useState(0);
 
@@ -32,7 +32,7 @@ function Result() {
         <div>
             <div className="quiz-content">
                 <div className="info-card">
-                    <p id="continent-name"> RESULT: /{difficultyArray.length} </p>
+                    <p id="continent-name"> RESULT: {highScore}/{difficultyArray.length} </p>
 
                 </div>
                 <div className="quiz-card">

@@ -48,11 +48,12 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     }
 
     function seeResult() {
-        calculateHighScore();
+        let highScore = calculateHighScore();
+        console.log(highScore);
 
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
-        navigate("/result", { state: { difficultyArray } });
+        navigate("/result", { state: { difficultyArray, highScore } });
     }
   
     function handleNextClick() {
@@ -80,6 +81,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
         });
 
         saveHighScore(highScore);
+        return highScore;
     }
 
     function saveHighScore(highScore) {
