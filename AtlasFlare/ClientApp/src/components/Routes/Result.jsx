@@ -8,6 +8,17 @@ function Result() {
     const [resultsArray, setResultsArray] = useState([]);
     const [arrays, setArrays] = useState(false);
     const { difficultyArray } = useLocation().state;
+<<<<<<< HEAD
+=======
+    let i = 0;
+    const [correctAnswers, setCorrectAnswers] = useState(0);
+
+    const [scrollTop, setScrollTop] = useState(0);
+
+    const handleScroll = event => {
+        setScrollTop(event.currentTarget.scrollTop);
+    };
+>>>>>>> main
 
     useEffect(() => {
         getResultsArray();
@@ -24,26 +35,58 @@ function Result() {
         <div>
             <div className="quiz-content">
                 <div className="info-card">
-                    <p id="continent-name"> New high score: </p>
-                    <p id="progress">Current high score: </p>
+                    <p id="continent-name"> RESULT: /{difficultyArray.length} </p>
+                    
                 </div>
                 <div className="quiz-card">
-                    <div className="result-container">
+                    <div className="result-container" style={{
+                        border: 'none',
+                        width: '800px',
+                        height: '350px',
+                        overflow: 'scroll',
+                    }} onScroll={handleScroll}>
                         {arrays ? (<div>
                             {difficultyArray.map((f, index) => {
                                 if (difficultyArray[index].countryName.toString() === resultsArray[index]) {
+                                   
                                     return <div key={index} className="result-card">
+<<<<<<< HEAD
                                         <img className="result-flag" src={f.imageUrl} alt="Hehe" /> <div>{f.countryName}</div> <h3 id="statement">CORRECT</h3>       
+=======
+                                        <div className="img-name">
+                                            <img className="result-flag" src={f.imageUrl} alt="Hehe" />
+                                            <div id="c-name">{f.countryName}</div>
+                                        </div>
+
+                                        <FontAwesomeIcon icon={faCheck} id="v-mark" />
+>>>>>>> main
                                     </div>
                                 }
                                 else {
                                     return <div key={index} className="result-card">
+<<<<<<< HEAD
                                         <img className="result-flag" src={f.imageUrl} alt="Hehe" />  <div>{f.countryName}</div> <h3 id="statement">WRONG</h3>    
                                     </div>
                                 }
                             })}
                         </div>) : (<div></div>) }
                     </div>
+=======
+                                        <div className="img-name">
+                                            <img className="result-flag" src={f.imageUrl} alt="Hehe" />
+                                            <div>{f.countryName}</div>
+                                        </div>
+                                        
+                                        <FontAwesomeIcon icon={faXmark} id="x-mark" />
+
+                                    </div>
+                                }
+                            })}
+                        </div>) : (<div></div>)}
+
+                    </div>
+
+>>>>>>> main
                 </div>
             </div>
         </div>
