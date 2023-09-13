@@ -105,10 +105,112 @@ function UserPage() {
                 </div>
             </div>
             <div className="card-container">
-
-                <div className="menu-card">
-                    <h2>SOUTH AMERICA</h2>
+                <div className="menu-card-result">                   
+                        <h2 className="h2-header">NORTH AMERICA</h2>
+                    <h3 id="hs">HIGH SCORE</h3>
+                    <br />
+                    <div className="menu-links">
+                        <ul className="menu-ul">
+                            <li className="menu-li">
+                                EASY: {highScoreForQuiz16 ? highScoreForQuiz16.highScore : "N/A"}
+                                {highScoreForQuiz16  && ( 
+                                    <FontAwesomeIcon
+                                        icon={faMedal}
+                                        className={
+                                            calculatePercentage(
+                                                highScoreForQuiz16.highScore,
+                                                maxScoreForQuiz16
+                                            ) >= 100
+                                                ? "gold-medal"
+                                                : calculatePercentage(
+                                                    highScoreForQuiz16.highScore,
+                                                    maxScoreForQuiz16
+                                                ) >= 75
+                                                    ? "silver-medal"
+                                                    : calculatePercentage(
+                                                        highScoreForQuiz16.highScore,
+                                                        maxScoreForQuiz16
+                                                    ) >= 30
+                                                        ? "bronze-medal"
+                                                        : calculatePercentage(
+                                                            highScoreForQuiz16.highScore,
+                                                            maxScoreForQuiz16
+                                                        ) >= 0
+                                                            ? "nomedal"
+                                                            : ""
+                                        }
+                                    />
+                                )}
+                            </li>
+                            <li className="menu-li">
+                                MEDIUM: {highScoreForQuiz17 ? highScoreForQuiz17.highScore : "N/A"}
+                                {highScoreForQuiz17 && (
+                                    <FontAwesomeIcon
+                                        icon={faMedal}
+                                        className={
+                                            calculatePercentage(
+                                                highScoreForQuiz17.highScore,
+                                                maxScoreForQuiz17
+                                            ) >= 100
+                                                ? "gold-medal"
+                                                : calculatePercentage(
+                                                    highScoreForQuiz17.highScore,
+                                                    maxScoreForQuiz17
+                                                ) >= 75
+                                                    ? "silver-medal"
+                                                    : calculatePercentage(
+                                                        highScoreForQuiz17.highScore,
+                                                        maxScoreForQuiz17
+                                                    ) >= 30
+                                                        ? "bronze-medal"
+                                                        : calculatePercentage(
+                                                            highScoreForQuiz17.highScore,
+                                                            maxScoreForQuiz17
+                                                        ) >= 0
+                                                            ? "nomedal"
+                                                            : ""
+                                        }
+                                    />
+                                )}
+                            </li>
+                            <li className="menu-li">
+                                HARD: {highScoreForQuiz18 ? highScoreForQuiz18.highScore : "N/A"}
+                                {highScoreForQuiz18 && (
+                                    <FontAwesomeIcon
+                                        icon={faMedal}
+                                        className={
+                                            calculatePercentage(
+                                                highScoreForQuiz18.highScore,
+                                                maxScoreForQuiz18
+                                            ) >= 100
+                                                ? "gold-medal"
+                                                : calculatePercentage(
+                                                    highScoreForQuiz18.highScore,
+                                                    maxScoreForQuiz18
+                                                ) >= 75
+                                                    ? "silver-medal"
+                                                    : calculatePercentage(
+                                                        highScoreForQuiz18.highScore,
+                                                        maxScoreForQuiz18
+                                                    ) >= 30
+                                                        ? "bronze-medal"
+                                                        : calculatePercentage(
+                                                            highScoreForQuiz18.highScore,
+                                                            maxScoreForQuiz18
+                                                        ) >= 0
+                                                            ? "nomedal"
+                                                            : ""
+                                        }
+                                    />
+                                )}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="menu-card-result">                    
+                        <h2 className="h2-header">SOUTH AMERICA</h2>
                     <h3 id="hs" >HIGH SCORE</h3>
+                    <br />                               
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
@@ -207,9 +309,10 @@ function UserPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="menu-card">
-                    <h2>EUROPE</h2>
+                <div className="menu-card-result">
+                        <h2 className="h2-header">EUROPE</h2>
                     <h3 id="hs">HIGH SCORE</h3>
+                    <br />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
@@ -308,9 +411,10 @@ function UserPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="menu-card">
-                    <h2>AFRICA</h2>
+                <div className="menu-card-result">
+                    <h2 className="h2-header">AFRICA</h2>
                     <h3 id="hs">HIGH SCORE</h3>
+                    <br />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
@@ -409,9 +513,10 @@ function UserPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="menu-card">
-                    <h2>ASIA</h2>
+                <div className="menu-card-result">
+                    <h2 className="h2-header">ASIA</h2>
                     <h3 id="hs">HIGH SCORE</h3>
+                    <br />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
@@ -510,9 +615,10 @@ function UserPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="menu-card">
-                    <h2>OCEANIA</h2>
+                <div className="menu-card-result">
+                    <h2 className="h2-header">OCEANIA</h2>
                     <h3 id="hs">HIGH SCORE</h3>
+                    <br />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
@@ -611,107 +717,7 @@ function UserPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="menu-card">
-                    <h2>NORTH AMERICA</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <div className="menu-links">
-                        <ul className="menu-ul">
-                            <li className="menu-li">
-                                EASY: {highScoreForQuiz16 ? highScoreForQuiz16.highScore : "N/A"}
-                                {highScoreForQuiz16 && (
-                                    <FontAwesomeIcon
-                                        icon={faMedal}
-                                        className={
-                                            calculatePercentage(
-                                                highScoreForQuiz16.highScore,
-                                                maxScoreForQuiz16
-                                            ) >= 100
-                                                ? "gold-medal"
-                                                : calculatePercentage(
-                                                    highScoreForQuiz16.highScore,
-                                                    maxScoreForQuiz16
-                                                ) >= 75
-                                                    ? "silver-medal"
-                                                    : calculatePercentage(
-                                                        highScoreForQuiz16.highScore,
-                                                        maxScoreForQuiz16
-                                                    ) >= 30
-                                                        ? "bronze-medal"
-                                                        : calculatePercentage(
-                                                            highScoreForQuiz16.highScore,
-                                                            maxScoreForQuiz16
-                                                        ) >= 0
-                                                            ? "nomedal"
-                                                            : ""
-                                        }
-                                    />
-                                )}
-                            </li>
-                            <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz17 ? highScoreForQuiz17.highScore : "N/A"}
-                                {highScoreForQuiz17 && (
-                                    <FontAwesomeIcon
-                                        icon={faMedal}
-                                        className={
-                                            calculatePercentage(
-                                                highScoreForQuiz17.highScore,
-                                                maxScoreForQuiz17
-                                            ) >= 100
-                                                ? "gold-medal"
-                                                : calculatePercentage(
-                                                    highScoreForQuiz17.highScore,
-                                                    maxScoreForQuiz17
-                                                ) >= 75
-                                                    ? "silver-medal"
-                                                    : calculatePercentage(
-                                                        highScoreForQuiz17.highScore,
-                                                        maxScoreForQuiz17
-                                                    ) >= 30
-                                                        ? "bronze-medal"
-                                                        : calculatePercentage(
-                                                            highScoreForQuiz17.highScore,
-                                                            maxScoreForQuiz17
-                                                        ) >= 0
-                                                            ? "nomedal"
-                                                            : ""
-                                        }
-                                    />
-                                )}
-                            </li>
-                            <li className="menu-li">
-                                HARD: {highScoreForQuiz18 ? highScoreForQuiz18.highScore : "N/A"}
-                                {highScoreForQuiz18 && (
-                                    <FontAwesomeIcon
-                                        icon={faMedal}
-                                        className={
-                                            calculatePercentage(
-                                                highScoreForQuiz18.highScore,
-                                                maxScoreForQuiz18
-                                            ) >= 100
-                                                ? "gold-medal"
-                                                : calculatePercentage(
-                                                    highScoreForQuiz18.highScore,
-                                                    maxScoreForQuiz18
-                                                ) >= 75
-                                                    ? "silver-medal"
-                                                    : calculatePercentage(
-                                                        highScoreForQuiz18.highScore,
-                                                        maxScoreForQuiz18
-                                                    ) >= 30
-                                                        ? "bronze-medal"
-                                                        : calculatePercentage(
-                                                            highScoreForQuiz18.highScore,
-                                                            maxScoreForQuiz18
-                                                        ) >= 0
-                                                            ? "nomedal"
-                                                            : ""
-                                        }
-                                    />
-                                )}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
     )
