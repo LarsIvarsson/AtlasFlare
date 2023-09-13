@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter, increaseCounter, chosenQuiz })
+function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter, increaseCounter, chosenQuiz, signedInUsername  })
 {
     const currentContinent = continent.toUpperCase();
     const [chosenFlag, setChosenFlag] = useState();
@@ -11,12 +11,19 @@ function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter,
     const [answersArray, setAnswersArray] = useState([]);
     const [finishedQuiz, setFinishedQuiz] = useState(false);
     const [facitArray, setFacitArray] = useState([]);
+    const [signedInUserId, setSignedInUserId] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         let facitSlice = [...facitArray, currentFlag];
         setFacitArray(facitSlice);
     }, [currentFlag]);
+
+    useEffect(() => {
+        fetch(`user/${signedInUsername}/getId`)
+            .then((res) => res.json())
+            .then(data => setSignedInUserId(data))
+    }, [signedInUsername]);
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
@@ -70,13 +77,12 @@ function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter,
                 return highScore;
             }
         });
-
         saveHighScore(highScore);
     }
 
     function saveHighScore(highScore) {
         const quiz = { Difficulty: chosenQuiz, HighScore: highScore }
-        fetch("user/1", {
+        fetch(`user/${signedInUserId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(quiz)

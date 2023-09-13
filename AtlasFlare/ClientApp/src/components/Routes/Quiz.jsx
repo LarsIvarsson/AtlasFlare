@@ -2,7 +2,7 @@
 import { useParams, useLocation } from 'react-router-dom';
 import QuizCard from '../QuizCard';
 
-function Quiz() {
+function Quiz(props) {
     const { continent } = useParams();
     const { number, chosenQuiz } = useLocation().state;
     const [flags, setFlags] = useState([]);
@@ -83,6 +83,7 @@ function Quiz() {
                 counter={counter}
                 increaseCounter={increaseCounter}
                 chosenQuiz={chosenQuiz}
+                signedInUsername={props.username}
             />
         </div>
     )
