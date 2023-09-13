@@ -1,5 +1,6 @@
 using AtlasFlare.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 var dbString = builder.Configuration.GetConnectionString("AtlasFlareDbConnection") ?? throw new InvalidOperationException("Connection string have never existed");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbString));
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+        .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 var app = builder.Build();
 

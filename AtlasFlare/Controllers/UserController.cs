@@ -81,7 +81,7 @@ namespace AtlasFlare.Controllers
 		{
 			if (quiz != null)
 			{
-				StudentModel? studentToUpdate = await context.Students.FirstOrDefaultAsync(s => s.UserId == id);
+				StudentModel? studentToUpdate = await context.Students.Include(s => s.HighScores).FirstOrDefaultAsync(s => s.UserId == id);
 
 				if (studentToUpdate != null)
 				{

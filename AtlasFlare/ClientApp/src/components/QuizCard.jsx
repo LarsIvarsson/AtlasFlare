@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, quizId })
+function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, chosenQuiz })
 {
     const currentFlag = flags[currentIndex];
     const currentContinent = continent.toUpperCase();
@@ -77,7 +77,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     }
 
     function saveHighScore(highScore) {
-        const quiz = { Difficulty: quizId, HighScore: highScore }
+        const quiz = { Difficulty: chosenQuiz, HighScore: highScore }
         fetch("user/1", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },

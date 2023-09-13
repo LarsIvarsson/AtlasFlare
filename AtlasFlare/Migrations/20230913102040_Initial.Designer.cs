@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AtlasFlare.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230912182528_Initial")]
+    [Migration("20230913102040_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
