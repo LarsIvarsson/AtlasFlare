@@ -76,6 +76,29 @@ namespace AtlasFlare.Controllers
 			return BadRequest();
 		}
 
+		[HttpPut("{id}")]
+		public async Task<IActionResult> Put(int id, [FromBody] QuizModel quiz)
+		{
+			if (quiz != null)
+			{
+				StudentModel? studentToUpdate = await context.Students.Include(s => s.HighScores).FirstOrDefaultAsync(s => s.UserId == id);
+
+				if (studentToUpdate != null)
+				{
+					if (studentToUpdate.HighScores == null)
+					{
+						studentToUpdate.HighScores = new List<QuizModel>();
+					}
+
+					studentToUpdate.HighScores.Add(quiz);
+					await context.SaveChangesAsync();
+					return Ok();
+				}
+			}
+
+			return BadRequest();
+		}
+
         [HttpGet("AllUsers")]
         public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
         {
