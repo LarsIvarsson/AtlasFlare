@@ -3,17 +3,18 @@
 
 .card-container {
     display:flex;
+    justify-content:center;
     margin-bottom:10px;
     height:70vh;
     align-items:center;
 }
 
 .menu-card {
-    width: 300px;
+    width: 200px;
     height: 380px;
     background-color: #F6F4EB;
     border: none;
-    margin-left: 40px;
+    margin: 15px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 10px;
@@ -23,7 +24,14 @@
 
 
 .menu-links {
-    padding-top:40px;
+    margin:0px;
+    display:flex;
+    justify-content:start;
+    align-items:center;
+    width:210px;
+    height:200px;
+    
+    
 }
 
 .quiz-link {
@@ -38,23 +46,25 @@
 
 .menu-ul {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+      justify-content:center;
+    align-items:start;
+    width: 210px;
 }
 
 .menu-li {
     list-style: none;
-    padding: 10px;
+    padding: 0px 0px 10px 0px;
     margin-bottom: 10px;
-    text-align: left;
-    margin-left: 5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     font-size: 30px;
     font-weight: 700;
     color: #91C8E4;
 }
 
-h2 {
-    font-weight: bold;
-    color: #4682A9
-}
 
 @keyframes beat {
     0% {
@@ -80,5 +90,15 @@ h2 {
 .quiz-link:hover .arrow {
     color: #4682A9;
     animation: beat 0.5s infinite;
+}
+
+.h2-header {
+    font-weight: bold;
+    color: #4682A9;
+    height:90px;
+    display:flex;
+    align-items:start;
+    justify-content:start;
+    
 }
 

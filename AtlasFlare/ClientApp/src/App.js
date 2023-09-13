@@ -43,7 +43,7 @@ function App() {
                 <Route path="/menu" element={<Menu />} />          
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
-                <Route path="/quiz/:continent" element={<Quiz />} />
+                <Route path="/quiz/:continent" element={<Quiz username={username} />} />
                 <Route path="/user/:name" element={<UserPage />} />
                 <Route path="/result" element={<Result /> } />
                 <Route path="*" element={<NotFound />} />

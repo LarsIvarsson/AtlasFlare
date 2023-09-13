@@ -75,7 +75,7 @@ function Register() {
                         <div className="message-div warning-register">
                             {errorMessage}
                         </div>
-                        <button id="enter-btn" type="submit">Enter</button>
+                        <button id="enter-btn" type="submit">REGISTER</button>
                     </form>
                     <div className="link-container">
                     </div>

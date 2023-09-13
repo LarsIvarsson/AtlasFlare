@@ -10,7 +10,17 @@ function Menu() {
         <div>            
             <div className="card-container">
                 <div className="menu-card">
-                    <h2>SOUTH AMERICA</h2>
+                    <h2 className="h2-header">NORTH AMERICA</h2>
+                    <div className="menu-links">
+                        <ul className="menu-ul">
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "2", chosenQuiz: 16 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "5", chosenQuiz: 17 }} >MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "7", chosenQuiz: 18 }} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="menu-card">
+                    <h2 className="h2-header">SOUTH AMERICA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/South%20America"} state={{ number: "6", chosenQuiz: 1 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
@@ -20,7 +30,7 @@ function Menu() {
                     </div>
                 </div>
                 <div className="menu-card">
-                    <h2>EUROPE</h2>
+                    <h2 className="h2-header">EUROPE</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/europe"} state={{ number: "10", chosenQuiz: 4 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
@@ -30,7 +40,7 @@ function Menu() {
                     </div>
                 </div>
                 <div className="menu-card">
-                    <h2>AFRICA</h2>
+                    <h2 className="h2-header">AFRICA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/africa"} state={{ number: "10", chosenQuiz: 7 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
@@ -40,7 +50,7 @@ function Menu() {
                     </div>
                 </div>
                 <div className="menu-card">
-                    <h2>ASIA</h2>
+                    <h2 className="h2-header">ASIA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/asia"} state={{ number: "10", chosenQuiz: 10 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
@@ -50,7 +60,7 @@ function Menu() {
                     </div>
                 </div>
                 <div className="menu-card">
-                    <h2>OCEANIA</h2>
+                    <h2 className="h2-header">OCEANIA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/oceania"} state={{ number: "5", chosenQuiz: 13 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
@@ -58,17 +68,7 @@ function Menu() {
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/oceania"} state={{ number: "14", chosenQuiz: 15 }} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                         </ul>
                     </div>
-                </div>
-                <div className="menu-card">
-                    <h2>NORTH AMERICA</h2>
-                    <div className="menu-links">
-                        <ul className="menu-ul">
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "5", chosenQuiz: 16}} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "10", chosenQuiz: 17}} >MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "23", chosenQuiz: 18}} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
-                        </ul>
-                    </div>
-                </div>
+              </div>  
             </div>
         </div>
     )
