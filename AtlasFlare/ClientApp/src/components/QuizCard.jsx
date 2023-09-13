@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCard.css';
 
-function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, chosenQuiz })
+function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, lastIndex, chosenQuiz, signedInUsername })
 {
     const currentFlag = flags[currentIndex];
     const currentContinent = continent.toUpperCase();
@@ -12,12 +12,19 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
     const [answersArray, setAnswersArray] = useState([]);
     const [finishedQuiz, setFinishedQuiz] = useState(false);
     const [difficultyArray, setDifficultyArray] = useState([]);
+    const [signedInUserId, setSignedInUserId] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         let slicedArray = flags.slice(0, lastIndex);
         setDifficultyArray(slicedArray);
     }, [flags, lastIndex])
+
+    useEffect(() => {
+        fetch(`user/${signedInUsername}/getId`)
+            .then((res) => res.json())
+            .then(data => setSignedInUserId(data))
+    }, [signedInUsername]);
 
     function handleClick(e) {
         document.getElementById("btn-next").classList.remove("grayed-out-btn");
@@ -65,7 +72,6 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
 
         difficultyArray.map((f, index) => {
             if (difficultyArray[index].countryName === answersArray[index]) {
-                console.log(highScore);
                 return highScore++;
             }
             else {
@@ -78,7 +84,7 @@ function QuizCard({ flags, continent, currentIndex, altArray, setCurrentIndex, l
 
     function saveHighScore(highScore) {
         const quiz = { Difficulty: chosenQuiz, HighScore: highScore }
-        fetch("user/1", {
+        fetch(`user/${signedInUserId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(quiz)
