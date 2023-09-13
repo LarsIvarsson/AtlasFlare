@@ -4,12 +4,12 @@ import QuizCard from '../QuizCard';
 
 function Quiz(props) {
     const { continent } = useParams();
-    const [flags, setFlags] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [altArray, setAltArray] = useState([]);
-    // Number is a state from the link-tag,
-    // not used atm but will implement later to set quiz difficulty
     const { number, chosenQuiz } = useLocation().state;
+    const [flags, setFlags] = useState([]);
+    const [altArray, setAltArray] = useState([]);
+    const [usedFlags, setUsedFlags] = useState([]);
+    const [currentFlag, setCurrentFlag] = useState(null);
+    const [counter, setCounter] = useState(1);
 
     useEffect(() => {
         fetch(`flags/${continent}`)
@@ -17,40 +17,58 @@ function Quiz(props) {
             .then(data => setFlags(data));
     }, [continent]);
 
-    // Generate random flags and alternatives whenever currentIndex changes
     useEffect(() => {
-        if (flags.length > 0) {
-            const currentFlag = flags[currentIndex];
-            let tempArray1 = [];
-            let tempArray2 = [];
-            let altArray1Copy = [];
-            let altArray2Copy = [];
+        if (flags.length === 0 || usedFlags.length >= flags.length) {
+            return;
+        }
 
-            altArray1Copy.push(currentFlag);
-            tempArray1.push(currentIndex);
+        let availableFlags = [...flags];
 
-            while (altArray1Copy.length < 4) {
+        usedFlags.forEach(u => {
+            availableFlags = availableFlags.filter(f => f.flagId !== u.flagId);
+        });
+
+        let correctFlagIndex = Math.floor(Math.random() * availableFlags.length);
+        const correctFlag = availableFlags[correctFlagIndex];
+        setCurrentFlag(correctFlag);
+
+        if (correctFlag !== null && flags.length > 0) {
+            let usedIndexArray1 = [];
+            let usedIndexArray2 = [];
+            let flagArray1 = [];
+            let flagArray2 = [];
+
+            usedIndexArray1.push(correctFlagIndex);
+            flagArray1.push(correctFlag);
+
+            while (flagArray1.length < 4) {
                 const randomIndex = Math.floor(Math.random() * flags.length);
 
-                if (randomIndex !== currentIndex && !tempArray1.includes(randomIndex)) {
-                    tempArray1.push(randomIndex);
-                    altArray1Copy.push(flags[randomIndex]);
+                if (randomIndex !== correctFlagIndex && !usedIndexArray1.includes(randomIndex) && !flagArray1.includes(flags[randomIndex])) {
+                    usedIndexArray1.push(randomIndex);
+                    flagArray1.push(flags[randomIndex]);
                 }
             }
 
-            while (altArray2Copy.length < 4) {
+            while (flagArray2.length < 4) {
                 const randomIndex = Math.floor(Math.random() * 4);
 
-                if (!tempArray2.includes(randomIndex)) {
-                    tempArray2.push(randomIndex);
-                    altArray2Copy.push(altArray1Copy[randomIndex]);
+                if (!usedIndexArray2.includes(randomIndex)) {
+                    usedIndexArray2.push(randomIndex);
+                    flagArray2.push(flagArray1[randomIndex]);
                 }
             }
-            setAltArray(altArray2Copy);
+            setAltArray(flagArray2);
         }
-    }, [currentIndex, flags]);
+    }, [flags, counter]);
 
-    if (!continent || !flags || !altArray || !number) {
+    function increaseCounter() {
+        const updatedUsedFlags = [...usedFlags, currentFlag];
+        setUsedFlags(updatedUsedFlags);
+        setCounter(counter + 1);
+    }
+
+    if (!continent || !flags || !altArray || !number || !currentFlag) {
         return <div>Loading...</div>
     }
 
@@ -59,10 +77,11 @@ function Quiz(props) {
             <QuizCard
                 flags={flags}
                 continent={continent}
-                currentIndex={currentIndex}
                 lastIndex={number}
                 altArray={altArray}
-                setCurrentIndex={setCurrentIndex}
+                currentFlag={currentFlag}
+                counter={counter}
+                increaseCounter={increaseCounter}
                 chosenQuiz={chosenQuiz}
                 signedInUsername={props.username}
             />
