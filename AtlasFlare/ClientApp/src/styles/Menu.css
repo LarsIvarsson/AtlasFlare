@@ -10,7 +10,7 @@
 }
 
 .menu-card {
-    width: 200px;
+    width: 220px;
     height: 380px;
     background-color: #F6F4EB;
     border: none;
@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
       justify-content:center;
-    align-items:start;
+    /*align-items:start;*/
     width: 210px;
 }
 
