@@ -2,7 +2,7 @@
 import { useParams, useLocation } from 'react-router-dom';
 import QuizCard from '../QuizCard';
 
-function Quiz() {
+function Quiz(props) {
     const { continent } = useParams();
     const [flags, setFlags] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,6 +64,7 @@ function Quiz() {
                 altArray={altArray}
                 setCurrentIndex={setCurrentIndex}
                 chosenQuiz={chosenQuiz}
+                signedInUsername={props.username}
             />
         </div>
     )

@@ -46,7 +46,6 @@ function UserPage() {
             setCurrentUser(foundUser);
 
         }
-        console.log(foundUser, currentUser);
     }, [allUsers, name, currentUser]);
 
 
