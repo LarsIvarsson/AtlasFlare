@@ -1,5 +1,5 @@
 ﻿.register-container {
-    height: 425px;
+    height: 475px;
     width: 500px;
     background-color: #F6F4EB;
     padding: 30px;
@@ -71,7 +71,7 @@ label {
     justify-content: center;
 }
 
-#name-input, #password-input {
+#name-input, #password-input, #confirm-password {
     width: 100%;
     padding: 10px;
     margin-bottom: 0px;

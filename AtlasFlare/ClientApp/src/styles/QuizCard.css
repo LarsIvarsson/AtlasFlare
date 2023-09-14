@@ -89,6 +89,10 @@ h1 {
     font-size: 14px;
 }
 
+#btn-next:hover{
+    background-color: green;
+}
+
 .answer-container{
     display:flex;
     flex-direction: column;
