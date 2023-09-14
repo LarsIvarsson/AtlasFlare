@@ -15,16 +15,21 @@ import oceania from '../../images/oceania-removebg-preview.png'
 
 function Menu(props) {
 
+    const uppercaseName = props.username.toUpperCase();
+
     console.log(props.username);
 
     return (
         <div>
-            <div className="greeting-username">
-                <h3>Welcome {props.username}!</h3>
+            <div className="greetings">
+                <div className="menu-username">
+                    <h3 id="h3-menu">WELCOME {uppercaseName}!</h3>
+                </div>
+                <div className="menu-container">
+                    <h1 id="h1-menu">PLEASE SELECT A QUIZ!</h1>
+                </div>
             </div>
-            <div className="greeting-container">
-                <h1>Please chooze quez, soviet style.</h1>
-            </div>
+            
             <div className="card-container">
                 <div className="menu-card">
                     <h2 className="h2-header">NORTH AMERICA</h2>

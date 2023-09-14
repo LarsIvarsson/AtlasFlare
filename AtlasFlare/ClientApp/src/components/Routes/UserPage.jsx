@@ -112,7 +112,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz16 ? highScoreForQuiz16.highScore : "N/A"}
+                                EASY: {highScoreForQuiz16 ? highScoreForQuiz16.highScore : ""}
                                 {highScoreForQuiz16  && ( 
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -143,7 +143,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz17 ? highScoreForQuiz17.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz17 ? highScoreForQuiz17.highScore : ""}
                                 {highScoreForQuiz17 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -174,7 +174,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz18 ? highScoreForQuiz18.highScore : "N/A"}
+                                HARD: {highScoreForQuiz18 ? highScoreForQuiz18.highScore : ""}
                                 {highScoreForQuiz18 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -214,7 +214,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz1 ? highScoreForQuiz1.highScore : "N/A"}
+                                EASY: {highScoreForQuiz1 ? highScoreForQuiz1.highScore : ""}
                                 {highScoreForQuiz1 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -245,7 +245,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz2 ? highScoreForQuiz2.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz2 ? highScoreForQuiz2.highScore : ""}
                                 {highScoreForQuiz2 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -276,7 +276,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz3 ? highScoreForQuiz3.highScore : "N/A"}
+                                HARD: {highScoreForQuiz3 ? highScoreForQuiz3.highScore : ""}
                                 {highScoreForQuiz3 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -316,7 +316,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz4 ? highScoreForQuiz4.highScore : "N/A"}
+                                EASY: {highScoreForQuiz4 ? highScoreForQuiz4.highScore : ""}
                                 {highScoreForQuiz4 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -347,7 +347,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz5 ? highScoreForQuiz5.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz5 ? highScoreForQuiz5.highScore : ""}
                                 {highScoreForQuiz5 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -378,7 +378,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz6 ? highScoreForQuiz6.highScore : "N/A"}
+                                HARD: {highScoreForQuiz6 ? highScoreForQuiz6.highScore : ""}
                                 {highScoreForQuiz6 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -418,7 +418,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz7 ? highScoreForQuiz7.highScore : "N/A"}
+                                EASY: {highScoreForQuiz7 ? highScoreForQuiz7.highScore : ""}
                                 {highScoreForQuiz7 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -449,7 +449,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz8 ? highScoreForQuiz8.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz8 ? highScoreForQuiz8.highScore : ""}
                                 {highScoreForQuiz8 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -480,7 +480,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz9 ? highScoreForQuiz9.highScore : "N/A"}
+                                HARD: {highScoreForQuiz9 ? highScoreForQuiz9.highScore : ""}
                                 {highScoreForQuiz9 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -520,7 +520,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz10 ? highScoreForQuiz10.highScore : "N/A"}
+                                EASY: {highScoreForQuiz10 ? highScoreForQuiz10.highScore : ""}
                                 {highScoreForQuiz10 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -551,7 +551,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz11 ? highScoreForQuiz11.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz11 ? highScoreForQuiz11.highScore : ""}
                                 {highScoreForQuiz11 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -582,7 +582,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz12 ? highScoreForQuiz12.highScore : "N/A"}
+                                HARD: {highScoreForQuiz12 ? highScoreForQuiz12.highScore : ""}
                                 {highScoreForQuiz12 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -622,7 +622,7 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz13 ? highScoreForQuiz13.highScore : "N/A"}
+                                EASY: {highScoreForQuiz13 ? highScoreForQuiz13.highScore : ""}
                                 {highScoreForQuiz13 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -653,7 +653,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz14 ? highScoreForQuiz14.highScore : "N/A"}
+                                MEDIUM: {highScoreForQuiz14 ? highScoreForQuiz14.highScore : ""}
                                 {highScoreForQuiz14 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -684,7 +684,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz15 ? highScoreForQuiz15.highScore : "N/A"}
+                                HARD: {highScoreForQuiz15 ? highScoreForQuiz15.highScore : ""}
                                 {highScoreForQuiz15 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
