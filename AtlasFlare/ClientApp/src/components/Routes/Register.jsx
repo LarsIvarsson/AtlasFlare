@@ -46,7 +46,7 @@ function Register() {
     }
 
     return (
-        <div className="content">
+        <div className="reglog-content">
             <div className="register-container">
                 <div className="input-display">
                     <div className="successmessage-div success-register">{successMessage}</div>
