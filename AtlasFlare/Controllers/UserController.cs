@@ -16,6 +16,7 @@ namespace AtlasFlare.Controllers
 			this.context = context;
 		}
 
+		// get userId
 		[HttpGet("{username}/getId")]
 		public async Task<int> Get(string username)
 		{
@@ -24,7 +25,6 @@ namespace AtlasFlare.Controllers
 			{
 				return studentModel.UserId;
 			}
-
 			return 0;
 		}
 
@@ -57,7 +57,20 @@ namespace AtlasFlare.Controllers
 			return BadRequest();
 		}
 
-		// Create new user
+		// get all users
+		[HttpGet("AllUsers")]
+		public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
+		{
+			List<StudentModel> users = await context.Students.Include(s => s.HighScores).ToListAsync();
+
+			if (users.Count == 0)
+			{
+				return NotFound();
+			}
+			return Ok(users);
+		}
+
+		// create new user
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] StudentModel newUser)
 		{
@@ -73,10 +86,10 @@ namespace AtlasFlare.Controllers
 					return Ok();
 				}
 			}
-
 			return BadRequest();
 		}
 
+		// update high score
 		[HttpPut("{id}")]
 		public async Task<IActionResult> Put(int id, [FromBody] QuizModel quiz)
 		{
@@ -95,36 +108,18 @@ namespace AtlasFlare.Controllers
 
 					if (highScoreToUpdate == null)
 					{
-                        studentToUpdate.HighScores.Add(quiz);
-                        await context.SaveChangesAsync();
-                    }
-
+						studentToUpdate.HighScores.Add(quiz);
+						await context.SaveChangesAsync();
+					}
 					else if (highScoreToUpdate.HighScore < quiz.HighScore)
 					{
 						highScoreToUpdate.HighScore = quiz.HighScore;
 						await context.SaveChangesAsync();
 					}
-
 					return Ok();
 				}
 			}
-
 			return BadRequest();
 		}
-
-        [HttpGet("AllUsers")]
-        public async Task<ActionResult<IEnumerable<StudentModel>>> GetAllUsers()
-        {
-            // Retrieve all users from the database
-            List<StudentModel> users = await context.Students.Include(s=>s.HighScores).ToListAsync();
-
-            if (users.Count == 0)
-            {
-                return NotFound(); // No users found
-            }
-
-            // Return the array of users
-            return Ok(users);
-        }
-    }
+	}
 }
