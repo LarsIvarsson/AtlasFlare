@@ -88,7 +88,7 @@ function UserPage() {
     const maxScoreForQuiz13 = 5;
     const maxScoreForQuiz14 = 8;
     const maxScoreForQuiz15 = 14;
-    const maxScoreForQuiz16 = 2;
+    const maxScoreForQuiz16 = 4;
     const maxScoreForQuiz17 = 5;
     const maxScoreForQuiz18 = 7;
 
