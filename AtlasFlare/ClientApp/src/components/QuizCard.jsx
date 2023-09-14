@@ -47,11 +47,12 @@ function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter,
     }
 
     function seeResult() {
-        calculateHighScore();
+        let highScore = calculateHighScore();
+        console.log(highScore);
 
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
-        navigate("/result", { state: { facitArray } });
+        navigate("/result", { state: { facitArray, highScore } });
     }
   
     function handleNextClick() {
@@ -78,6 +79,7 @@ function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter,
             }
         });
         saveHighScore(highScore);
+        return highScore;
     }
 
     function saveHighScore(highScore) {

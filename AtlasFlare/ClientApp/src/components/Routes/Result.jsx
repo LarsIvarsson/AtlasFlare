@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Result() {
     const [resultsArray, setResultsArray] = useState([]);
     const [arrays, setArrays] = useState(false);
-    const { facitArray } = useLocation().state;
+    const { facitArray, highScore } = useLocation().state;
     const [scrollTop, setScrollTop] = useState(0);
 
     const handleScroll = event => {
@@ -29,7 +29,7 @@ function Result() {
         <div>
             <div className="quiz-content">
                 <div className="info-card">
-                    <p id="continent-name"> RESULT: ? / {facitArray.length} </p>
+                    <p id="continent-name"> RESULT: {highScore}/{facitArray.length} </p>
                 </div>
                 <div className="quiz-card">
                     <div className="result-container" style={{
