@@ -56,7 +56,7 @@ function Login(props) {
 
     return (
         <div>
-            <div className="content">
+            <div className="reglog-content">
                 <div className="card-login">
                     <div className="form-container">
                         <div className="successmessage-div success-register"></div>

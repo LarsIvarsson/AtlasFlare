@@ -20,10 +20,20 @@ body {
     padding: 20px;
     align-items: center;
     justify-content: center;
-    /*height:100vh;*/
+    height:100%;
+    width:800px;
+}
+
+.reglog-content {
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .card {
+    /*display:flex;*/
     max-width: 800px;
     max-height: 350px;
     align-items: center;
@@ -33,21 +43,35 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.content-card{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:70vh;
+
+}
+
 
 #btn1,
 #btn2{
-    margin-top:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:45px 15px 45px 15px;
+    width:200px;
+    height:100px;
+/*    margin-top:50px;
     margin-bottom:50px;
 
     margin-left: 20px;
     margin-right: 20px;
     max-height: 200px;
-    max-width: 280px;
+    max-width: 280px;*/
     border: none;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 
@@ -56,6 +80,7 @@ body {
     display:flex;
     flex-direction:row;
     justify-content:center;
+    margin:0px 40px;
 }
 
 #btn1 {
