@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from 'react-router-dom';
 
-function Result() {
+function Result(props) {
     const [resultsArray, setResultsArray] = useState([]);
     const [arrays, setArrays] = useState(false);
     const { facitArray, highScore } = useLocation().state;
@@ -30,6 +31,9 @@ function Result() {
             <div className="quiz-content">
                 <div className="info-card">
                     <p id="continent-name"> RESULT: {highScore}/{facitArray.length} </p>
+                    <Link to={`/user/${props.username}` }>
+                        <button id="highScores">See Highscores</button>
+                    </Link>                   
                 </div>
                 <div className="quiz-card">
                     <div className="result-container" style={{

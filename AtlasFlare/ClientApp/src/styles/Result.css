@@ -45,3 +45,19 @@
     color:green;
     font-size: 30px;
 }
+
+#highScores {
+    margin-right: 10px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: #AACB73;
+    color: #F6F4EB;
+    font-weight: 500;
+    font-size: 16px;
+    
+}
+
+#highScores:hover{
+    background-color:green;
+}
