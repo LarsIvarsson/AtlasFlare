@@ -45,7 +45,7 @@ function App() {
                 <Route path="/register" element={<Register /> } />
                 <Route path="/quiz/:continent" element={<Quiz username={username} />} />
                 <Route path="/user/:name" element={<UserPage />} />
-                <Route path="/result" element={<Result /> } />
+                <Route path="/result" element={<Result username={username} /> } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>

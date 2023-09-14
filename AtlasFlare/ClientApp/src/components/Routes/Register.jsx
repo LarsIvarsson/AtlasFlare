@@ -13,6 +13,8 @@ function Register() {
     });
     const [successMessage, setSuccessMessage] = useState();
     const [errorMessage, setErrorMessage] = useState();
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordMessage, setConfirmPasswordMessage] = useState("");
     const navigate = useNavigate();
 
     function delay(time) {
@@ -20,29 +22,40 @@ function Register() {
     }
 
     async function onSubmit() {
-        setErrorMessage("");
-        const student = { Username: getValues("userName"), Password: getValues("password") };
+        setConfirmPasswordMessage("");
 
-        const response = await fetch("user", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(student),
-        });
+        if (getValues("password").trim() === confirmPassword.trim()) {
+            setErrorMessage("");
+            const student = { Username: getValues("userName"), Password: getValues("password") };
 
-        if (response.ok) {
-            //Show success message
-            setSuccessMessage("Welcome to the Atlas Flare family!");
-            delay(2000).then(() => navigate("/login"));
+            const response = await fetch("user", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(student),
+            });
+
+            if (response.ok) {
+                //Show success message
+                setSuccessMessage("Welcome to the Atlas Flare family!");
+                delay(2000).then(() => navigate("/login"));
+            }
+
+            else {
+                //Show error message
+                setErrorMessage("Username is already in use...");
+            }
         }
-
         else {
-            //Show error message
-            setErrorMessage("Username is already in use...");
+            setConfirmPasswordMessage("Passwords does not match!");
         }
     }
 
     function onError() {
+        console.log("Input could not be submitted, please try again.")
+    }
 
+    function handleConfirmPassword(e) {
+        setConfirmPassword(e.target.value);
     }
 
     return (
@@ -71,6 +84,11 @@ function Register() {
                         </input>
                         <div className="message-div warning-register">
                             {errors.password?.message}
+                        </div>
+                        <label htmlFor="confirm-password">CONFIRM PASSWORD</label>
+                        <input id="confirm-password" type="password" placeholder="Confirm password" onChange={handleConfirmPassword} value={confirmPassword}></input>
+                        <div className="message-div warning-register">
+                            {confirmPasswordMessage}
                         </div>
                         <div className="message-div warning-register">
                             {errorMessage}
