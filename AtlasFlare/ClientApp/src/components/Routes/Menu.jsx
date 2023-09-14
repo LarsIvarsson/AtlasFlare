@@ -22,7 +22,7 @@ function Menu() {
                     <h2 className="h2-header">NORTH AMERICA</h2>
                     <div className="menu-links">
                         <ul className="menu-ul">
-                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "2", chosenQuiz: 16 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
+                            <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "4", chosenQuiz: 16 }} >EASY <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "5", chosenQuiz: 17 }} >MEDIUM <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                             <li className="menu-li"><Link className="quiz-link" to={"/quiz/North%20America"} state={{ number: "7", chosenQuiz: 18 }} >HARD <FontAwesomeIcon icon={faChevronRight} className="arrow" /></Link></li>
                         </ul>

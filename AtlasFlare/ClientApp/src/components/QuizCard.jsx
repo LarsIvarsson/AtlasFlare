@@ -48,7 +48,6 @@ function QuizCard({ flags, continent, altArray, lastIndex, currentFlag, counter,
 
     function seeResult() {
         let highScore = calculateHighScore();
-        console.log(highScore);
 
         let answerString = JSON.stringify(answersArray);
         localStorage.setItem("result", answerString);
