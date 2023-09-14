@@ -13,10 +13,18 @@ import oceania from '../../images/oceania-removebg-preview.png'
 //import logo from '../images/atlasflagga.png';
 
 
-function Menu() {
+function Menu(props) {
+
+    console.log(props.username);
 
     return (
-        <div>            
+        <div>
+            <div className="greeting-username">
+                <h3>Welcome {props.username}!</h3>
+            </div>
+            <div className="greeting-container">
+                <h1>Please chooze quez, soviet style.</h1>
+            </div>
             <div className="card-container">
                 <div className="menu-card">
                     <h2 className="h2-header">NORTH AMERICA</h2>

@@ -40,7 +40,7 @@ function App() {
             <Navbar changeSignedIn={changeSignedIn} signedIn={signedIn} username={username} />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/menu" element={<Menu />} />          
+                <Route path="/menu" element={<Menu username={username} />} />          
                 <Route path="/login" element={<Login changeSignedIn={changeSignedIn} />} />
                 <Route path="/register" element={<Register /> } />
                 <Route path="/quiz/:continent" element={<Quiz username={username} />} />
