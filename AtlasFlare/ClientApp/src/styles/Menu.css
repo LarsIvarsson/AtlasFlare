@@ -2,14 +2,16 @@
 }
 
 .card-container {
-    display:flex;
-    justify-content:center;
-    margin-bottom:10px;
-    height:50vh;
-    align-items:center;
+    
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    /*height:50vh;*/
+    align-items: center;
 }
 
 .menu-card {
+    
     width: 220px;
     height: 460px;
     background-color: #F6F4EB;
@@ -139,15 +141,17 @@
 
 
 .greetings{
-    
+    margin-bottom:20px;
     height:160px;
     padding-left: 225px;
 }
 
 
 .menu-username {
-    display: block;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*display: block;*/
     padding: 15px;
     max-width: fit-content;
     margin-bottom: 15px;

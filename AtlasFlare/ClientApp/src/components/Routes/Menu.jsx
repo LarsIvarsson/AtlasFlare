@@ -26,7 +26,7 @@ function Menu(props) {
                     <h3 id="h3-menu">WELCOME {uppercaseName}!</h3>
                 </div>
                 <div className="menu-container">
-                    <h1 id="h1-menu">PLEASE SELECT A QUIZ!</h1>
+                    <h1 id="h1-menu">IGNITE YOUR PASSION FOR GEOGRAPHY, BY CHOOSING A QUIZ!</h1>
                 </div>
             </div>
             
