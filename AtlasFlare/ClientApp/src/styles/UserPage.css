@@ -71,7 +71,7 @@ body {
 }
 
 .gold-medal {
-    color: gold; 
+    color: gold;
 }
 
 .silver-medal {
@@ -92,7 +92,7 @@ body {
     display:flex;   
     justify-content:space-between;
     /*align-items:center;*/
-
+    font-size: 25px !important;
      
 }
 
@@ -108,4 +108,13 @@ body {
     padding-top: 20px;
 }
 
+.menu-card-result > svg {
+    margin-left: 10px;
+}
 
+hr {
+    color: #4682A9;
+    background-color: #4682A9;
+    height: 2px;
+    opacity: 1;
+}
