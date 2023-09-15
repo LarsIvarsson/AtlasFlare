@@ -107,12 +107,12 @@ function UserPage() {
             <div className="card-container">
                 <div className="menu-card-result">                   
                         <h2 className="h2-header">NORTH AMERICA</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <br />
+                    <h3 id="hs">HIGH SCORES</h3>
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz16 ? highScoreForQuiz16.highScore : ""}
+                                EASY: {highScoreForQuiz16 ? `${highScoreForQuiz16.highScore}/${maxScoreForQuiz16}` : ""}
                                 {highScoreForQuiz16  && ( 
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -143,7 +143,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz17 ? highScoreForQuiz17.highScore : ""}
+                                MEDIUM: {highScoreForQuiz17 ? `${highScoreForQuiz17.highScore}/${maxScoreForQuiz17}` : ""}
                                 {highScoreForQuiz17 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -174,7 +174,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz18 ? highScoreForQuiz18.highScore : ""}
+                                HARD: {highScoreForQuiz18 ? `${highScoreForQuiz18.highScore}/${maxScoreForQuiz18}` : ""}
                                 {highScoreForQuiz18 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -209,12 +209,12 @@ function UserPage() {
                 </div>
                 <div className="menu-card-result">                    
                         <h2 className="h2-header">SOUTH AMERICA</h2>
-                    <h3 id="hs" >HIGH SCORE</h3>
-                    <br />                               
+                    <h3 id="hs" >HIGH SCORES</h3>
+                    <hr />                               
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz1 ? highScoreForQuiz1.highScore : ""}
+                                EASY: {highScoreForQuiz1 ? `${highScoreForQuiz1.highScore}/${maxScoreForQuiz1}` : ""}
                                 {highScoreForQuiz1 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -245,7 +245,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz2 ? highScoreForQuiz2.highScore : ""}
+                                MEDIUM: {highScoreForQuiz2 ? `${highScoreForQuiz2.highScore}/${maxScoreForQuiz2}` : ""}
                                 {highScoreForQuiz2 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -276,7 +276,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz3 ? highScoreForQuiz3.highScore : ""}
+                                HARD: {highScoreForQuiz3 ? `${highScoreForQuiz3.highScore}/${maxScoreForQuiz3}` : ""}
                                 {highScoreForQuiz3 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -311,12 +311,13 @@ function UserPage() {
                 </div>
                 <div className="menu-card-result">
                         <h2 className="h2-header">EUROPE</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <br />
+                    <h3 id="hs">HIGH SCORES</h3>
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz4 ? highScoreForQuiz4.highScore : ""}
+                                EASY: {highScoreForQuiz4 ? `${highScoreForQuiz4.highScore}/${maxScoreForQuiz4}`
+                                : ""}
                                 {highScoreForQuiz4 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -347,7 +348,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz5 ? highScoreForQuiz5.highScore : ""}
+                                MEDIUM: {highScoreForQuiz5 ? `${highScoreForQuiz5.highScore}/${maxScoreForQuiz5}` : ""}
                                 {highScoreForQuiz5 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -378,7 +379,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz6 ? highScoreForQuiz6.highScore : ""}
+                                HARD: {highScoreForQuiz6 ? `${highScoreForQuiz6.highScore}/${maxScoreForQuiz6}` : ""}
                                 {highScoreForQuiz6 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -413,12 +414,12 @@ function UserPage() {
                 </div>
                 <div className="menu-card-result">
                     <h2 className="h2-header">AFRICA</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <br />
+                    <h3 id="hs">HIGH SCORES</h3>
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz7 ? highScoreForQuiz7.highScore : ""}
+                                EASY: {highScoreForQuiz7 ? `${highScoreForQuiz7.highScore}/${maxScoreForQuiz7}` : ""}
                                 {highScoreForQuiz7 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -449,7 +450,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz8 ? highScoreForQuiz8.highScore : ""}
+                                MEDIUM: {highScoreForQuiz8 ? `${highScoreForQuiz8.highScore}/${maxScoreForQuiz8}` : ""}
                                 {highScoreForQuiz8 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -480,7 +481,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz9 ? highScoreForQuiz9.highScore : ""}
+                                HARD: {highScoreForQuiz9 ? `${highScoreForQuiz9.highScore}/${maxScoreForQuiz9}` : ""}
                                 {highScoreForQuiz9 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -515,12 +516,12 @@ function UserPage() {
                 </div>
                 <div className="menu-card-result">
                     <h2 className="h2-header">ASIA</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <br />
+                    <h3 id="hs">HIGH SCORES</h3>
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz10 ? highScoreForQuiz10.highScore : ""}
+                                EASY: {highScoreForQuiz10 ? `${highScoreForQuiz10.highScore}/${maxScoreForQuiz10}` : ""}
                                 {highScoreForQuiz10 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -551,7 +552,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz11 ? highScoreForQuiz11.highScore : ""}
+                                MEDIUM: {highScoreForQuiz11 ? `${highScoreForQuiz11.highScore}/${maxScoreForQuiz11}` : ""}
                                 {highScoreForQuiz11 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -582,7 +583,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz12 ? highScoreForQuiz12.highScore : ""}
+                                HARD: {highScoreForQuiz12 ? `${highScoreForQuiz12.highScore}/${maxScoreForQuiz12}` : ""}
                                 {highScoreForQuiz12 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -617,12 +618,12 @@ function UserPage() {
                 </div>
                 <div className="menu-card-result">
                     <h2 className="h2-header">OCEANIA</h2>
-                    <h3 id="hs">HIGH SCORE</h3>
-                    <br />
+                    <h3 id="hs">HIGH SCORES</h3>
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz13 ? highScoreForQuiz13.highScore : ""}
+                                EASY: {highScoreForQuiz13 ? `${highScoreForQuiz13.highScore}/${maxScoreForQuiz13}` : ""}
                                 {highScoreForQuiz13 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -653,7 +654,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz14 ? highScoreForQuiz14.highScore : ""}
+                                MEDIUM: {highScoreForQuiz14 ? `${highScoreForQuiz14.highScore}/${maxScoreForQuiz14}` : ""}
                                 {highScoreForQuiz14 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -684,7 +685,7 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz15 ? highScoreForQuiz15.highScore : ""}
+                                HARD: {highScoreForQuiz15 ? `${highScoreForQuiz15.highScore}/${maxScoreForQuiz15}` : ""}
                                 {highScoreForQuiz15 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
