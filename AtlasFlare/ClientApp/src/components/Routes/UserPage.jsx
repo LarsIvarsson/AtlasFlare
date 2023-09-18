@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import "../../styles/UserPage.css";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -112,7 +112,8 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz16 ? `${highScoreForQuiz16.highScore}/${maxScoreForQuiz16}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/North%20America"} state={{ number: "4", chosenQuiz: 16 }} >
+                                EASY:</Link> {highScoreForQuiz16 ? `${highScoreForQuiz16.highScore}/${maxScoreForQuiz16}` : ""}
                                 {highScoreForQuiz16  && ( 
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -143,7 +144,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz17 ? `${highScoreForQuiz17.highScore}/${maxScoreForQuiz17}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/North%20America"} state={{ number: "5", chosenQuiz: 17 }} >
+                                MEDIUM: </Link> {highScoreForQuiz17 ? `${highScoreForQuiz17.highScore}/${maxScoreForQuiz17}` : ""}
                                 {highScoreForQuiz17 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -174,7 +176,9 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz18 ? `${highScoreForQuiz18.highScore}/${maxScoreForQuiz18}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/North%20America"} state={{ number: "7", chosenQuiz: 18 }} >
+                                HARD: </Link> {highScoreForQuiz18 ? `${highScoreForQuiz18.highScore}/${maxScoreForQuiz18}` : ""}
+
                                 {highScoreForQuiz18 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -210,11 +214,12 @@ function UserPage() {
                 <div className="menu-card-result">                    
                         <h2 className="h2-header">SOUTH AMERICA</h2>
                     <h3 id="hs" >HIGH SCORES</h3>
-                    <hr />                               
+                    <hr />
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz1 ? `${highScoreForQuiz1.highScore}/${maxScoreForQuiz1}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/South%20America"} state={{ number: "6", chosenQuiz: 1 }} >
+                                EASY: </Link> {highScoreForQuiz1 ? `${highScoreForQuiz1.highScore}/${maxScoreForQuiz1}` : ""}
                                 {highScoreForQuiz1 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -245,7 +250,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz2 ? `${highScoreForQuiz2.highScore}/${maxScoreForQuiz2}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/South%20America"} state={{ number: "10", chosenQuiz: 2 }} >
+                                MEDIUM: </Link> {highScoreForQuiz2 ? `${highScoreForQuiz2.highScore}/${maxScoreForQuiz2}` : ""}
                                 {highScoreForQuiz2 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -276,7 +282,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz3 ? `${highScoreForQuiz3.highScore}/${maxScoreForQuiz3}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/South%20America"} state={{ number: "14", chosenQuiz: 3 }} >
+                                HARD: </Link> {highScoreForQuiz3 ? `${highScoreForQuiz3.highScore}/${maxScoreForQuiz3}` : ""}
                                 {highScoreForQuiz3 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -316,7 +323,8 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz4 ? `${highScoreForQuiz4.highScore}/${maxScoreForQuiz4}`
+                                <Link className="quiz-link link-size" to={"/quiz/europe"} state={{ number: "10", chosenQuiz: 4 }} >
+                                EASY: </Link> {highScoreForQuiz4 ? `${highScoreForQuiz4.highScore}/${maxScoreForQuiz4}`
                                 : ""}
                                 {highScoreForQuiz4 && (
                                     <FontAwesomeIcon
@@ -348,7 +356,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz5 ? `${highScoreForQuiz5.highScore}/${maxScoreForQuiz5}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/europe"} state={{ number: "20", chosenQuiz: 5 }} >
+                                MEDIUM: </Link> {highScoreForQuiz5 ? `${highScoreForQuiz5.highScore}/${maxScoreForQuiz5}` : ""}
                                 {highScoreForQuiz5 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -379,7 +388,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz6 ? `${highScoreForQuiz6.highScore}/${maxScoreForQuiz6}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/europe"} state={{ number: "53", chosenQuiz: 6 }} >
+                                HARD: </Link> {highScoreForQuiz6 ? `${highScoreForQuiz6.highScore}/${maxScoreForQuiz6}` : ""}
                                 {highScoreForQuiz6 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -419,7 +429,8 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz7 ? `${highScoreForQuiz7.highScore}/${maxScoreForQuiz7}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/africa"} state={{ number: "10", chosenQuiz: 7 }} >
+                                EASY: </Link> {highScoreForQuiz7 ? `${highScoreForQuiz7.highScore}/${maxScoreForQuiz7}` : ""}
                                 {highScoreForQuiz7 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -450,7 +461,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz8 ? `${highScoreForQuiz8.highScore}/${maxScoreForQuiz8}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/africa"} state={{ number: "25", chosenQuiz: 8 }} >
+                                MEDIUM: </Link> {highScoreForQuiz8 ? `${highScoreForQuiz8.highScore}/${maxScoreForQuiz8}` : ""}
                                 {highScoreForQuiz8 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -481,7 +493,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz9 ? `${highScoreForQuiz9.highScore}/${maxScoreForQuiz9}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/africa"} state={{ number: "54", chosenQuiz: 9 }} >
+                                HARD: </Link> {highScoreForQuiz9 ? `${highScoreForQuiz9.highScore}/${maxScoreForQuiz9}` : ""}
                                 {highScoreForQuiz9 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -521,7 +534,8 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz10 ? `${highScoreForQuiz10.highScore}/${maxScoreForQuiz10}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/asia"} state={{ number: "10", chosenQuiz: 10 }} >
+                                EASY: </Link> {highScoreForQuiz10 ? `${highScoreForQuiz10.highScore}/${maxScoreForQuiz10}` : ""}
                                 {highScoreForQuiz10 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -552,7 +566,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz11 ? `${highScoreForQuiz11.highScore}/${maxScoreForQuiz11}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/asia"} state={{ number: "20", chosenQuiz: 11 }} >
+                                MEDIUM: </Link> {highScoreForQuiz11 ? `${highScoreForQuiz11.highScore}/${maxScoreForQuiz11}` : ""}
                                 {highScoreForQuiz11 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -583,7 +598,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz12 ? `${highScoreForQuiz12.highScore}/${maxScoreForQuiz12}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/asia"} state={{ number: "48", chosenQuiz: 12 }} >
+                                HARD: </Link> {highScoreForQuiz12 ? `${highScoreForQuiz12.highScore}/${maxScoreForQuiz12}` : ""}
                                 {highScoreForQuiz12 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -623,7 +639,8 @@ function UserPage() {
                     <div className="menu-links">
                         <ul className="menu-ul">
                             <li className="menu-li">
-                                EASY: {highScoreForQuiz13 ? `${highScoreForQuiz13.highScore}/${maxScoreForQuiz13}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/oceania"} state={{ number: "5", chosenQuiz: 13 }} >
+                                EASY: </Link> {highScoreForQuiz13 ? `${highScoreForQuiz13.highScore}/${maxScoreForQuiz13}` : ""}
                                 {highScoreForQuiz13 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -654,7 +671,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                MEDIUM: {highScoreForQuiz14 ? `${highScoreForQuiz14.highScore}/${maxScoreForQuiz14}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/oceania"} state={{ number: "8", chosenQuiz: 14 }} >
+                                MEDIUM: </Link> {highScoreForQuiz14 ? `${highScoreForQuiz14.highScore}/${maxScoreForQuiz14}` : ""}
                                 {highScoreForQuiz14 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}
@@ -685,7 +703,8 @@ function UserPage() {
                                 )}
                             </li>
                             <li className="menu-li">
-                                HARD: {highScoreForQuiz15 ? `${highScoreForQuiz15.highScore}/${maxScoreForQuiz15}` : ""}
+                                <Link className="quiz-link link-size" to={"/quiz/oceania"} state={{ number: "14", chosenQuiz: 15 }} >
+                                HARD: </Link> {highScoreForQuiz15 ? `${highScoreForQuiz15.highScore}/${maxScoreForQuiz15}` : ""}
                                 {highScoreForQuiz15 && (
                                     <FontAwesomeIcon
                                         icon={faMedal}

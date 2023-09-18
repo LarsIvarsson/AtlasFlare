@@ -96,6 +96,10 @@ body {
      
 }
 
+.link-size{
+    font-size: 25px;
+}
+
 .menu-card-result {
     width: 300px;
     height: 380px;
