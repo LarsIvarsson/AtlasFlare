@@ -7,7 +7,7 @@ function NotFound() {
             <div className="youtube-box">           
                 <div className="youtube">
                 <em>Page not found....</em>
-                <YoutubeEmbed embedId="IZKAF-IsJ24" />              
+                    <YoutubeEmbed embedId="dQw4w9WgXcQ" />              
                 </div>
             </div>
         </div>
