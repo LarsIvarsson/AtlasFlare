@@ -1,6 +1,4 @@
 # ATLAS FLARE
-![Atlas Flare logo.](/src/images/atlasflagga.png)
-
 Atlas Flare is a flag-quiz application, aimed to be used as an additional tool to schools' geography teaching. The application's main purpose is to determine students' knowledge and encourage learning. It can also be an alternative for students with learning difficulties.
 
 In contrary to traditional learning materials and competing applications, our product is fun and simple to use. A student's results are saved in form of high scores and can simplify estimating their level of knowledge as well as encourage individual improvement.
