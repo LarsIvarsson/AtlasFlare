@@ -24,9 +24,12 @@ npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/react-fontawesome
 ```
-
+Set up connection to and seed database with data
+```
+update-database
+```
 ## Usage
-Go to the register page and sign up. Log in with your credentials and choose a quiz to take. When a quiz is completed, the high score will be displayed on your user page. You can either go there directly from a result page or the menu in the top right corner. You will be able to go to quizzes from either your user page or the menu.
+Go to the register page and sign up (or if you prefer, you can log in with the provided preset account - Username = "user", Password = "password"). Log in with your credentials and choose a quiz to take. When a quiz is completed, the high score will be displayed on your user page. You can either go there directly from a result page or the menu in the top right corner. You will be able to go to quizzes from either your user page or the menu.
 
 ## Contributors
 Sebastian, Filip, Stefan, Oscar & Lars
