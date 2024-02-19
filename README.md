@@ -24,6 +24,7 @@ npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/react-fontawesome
 ```
+
 Set up connection to and seed database with data, using PMC (package manager console)
 ```
 update-database
