@@ -9,7 +9,7 @@ ASP.NET Core with React.js
 ## Getting started
 
 Download the project and run in your IDE of choice, e.g Microsoft Visual Studio.
-To be able to get the full experience please install the packages below by typing in the Package Manager Console.
+To be able to get the full experience please install the packages below by typing in the Package Manager Console, then simply run application Atlas Flare.
 
 Install react-hook-form
 ```
@@ -22,6 +22,10 @@ npm i --save @fortawesome/fontawesome-svg-core
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/react-fontawesome
+```
+Set up connection to and seed database with data, using PMC (package manager console)
+```
+update-database
 ```
 
 ## Usage
